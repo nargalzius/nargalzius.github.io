@@ -1,5 +1,5 @@
 /*
-	GENERIC CHILD LOADER
+	GENERIC DOM LOADER
 	v1.1
 	(c) 2013 Carlo Santos
 	
@@ -56,10 +56,15 @@ var expandChild = {
 
 		if(expandChild.intro)
 		{
-			TweenLite.to(expandChild.content, 0, { css:{ autoAlpha:1 } });
 			expandChild.intro();
+			expandChild.content.show();
+			TweenLite.to(expandChild.content, 0, { css:{ autoAlpha:1 } });
+			
 		}
 		else
+		{
+			expandChild.content.show();
 			TweenLite.to(expandChild.content, 1, { css:{ autoAlpha:1 } });
+		}
 	}
 }

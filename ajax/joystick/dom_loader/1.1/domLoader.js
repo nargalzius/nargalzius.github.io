@@ -1,5 +1,5 @@
 /*
-	GENERIC CHILD LOADER
+	GENERIC DOM LOADER
 	v1.1
 	(c) 2013 Carlo Santos
 	

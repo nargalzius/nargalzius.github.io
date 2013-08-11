@@ -1,0 +1,154 @@
+!!!5
+html
+	head
+		title Joystick Expandable Lightbox Class
+		link(rel="stylesheet", type="text/css", href="../../../f/c/changelog.css")
+
+	body
+		
+		header#info
+			:markdown
+				Joystick Expandable Lightbox Class
+				----------------------------------
+
+				[Latest Build](http://nargalzius.github.io/ajax/joystick/expanding_lightbox/latest/expandObj.js)  
+				[Sandbox](http://codepen.io/nargalzius/pen/LGpDJ)  
+				[Documentation](#api)  
+				[Change log](#changelog)
+
+				Requires
+
+				- [jQuery](http://jquery.com) 
+				- [GreenSock Animation Platform](http://www.greensock.com/gsap-js) 
+				- [Lightbox\_me](https://github.com/buckwilson/Lightbox_me) 
+
+		section#usage	
+			h3 Quick Example
+			
+			pre.
+				<!-- REQUIRED SCRIPTS -->
+				<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+				<script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"></script>
+				<script src="http://nargalzius.github.io/ajax/lightbox_me/2.3/jquery.lightbox_me.js"></script>
+				<script src="http://nargalzius.github.io/ajax/joystick/expanding_lightbox/latest/expandObj.js"></script>
+				
+				<!-- EXPANDED SECTION-->
+				<div id="expanded">
+					<a id="close"><img src="http://nargalzius.github.io/img/joystick/lightbox_close.png" class="btn" /></a>
+					<iframe id="expandFrame" src="about:blank" scrolling="no" frameborder="0" class="iframe_cont"></iframe>
+				</div>
+				<!-- COLLAPSED SECTION-->
+				<div id="collapsed">
+					<div id="content">
+						<button id="exp_btn"></button>
+						<div id="expandText">EXPANDING...</div>
+						<div id="expandBar"></div>
+						<div id="col_bg"></div>
+					</div>
+					<img id="spinner" src="http://nargalzius.github.io/img/joystick/spinner.png" />
+				</div>
+				
+				<!-- INITIALIZE -->    
+				<script>
+					$(document).ready(expanding.init);
+				</script>
+
+		section#api
+			:markdown
+				API
+				---
+
+				
+				- **`minW`**`:number =` *`300`,*  
+				**`minW`**`:number =` *`250`,*  
+				**`minW`**`:number =` *`500`,*  
+				**`minW`**`:number =` *`250`*
+
+					The collapsed/expanded width/height. All [main] elements/animations (i.e. expanding bar & animation, etc.) are automatically positioned based on these values.
+
+				- **`preload`**`:array =` *`null`*
+
+					If you enter a series of image urls here, the unit will delay displaying itself until all the images have been loaded to the cache. This in effect will ensure that everything is ready (for animations, etc.) by the time the user sees it.
+
+					The `['SURE_FAIL']` example is to demonstrate how the unit falls back to simply displaying the collapsed state and disabling the expand functionality. If `exit` has been set, then it clicks through to the set url in place of the expand.
+
+				- **`rollover`**`:boolean =` *`true`*
+
+					Sets the _type_ of expand trigger. Set to `false` if you wish for _click-to-expand_ functionality
+
+					An expansion triggered by a click will bypass the expanding bar animation and immediately call the lightbox.
+
+				- **`hold`**`:boolean =` *`true`*
+
+					This flag was created to avoid accidentally triggering an expand for `rollover` enabled units. This is set to `true` by default. This essentially requires the user to keep the mouse over the trigger for a certain amount of time before the unit triggers the expand.
+
+				- **`delay`**`:number =` *`1`*
+
+					If `hold` is set to *`true,`* this serves as the threshold of which a user must keep the cursor over the trigger in order to expand the unit.
+
+					If `hold` is set to *`false,`* this acts as a "rigged" tween duration (for the expanding bar) before the ad expands.
+
+					If `rollover` is set to *`false,`* (i.e. _click-to-expand),_ this value is ignored.
+
+					It's worth reiterating that expansions triggered through clicking (when avaiable) will **always** bypass the expanding bar animation and immediately call the lightbox.
+
+				- **`trigger`**`:DOM element =` *`$('#exp_btn')`*
+
+					Sets the expand trigger. By default, the entire collapsed unit is the trigger. But if you set it to a DOM element, only interaction with that element will trigger the expland.
+
+					If `exit` is set, the trigger will do the expand action while the background will clicktrhough. If it's not, then **clicking** on the background will trigger a manual expand.
+
+				- **`exit`**`:string =` _`null`_
+
+					Intended for a URL string. If set, then the collapsed background (assuming `trigger` is set) and expanded background will be set to click-though to the exit URL.
+
+				- **`intro`**`:function =` _`null`_
+
+					Allows you to set a custom intro function. By default, when the unit is ready to be shown, it simply fades-in the collapsed state. When `intro` is set, it instead immediately sets the opacity of the collapsed container to visible - and relies on your custom animation code for "flair."
+				
+					Triggers (click and/or rollover) for expansion will only work when the `isReady` variable is set to true. Normally, this is set automatically (e.g. after preloading or a straight-up `init()` without special parameters.
+				
+					Enabling the custom intro disables this process. And the user is required to manually set the `isReady` after the [custom] animation is done. This can be achieved by either setting the variable directly (`expanding.isReady = true`) or calling the `expanding.ready()` function.
+
+					If the `exit` variable is set, clicking on the ad during the intro will result in a clickthrough action. This will then revert to the normal expansion action once the `isReady` is finally set to *`true.`*
+
+				- **`expand`**`:function =` _`null`_
+
+					Similar to `intro`, this allows you to run custom actions on expand should you need to.
+
+				- **`collapse`**`:function =` _`null`_
+
+					Similar to `intro`, this allows you to run custom actions on collapse should you need to.
+
+				- **`exp_url`**`:string =` _`"expanded.html"`_
+
+					Expanded url to be loaded into the lightbox (iframe). Default is `expanded.html` located in the same directory as the index file.
+
+		section#changelog
+
+			:markdown
+				Change log
+				----------
+
+				# 1.3
+				
+				- renamed JS file from `expandLightboxObj` to `expandObj.js`
+				- removed need for external css for core functionality
+				- various fallbacks depending on unit state (and errors)
+
+				# 1.2
+
+				- renamed `userExpand` method to `expand`
+				- renamed `userCollapse` method to `collapse`
+
+				# 1.1 (unavailable)
+
+				- converted to `expanding` object/class
+				- intergrated `preload` (image preloader) function
+				- added `intro` method for custom intro actions
+				- added `userExpand` method for custom expand actions
+				- added `userCollapse` method for custom collapse actions
+
+				# 1.0 (unavailable)
+
+				- initial release

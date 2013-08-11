@@ -12,7 +12,6 @@
 	expandChild.init({
 		preload	: ARRAY,
 		content	: DOM ELEMENT
-		intro 	: FUNCTION
 	});
 */
 
@@ -21,7 +20,6 @@ var expandChildReady = false;
 var expandChild = {
 	preload : null,			// PRELOAD IMAGES
 	content : null,			// CONTAINER ELEMENT
-	intro	: null,			// CUSTOM INTRO
 	init : function(obj) {
 		
 		this.content = $('#content');
@@ -53,13 +51,6 @@ var expandChild = {
 	initExpandChild : function() {
 		expandChildReady = true;
 		$('#spinner').fadeOut();
-
-		if(expandChild.intro)
-		{
-			TweenLite.to(expandChild.content, 0, { css:{ autoAlpha:1 } });
-			expandChild.intro();
-		}
-		else
-			TweenLite.to(expandChild.content, 1, { css:{ autoAlpha:1 } });
+		TweenLite.to(expandChild.content, 1, { css:{ autoAlpha:1 } });
 	}
 }

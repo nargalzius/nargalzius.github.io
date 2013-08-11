@@ -1,0 +1,69 @@
+!!!5
+html
+	head
+		title Joystick Generic DOM Loader
+		link(rel="stylesheet", type="text/css", href="../../../f/c/changelog.css")
+
+	body
+		
+		header#info
+			:markdown
+				Joystick Generic DOM Loader
+				---------------------------
+
+				[Latest Build](http://nargalzius.github.io/ajax/joystick/domloader/latest/domLoader.js)  
+				[Sandbox](http://codepen.io/nargalzius/pen/LGpDJ)  
+				[Documentation](#api)  
+				[Change log](#changelog)
+
+				Requires
+
+				- [jQuery](http://jquery.com) 
+				- [GreenSock Animation Platform](http://www.greensock.com/gsap-js) 
+				- [Lightbox\_me](https://github.com/buckwilson/Lightbox_me) 
+
+		section#usage	
+			h3 Quick Example
+			
+			pre.
+				<!-- REQUIRED SCRIPTS -->
+				<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+				<script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"></script>
+				<script src="http://nargalzius.github.io/ajax/lightbox_me/2.3/jquery.lightbox_me.js"></script>
+				<script src="http://nargalzius.github.io/ajax/joystick/expanding_lightbox/latest/expandObj.js"></script>
+				
+				<!-- EXPANDED SECTION-->
+				<div id="expanded">
+					<a id="close"><img src="http://nargalzius.github.io/img/joystick/lightbox_close.png" class="btn" /></a>
+					<iframe id="expandFrame" src="about:blank" scrolling="no" frameborder="0" class="iframe_cont"></iframe>
+				</div>
+				<!-- COLLAPSED SECTION-->
+				<div id="collapsed">
+					<div id="content">
+						<button id="exp_btn"></button>
+						<div id="expandText">EXPANDING...</div>
+						<div id="expandBar"></div>
+						<div id="col_bg"></div>
+					</div>
+					<img id="spinner" src="http://nargalzius.github.io/img/joystick/spinner.png" />
+				</div>
+				
+				<!-- INITIALIZE -->    
+				<script>
+					$(document).ready(expanding.init);
+				</script>
+
+		section#api
+			:markdown
+				# CONTENT
+
+		header CHANGELOG
+
+		section
+			h1 1.1
+			ul
+				li renamed to child.js
+
+			h1 1.0 (unavailable)
+			ul
+				li initial release

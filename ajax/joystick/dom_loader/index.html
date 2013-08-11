@@ -7,52 +7,45 @@
   <body>
     <header id="info"><h2>Joystick Generic DOM Loader</h2>
 
-<p><a href="http://nargalzius.github.io/ajax/joystick/domloader/latest/domLoader.js">Latest Build</a><br/><a href="http://codepen.io/nargalzius/pen/LGpDJ">Sandbox</a><br/><a href="#api">Documentation</a><br/><a href="#changelog">Change log</a></p>
+<p><a href="http://nargalzius.github.io/ajax/joystick/dom_loader/latest/domLoader.js">Latest Build</a><br/><a href="http://codepen.io/nargalzius/pen/epftA">Sandbox</a><br/><a href="#api">Documentation</a><br/><a href="#changelog">Change log</a>
+Requires</p>
 
-<p>Requires</p>
-
-<ul><li><a href="http://jquery.com">jQuery</a> </li><li><a href="http://www.greensock.com/gsap-js">GreenSock Animation Platform</a> </li><li><a href="https://github.com/buckwilson/Lightbox_me">Lightbox_me</a> </li></ul>
+<ul><li><a href="http://jquery.com">jQuery</a> </li><li><a href="http://www.greensock.com/gsap-js">GreenSock Animation Platform</a></li></ul>
     </header>
     <section id="usage">	
       <h3>Quick Example</h3>
       <pre>&lt;!-- REQUIRED SCRIPTS --&gt;
 &lt;script src=&quot;http://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js&quot;&gt;&lt;/script&gt;
 &lt;script src=&quot;http://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js&quot;&gt;&lt;/script&gt;
-&lt;script src=&quot;http://nargalzius.github.io/ajax/lightbox_me/2.3/jquery.lightbox_me.js&quot;&gt;&lt;/script&gt;
-&lt;script src=&quot;http://nargalzius.github.io/ajax/joystick/expanding_lightbox/latest/expandObj.js&quot;&gt;&lt;/script&gt;
-&lt;!-- EXPANDED SECTION--&gt;
-&lt;div id=&quot;expanded&quot;&gt;
- &lt;a id=&quot;close&quot;&gt;&lt;img src=&quot;http://nargalzius.github.io/img/joystick/lightbox_close.png&quot; class=&quot;btn&quot; /&gt;&lt;/a&gt;
- &lt;iframe id=&quot;expandFrame&quot; src=&quot;about:blank&quot; scrolling=&quot;no&quot; frameborder=&quot;0&quot; class=&quot;iframe_cont&quot;&gt;&lt;/iframe&gt;
+&lt;script src=&quot;http://nargalzius.github.io/ajax/joystick/dom_loader/latest/domLoader.js&quot;&gt;&lt;/script&gt;
+&lt;!-- CONTENT --&gt;
+&lt;div id=&quot;container&quot;&gt;
+&lt;img id=&quot;spinner&quot; src=&quot;http://nargalzius.github.io/img/joystick/spinner.gif&quot;&gt;
+&lt;div id=&quot;content&quot;&gt;
+ &lt;div id=&quot;placeholder&quot;&gt;EXPANDED CONTENT HERE&lt;/div&gt;
 &lt;/div&gt;
-&lt;!-- COLLAPSED SECTION--&gt;
-&lt;div id=&quot;collapsed&quot;&gt;
- &lt;div id=&quot;content&quot;&gt;
-  &lt;button id=&quot;exp_btn&quot;&gt;&lt;/button&gt;
-  &lt;div id=&quot;expandText&quot;&gt;EXPANDING...&lt;/div&gt;
-  &lt;div id=&quot;expandBar&quot;&gt;&lt;/div&gt;
-  &lt;div id=&quot;col_bg&quot;&gt;&lt;/div&gt;
- &lt;/div&gt;
- &lt;img id=&quot;spinner&quot; src=&quot;http://nargalzius.github.io/img/joystick/spinner.png&quot; /&gt;
 &lt;/div&gt;
 &lt;!-- INITIALIZE --&gt;    
 &lt;script&gt;
- $(document).ready(expanding.init);
+ $(document).ready(dom.init);
 &lt;/script&gt;
 </pre>
     </section>
     <section id="api"><h1>CONTENT</h1>
     </section>
-    <header>CHANGELOG</header>
-    <section>
-      <h1>1.1</h1>
-      <ul>
-        <li>renamed to child.js</li>
-      </ul>
-      <h1>1.0 (unavailable)</h1>
-      <ul>
-        <li>initial release</li>
-      </ul>
+    <section id="changelog"><h2>Change log</h2>
+
+<h2>1.2</h2>
+
+<ul><li>renamed from <code>child.js</code> to <code>domLoader.js</code></li><li>class/object name is now <code>dom</code> (formerly <code>expandChild</code>)</li><li>adjusted TweenLite method to <code>fromTo</code> (formerly <code>to</code>) to make sure it starts invisible no matter what</li></ul>
+
+<h2>1.1</h2>
+
+<ul><li>renamed from <code>expandChild.js</code> to <code>child.js</code></li></ul>
+
+<h2>1.0 (unavailable)</h2>
+
+<ul><li>initial release	</li></ul>
     </section>
   </body>
 </html>

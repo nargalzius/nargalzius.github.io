@@ -1,1 +1,104 @@
-// @import reset
+@import reset
+@import global.sass
+
+@import syntax_tomorrow.sass
+
+=mon
+	font-family: Menlo, Monaco, Consolas
+
+=san
+	font-family: Helvetica, Arial
+
+$padding: 50px
+$base: #999
+
+body
+	background: #272722
+	color: $base
+	font-size: .9em
+	line-height: 1.5em
+
+a
+	text-decoration: none
+	color: #e6db74
+
+	&:hover
+		color: #FFF
+		text-decoration: underline
+
+h2
+	+mon
+	font-size: 2em
+	text-align: center
+	margin-bottom: 30px
+	color: #d33a48
+	+prefix(text-shadow, #000 2px 2px)
+
+#info
+	+mon
+	padding: 0 $padding $padding $padding
+
+	h3
+		color: #999
+		font-size: 1.2em
+		+prefix(text-shadow, #000 1px 1px)
+
+	ul
+		margin: 15px 0 15px 40px
+
+		li
+			font-size: 1.2em
+			line-height: 1.7em
+
+#usage
+	pre
+		margin-bottom: 50px
+
+#api
+	font-size: 1em
+	line-height: 1.7em
+	color: $base
+	padding: 20px $padding $padding $padding
+
+	p
+		font-size: 1.2em
+		+san
+		margin-bottom: 1.2em
+
+	code
+		+prefix(text-shadow, #000 1px 1px)
+		font-family: "Courier New", "Courier"
+		color: #DDD
+
+	strong 
+		code
+			color: #d33a48
+			padding: 5px 0
+			font-size: 1.2em
+
+	em
+		code
+			background: #323232
+			padding: 2px 5px
+			+prefix(border-radius, 7px)
+
+#changelog
+	padding: 0 $padding $padding $padding
+	font-size: 1.2em
+
+	h1
+		+mon
+		font-size: 1.5em
+		color: #CCC
+		margin: 30px 0 20px 0	
+
+	ul
+		+san
+		li
+			margin: .5em
+
+
+
+#logo
+	+setblock(76px, 76px, relative)
+	margin: $padding auto

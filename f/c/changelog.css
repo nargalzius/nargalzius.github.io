@@ -1,0 +1,162 @@
+/* START RESET */
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+body {
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: "";
+  content: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+/* END RESET */
+#usage .tomorrow-comment, #usage pre .comment, #usage pre .title {
+  color: #8e908c; }
+#usage .tomorrow-red, #usage pre .variable, #usage pre .attribute, #usage pre .tag, #usage pre .regexp, #usage pre .ruby .constant, #usage pre .xml .tag .title, #usage pre .xml .pi, #usage pre .xml .doctype, #usage pre .html .doctype, #usage pre .css .id, #usage pre .css .class, #usage pre .css .pseudo {
+  color: #c82829; }
+#usage .tomorrow-orange, #usage pre .number, #usage pre .preprocessor, #usage pre .built_in, #usage pre .literal, #usage pre .params, #usage pre .constant {
+  color: #f5871f; }
+#usage .tomorrow-yellow, #usage pre .class, #usage pre .ruby .class .title, #usage pre .css .rules .attribute {
+  color: #eab700; }
+#usage .tomorrow-green, #usage pre .string, #usage pre .value, #usage pre .inheritance, #usage pre .header, #usage pre .ruby .symbol, #usage pre .xml .cdata {
+  color: #718c00; }
+#usage .tomorrow-aqua, #usage pre .css .hexcolor {
+  color: #3e999f; }
+#usage .tomorrow-blue, #usage pre .function, #usage pre .python .decorator, #usage pre .python .title, #usage pre .ruby .function .title, #usage pre .ruby .title .keyword, #usage pre .perl .sub, #usage pre .javascript .title, #usage pre .coffeescript .title {
+  color: #4271ae; }
+#usage .tomorrow-purple, #usage pre .keyword, #usage pre .javascript .function {
+  color: #8959a8; }
+#usage pre, #usage code {
+  display: block;
+  background: #dddddd;
+  color: #4d4d4c;
+  font-family: Menlo, Monaco, Consolas, monospace;
+  font-size: 0.8em;
+  line-height: 1.5;
+  border: 1px solid black;
+  box-shadow: inset 0 0 2em #666666;
+  -webkit-box-shadow: inset 0 0 2em #666666;
+  -moz-box-shadow: inset 0 0 2em #666666;
+  -ms-box-shadow: inset 0 0 2em #666666;
+  -o-box-shadow: inset 0 0 2em #666666;
+  text-shadow: white 0 1px;
+  -webkit-text-shadow: white 0 1px;
+  -moz-text-shadow: white 0 1px;
+  -ms-text-shadow: white 0 1px;
+  -o-text-shadow: white 0 1px;
+  padding: 40px 0 20px 40px;
+  margin: 0; }
+
+body {
+  background: #272722;
+  color: #999999;
+  font-size: 0.9em;
+  line-height: 1.5em; }
+
+a {
+  text-decoration: none;
+  color: #e6db74; }
+  a:hover {
+    color: white;
+    text-decoration: underline; }
+
+h2 {
+  font-family: Menlo, Monaco, Consolas;
+  font-size: 2em;
+  text-align: center;
+  margin-bottom: 30px;
+  color: #d33a48;
+  text-shadow: black 2px 2px;
+  -webkit-text-shadow: black 2px 2px;
+  -moz-text-shadow: black 2px 2px;
+  -ms-text-shadow: black 2px 2px;
+  -o-text-shadow: black 2px 2px; }
+
+#info {
+  font-family: Menlo, Monaco, Consolas;
+  padding: 0 50px 50px 50px; }
+  #info h3 {
+    color: #999999;
+    font-size: 1.2em;
+    text-shadow: black 1px 1px;
+    -webkit-text-shadow: black 1px 1px;
+    -moz-text-shadow: black 1px 1px;
+    -ms-text-shadow: black 1px 1px;
+    -o-text-shadow: black 1px 1px; }
+  #info ul {
+    margin: 15px 0 15px 40px; }
+    #info ul li {
+      font-size: 1.2em;
+      line-height: 1.7em; }
+
+#usage pre {
+  margin-bottom: 50px; }
+
+#api {
+  font-size: 1em;
+  line-height: 1.7em;
+  color: #999999;
+  padding: 20px 50px 50px 50px; }
+  #api p {
+    font-size: 1.2em;
+    font-family: Helvetica, Arial;
+    margin-bottom: 1.2em; }
+  #api code {
+    text-shadow: black 1px 1px;
+    -webkit-text-shadow: black 1px 1px;
+    -moz-text-shadow: black 1px 1px;
+    -ms-text-shadow: black 1px 1px;
+    -o-text-shadow: black 1px 1px;
+    font-family: "Courier New", "Courier";
+    color: #dddddd; }
+  #api strong code {
+    color: #d33a48;
+    padding: 5px 0;
+    font-size: 1.2em; }
+  #api em code {
+    background: #323232;
+    padding: 2px 5px;
+    border-radius: 7px;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    -ms-border-radius: 7px;
+    -o-border-radius: 7px; }
+
+#changelog {
+  padding: 0 50px 50px 50px;
+  font-size: 1.2em; }
+  #changelog h1 {
+    font-family: Menlo, Monaco, Consolas;
+    font-size: 1.5em;
+    color: #cccccc;
+    margin: 30px 0 20px 0; }
+  #changelog ul {
+    font-family: Helvetica, Arial; }
+    #changelog ul li {
+      margin: 0.5em; }
+
+#logo {
+  display: block;
+  width: 76px;
+  height: 76px;
+  position: relative;
+  margin: 50px auto; }

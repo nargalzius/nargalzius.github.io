@@ -1,29 +1,38 @@
 !!!5
 html
 	head
-		title Joystick Expandable Lightbox Class
+		title Joystick Expandable Class
 		link(rel="stylesheet", type="text/css", href="../../../f/c/changelog.css")
+
+		script(src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js")
+		script(src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/7.3/highlight.min.js")
 
 	body
 		
 		header#info
+
+			img#logo(src="../../../img/joystick/logo.png")
+
 			:markdown
-				Joystick Expandable Lightbox Class
-				----------------------------------
+				Joystick Expanding HTML Class
+				-----------------------------
 
-				[Latest Build](http://nargalzius.github.io/ajax/joystick/expanding/latest/expandObj.js)  
-				[Sandbox](http://codepen.io/nargalzius/pen/KLaDz)  
-				[Documentation](#api)  
-				[Change log](#changelog)
+				### Resources
 
-				Requires
+				- [Latest Build](http://nargalzius.github.io/ajax/joystick/expanding/latest/expandObj.js)  
+				- [Sandbox](http://cdpn.io/KLaDz)  
+				- [Documentation](#api)  
+				- [Change log](#changelog)
+
+				### Requirements
 
 				- [jQuery](http://jquery.com) 
 				- [GreenSock Animation Platform](http://www.greensock.com/gsap-js)
 
-		section#usage	
-			h3 Quick Example
-			
+		section#usage
+
+			h2 Quick Example
+
 			pre.
 				<!-- REQUIRED SCRIPTS -->
 				<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
@@ -53,9 +62,72 @@ html
 					});
 				</script>
 
+
+
 		section#api
 			:markdown
-				# CONTENT
+				API
+				---
+
+				
+				- **`minW`**`:number =` *`300`,*  
+				**`minW`**`:number =` *`250`,*  
+				**`minW`**`:number =` *`500`,*  
+				**`minW`**`:number =` *`250`*
+
+					The collapsed/expanded width/height. All [main] elements/animations (i.e. expanding bar & animation, etc.) are automatically positioned based on these values.
+
+				- **`direction`**`:string =` *`LEFT`*
+
+					The direction of the expand. Accepts `LEFT`, `RIGHT`, `UP`, `DOWN` and is **case sensitive**
+
+				- **`preload`**`:array =` *`null`*
+
+					Accepts a series of image urls. If present/set The unit will delay displaying itself until all the images have been loaded to the cache. This in effect will ensure that everything is ready (for animations, etc.) by the time the user sees it.
+
+					The `['SURE_FAIL']` example is to demonstrate how the unit falls back to simply displaying the collapsed state and disabling the expand functionality. If `exit` has been set, then it clicks through to the set url in place of the expand.
+
+				- **`rollover`**`:boolean =` *`true`*
+
+					Sets the _type_ of expand trigger. Set to `false` if you wish for _click-to-expand_ functionality
+
+					An expansion triggered by a click will bypass the expanding bar animation and immediately call the lightbox.
+
+				- **`mouseout`**`:boolean =` *`false`*
+
+					If set to `true`, an expanded unit will automatically collapse when the cursor leaves the unit.
+
+				- **`delay`**`:number =` *`.5`*
+
+					Speed/duration of the expand animation.
+
+				- **`trigger`**`:DOM element =` *`$('#exp_btn')`*
+
+					Sets the expand trigger. By default, the entire collapsed unit is the trigger. But if you set it to a DOM element, only interaction with that element will trigger the expland.
+
+					If `exit` is set, the trigger will do the expand action while the background will clicktrhough. If it's not, then **clicking** on the background will trigger a manual expand.
+
+				- **`exit`**`:string =` _`null`_
+
+					Intended for a URL string. If set, then the collapsed background (assuming `trigger` is set) and expanded background will be set to click-though to the exit URL.
+
+				- **`intro`**`:function =` _`null`_
+
+					Allows you to set a custom intro function. By default, when the unit is ready to be shown, it simply fades-in the collapsed state. When `intro` is set, it instead immediately sets the opacity of the collapsed container to visible - and relies on your custom animation code for "flair."
+
+					Triggers (click and/or rollover) for expansion will only work when the `isReady` variable is set to true. Normally, this is set automatically (e.g. after preloading or a straight-up `init()` without special parameters.
+
+					Enabling the custom intro disables this process. And the user is required to manually set the `isReady` after the [custom] animation is done. This can be achieved by either setting the variable directly (`expanding.isReady = true`) or calling the `expanding.ready()` function.
+
+					If the `exit` variable is set, clicking on the ad during the intro will result in a clickthrough action. This will then revert to the normal expansion action once the `isReady` is finally set to *`true.`*
+
+				- **`expand`**`:function =` _`null`_
+
+					Similar to `intro`, this allows you to run custom actions on expand should you need to.
+
+				- **`collapse`**`:function =` _`null`_
+
+					Similar to `intro`, this allows you to run custom actions on collapse should you need to.
 
 		section#changelog
 
@@ -63,30 +135,35 @@ html
 				Change log
 				----------
 
-				## [1.3](http://nargalzius.github.io/ajax/joystick/expanding/1.3/expandObj.js)
+				# [1.3](http://nargalzius.github.io/ajax/joystick/expanding/1.3/expandObj.js)
 
-					- converted spinner to pure JS (using [spin.js](http://fgnass.github.io/spin.js))
+					- Converted spinner to pure JS (using [spin.js](http://fgnass.github.io/spin.js))
 
-				## [1.2](http://nargalzius.github.io/ajax/joystick/expanding/1.2/expandObj.js)
+				# [1.2](http://nargalzius.github.io/ajax/joystick/expanding/1.2/expandObj.js)
 
-					- changed default collapsed dimensions to 300x250
-					- changed default expanded dimensions to 500x250
-					- changed default expand direction to LEFT
-					- renamed `userExpand` to `expand`
-					- renamed `userCollapse` to `collapse`
-					- removed need for external css for core functionality
-					- various fallbacks depending on unit state (and errors)
-					- added dedicated expanding button reference (#exp_btn)
+					- Changed default collapsed dimensions to 300x250
+					- Changed default expanded dimensions to 500x250
+					- Changed default expand direction to LEFT
+					- Renamed `userExpand` to `expand`
+					- Renamed `userCollapse` to `collapse`
+					- Removed need for external css for core functionality
+					- Various fallbacks depending on unit state (and errors)
+					- Added dedicated expanding button reference (#exp_btn)
 				
-				## [1.1](http://nargalzius.github.io/ajax/joystick/expanding/1.1/expandObj.js)
+				# [1.1](http://nargalzius.github.io/ajax/joystick/expanding/1.1/expandObj.js)
 
-					- converted to `expanding` object/class
-					- intergrated preloader function (preload)
-					- changed default animation delay to 500 milliseconds
-					- added `intro` method for custom intro actions
-					- added `userExpand` method for custom expand actions
-					- added `userCollapse` method for custom collapse actions
-				
-				## 1.0 (unavailable)
+					- Converted to `expanding` object/class
+					- Intergrated preloader function (preload)
+					- Changed default animation delay to 500 milliseconds
+					- Added `intro` method for custom intro actions
+					- Added `userExpand` method for custom expand actions
+					- Added `userCollapse` method for custom collapse actions
 
-					- initial release	
+				# 1.0
+
+					- Initial release
+
+		script.
+			$(document).ready(function() {
+				$('#usage pre').each(function(i, e) {hljs.highlightBlock(e)});
+			});

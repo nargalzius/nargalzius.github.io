@@ -3,18 +3,22 @@
   <head>
     <title>Joystick Expandable Lightbox Class</title>
     <link rel="stylesheet" type="text/css" href="../../../f/c/changelog.css">
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/7.3/highlight.min.js"></script>
   </head>
   <body>
-    <header id="info"><h2>Joystick Expandable Lightbox Class</h2>
+    <header id="info"><img id="logo" src="../../../img/joystick/logo.png"><h2>Joystick Expandable Lightbox Class</h2>
 
-<p><a href="http://nargalzius.github.io/ajax/joystick/expanding_lightbox/latest/expandObj.js">Latest Build</a><br/><a href="http://codepen.io/nargalzius/pen/LGpDJ">Sandbox</a><br/><a href="#api">Documentation</a><br/><a href="#changelog">Change log</a></p>
+<h3>Resources</h3>
 
-<p>Requires</p>
+<ul><li><a href="http://nargalzius.github.io/ajax/joystick/expanding_lightbox/latest/expandObj.js">Latest Build</a>  </li><li><a href="http://cdpn.io/LGpDJ">Sandbox</a>  </li><li><a href="#api">Documentation</a>  </li><li><a href="#changelog">Change log</a></li></ul>
+
+<h3>Requirements</h3>
 
 <ul><li><a href="http://jquery.com">jQuery</a> </li><li><a href="http://www.greensock.com/gsap-js">GreenSock Animation Platform</a> </li><li><a href="https://github.com/buckwilson/Lightbox_me">Lightbox_me</a> </li></ul>
     </header>
-    <section id="usage">	
-      <h3>Quick Example</h3>
+    <section id="usage">
+      <h2>Quick Example</h2>
       <pre>&lt;!-- REQUIRED SCRIPTS --&gt;
 &lt;script src=&quot;http://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js&quot;&gt;&lt;/script&gt;
 &lt;script src=&quot;http://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js&quot;&gt;&lt;/script&gt;
@@ -41,35 +45,39 @@
   expanding.init();
  });
 &lt;/script&gt;
+
 </pre>
     </section>
     <section id="api"><h2>API</h2>
 
-<ul><li><p><strong><code>minW</code></strong><code>:number =</code> <em><code>300</code>,</em><br/><strong><code>minW</code></strong><code>:number =</code> <em><code>250</code>,</em><br/><strong><code>minW</code></strong><code>:number =</code> <em><code>500</code>,</em><br/><strong><code>minW</code></strong><code>:number =</code> <em><code>250</code></em></p><p>The collapsed/expanded width/height. All [main] elements/animations (i.e. expanding bar &amp; animation, etc.) are automatically positioned based on these values.</p></li><li><p><strong><code>preload</code></strong><code>:array =</code> <em><code>null</code></em></p><p>If you enter a series of image urls here, the unit will delay displaying itself until all the images have been loaded to the cache. This in effect will ensure that everything is ready (for animations, etc.) by the time the user sees it.</p><p>The <code>[&#39;SURE_FAIL&#39;]</code> example is to demonstrate how the unit falls back to simply displaying the collapsed state and disabling the expand functionality. If <code>exit</code> has been set, then it clicks through to the set url in place of the expand.</p></li><li><p><strong><code>rollover</code></strong><code>:boolean =</code> <em><code>true</code></em></p><p>Sets the <em>type</em> of expand trigger. Set to <code>false</code> if you wish for <em>click-to-expand</em> functionality</p><p>An expansion triggered by a click will bypass the expanding bar animation and immediately call the lightbox.</p></li><li><p><strong><code>hold</code></strong><code>:boolean =</code> <em><code>true</code></em></p><p>This flag was created to avoid accidentally triggering an expand for <code>rollover</code> enabled units. This is set to <code>true</code> by default. This essentially requires the user to keep the mouse over the trigger for a certain amount of time before the unit triggers the expand.</p></li><li><p><strong><code>delay</code></strong><code>:number =</code> <em><code>1</code></em></p><p>If <code>hold</code> is set to <em><code>true,</code></em> this serves as the threshold of which a user must keep the cursor over the trigger in order to expand the unit.</p><p>If <code>hold</code> is set to <em><code>false,</code></em> this acts as a &quot;rigged&quot; tween duration (for the expanding bar) before the ad expands.</p><p>If <code>rollover</code> is set to <em><code>false,</code></em> (i.e. <em>click-to-expand),</em> this value is ignored.</p><p>It&#39;s worth reiterating that expansions triggered through clicking (when avaiable) will <strong>always</strong> bypass the expanding bar animation and immediately call the lightbox.</p></li><li><p><strong><code>trigger</code></strong><code>:DOM element =</code> <em><code>$(&#39;#exp_btn&#39;)</code></em></p><p>Sets the expand trigger. By default, the entire collapsed unit is the trigger. But if you set it to a DOM element, only interaction with that element will trigger the expland.</p><p>If <code>exit</code> is set, the trigger will do the expand action while the background will clicktrhough. If it&#39;s not, then <strong>clicking</strong> on the background will trigger a manual expand.</p></li><li><p><strong><code>exit</code></strong><code>:string =</code> <em><code>null</code></em></p><p>Intended for a URL string. If set, then the collapsed background (assuming <code>trigger</code> is set) and expanded background will be set to click-though to the exit URL.</p></li><li><p><strong><code>intro</code></strong><code>:function =</code> <em><code>null</code></em></p><p>Allows you to set a custom intro function. By default, when the unit is ready to be shown, it simply fades-in the collapsed state. When <code>intro</code> is set, it instead immediately sets the opacity of the collapsed container to visible - and relies on your custom animation code for &quot;flair.&quot;
-Triggers (click and/or rollover) for expansion will only work when the <code>isReady</code> variable is set to true. Normally, this is set automatically (e.g. after preloading or a straight-up <code>init()</code> without special parameters.
-Enabling the custom intro disables this process. And the user is required to manually set the <code>isReady</code> after the [custom] animation is done. This can be achieved by either setting the variable directly (<code>expanding.isReady = true</code>) or calling the <code>expanding.ready()</code> function.</p><p>If the <code>exit</code> variable is set, clicking on the ad during the intro will result in a clickthrough action. This will then revert to the normal expansion action once the <code>isReady</code> is finally set to <em><code>true.</code></em></p></li><li><p><strong><code>expand</code></strong><code>:function =</code> <em><code>null</code></em></p><p>Similar to <code>intro</code>, this allows you to run custom actions on expand should you need to.</p></li><li><p><strong><code>collapse</code></strong><code>:function =</code> <em><code>null</code></em></p><p>Similar to <code>intro</code>, this allows you to run custom actions on collapse should you need to.</p></li><li><p><strong><code>exp_url</code></strong><code>:string =</code> <em><code>&quot;expanded.html&quot;</code></em></p><p>Expanded url to be loaded into the lightbox (iframe). Default is <code>expanded.html</code> located in the same directory as the index file.</p></li></ul>
+<ul><li><p><strong><code>minW</code></strong><code>:number =</code> <em><code>300</code>,</em><br/><strong><code>minW</code></strong><code>:number =</code> <em><code>250</code>,</em><br/><strong><code>minW</code></strong><code>:number =</code> <em><code>500</code>,</em><br/><strong><code>minW</code></strong><code>:number =</code> <em><code>250</code></em></p><p>The collapsed/expanded width/height. All [main] elements/animations (i.e. expanding bar &amp; animation, etc.) are automatically positioned based on these values.</p></li><li><p><strong><code>preload</code></strong><code>:array =</code> <em><code>null</code></em></p><p>Accepts a series of image urls. If present/set The unit will delay displaying itself until all the images have been loaded to the cache. This in effect will ensure that everything is ready (for animations, etc.) by the time the user sees it.</p><p>The <code>[&#39;SURE_FAIL&#39;]</code> example is to demonstrate how the unit falls back to simply displaying the collapsed state and disabling the expand functionality. If <code>exit</code> has been set, then it clicks through to the set url in place of the expand.</p></li><li><p><strong><code>rollover</code></strong><code>:boolean =</code> <em><code>true</code></em></p><p>Sets the <em>type</em> of expand trigger. Set to <code>false</code> if you wish for <em>click-to-expand</em> functionality</p><p>An expansion triggered by a click will bypass the expanding bar animation and immediately call the lightbox.</p></li><li><p><strong><code>hold</code></strong><code>:boolean =</code> <em><code>true</code></em></p><p>This flag was created to avoid accidentally triggering an expand for <code>rollover</code> enabled units. This is set to <code>true</code> by default. This essentially requires the user to keep the mouse over the trigger for a certain amount of time before the unit triggers the expand.</p></li><li><p><strong><code>delay</code></strong><code>:number =</code> <em><code>1</code></em></p><p>If <code>hold</code> is set to <em><code>true,</code></em> this serves as the threshold of which a user must keep the cursor over the trigger in order to expand the unit.</p><p>If <code>hold</code> is set to <em><code>false,</code></em> this acts as a &quot;rigged&quot; tween duration (for the expanding bar) before the ad expands.</p><p>If <code>rollover</code> is set to <em><code>false,</code></em> (i.e. <em>click-to-expand),</em> this value is ignored.</p><p>It&#39;s worth reiterating that expansions triggered through clicking (when avaiable) will <strong>always</strong> bypass the expanding bar animation and immediately call the lightbox.</p></li><li><p><strong><code>trigger</code></strong><code>:DOM element =</code> <em><code>$(&#39;#exp_btn&#39;)</code></em></p><p>Sets the expand trigger. By default, the entire collapsed unit is the trigger. But if you set it to a DOM element, only interaction with that element will trigger the expland.</p><p>If <code>exit</code> is set, the trigger will do the expand action while the background will clicktrhough. If it&#39;s not, then <strong>clicking</strong> on the background will trigger a manual expand.</p></li><li><p><strong><code>exit</code></strong><code>:string =</code> <em><code>null</code></em></p><p>Intended for a URL string. If set, then the collapsed background (assuming <code>trigger</code> is set) and expanded background will be set to click-though to the exit URL.</p></li><li><p><strong><code>intro</code></strong><code>:function =</code> <em><code>null</code></em></p><p>Allows you to set a custom intro function. By default, when the unit is ready to be shown, it simply fades-in the collapsed state. When <code>intro</code> is set, it instead immediately sets the opacity of the collapsed container to visible - and relies on your custom animation code for &quot;flair.&quot;</p><p>Triggers (click and/or rollover) for expansion will only work when the <code>isReady</code> variable is set to true. Normally, this is set automatically (e.g. after preloading or a straight-up <code>init()</code> without special parameters.</p><p>Enabling the custom intro disables this process. And the user is required to manually set the <code>isReady</code> after the [custom] animation is done. This can be achieved by either setting the variable directly (<code>expanding.isReady = true</code>) or calling the <code>expanding.ready()</code> function.</p><p>If the <code>exit</code> variable is set, clicking on the ad during the intro will result in a clickthrough action. This will then revert to the normal expansion action once the <code>isReady</code> is finally set to <em><code>true.</code></em></p></li><li><p><strong><code>expand</code></strong><code>:function =</code> <em><code>null</code></em></p><p>Similar to <code>intro</code>, this allows you to run custom actions on expand should you need to.</p></li><li><p><strong><code>collapse</code></strong><code>:function =</code> <em><code>null</code></em></p><p>Similar to <code>intro</code>, this allows you to run custom actions on collapse should you need to.</p></li><li><p><strong><code>exp_url</code></strong><code>:string =</code> <em><code>&quot;expanded.html&quot;</code></em></p><p>Expanded url to be loaded into the lightbox (iframe). Default is <code>expanded.html</code> located in the same directory as the index file.</p></li></ul>
     </section>
     <section id="changelog"><h2>Change log</h2>
 
-<h2><a href="http://nargalzius.github.io/ajax/joystick/expanding_lightbox/1.4/expandObj.js">1.4</a></h2>
+<h1><a href="http://nargalzius.github.io/ajax/joystick/expanding_lightbox/1.4/expandObj.js">1.4</a></h1>
 
 <ul><li>converted spinner to pure JS (using <a href="http://fgnass.github.io/spin.js">spin.js</a>)</li></ul>
 
-<h2><a href="http://nargalzius.github.io/ajax/joystick/expanding_lightbox/1.3/expandObj.js">1.3</a></h2>
+<h1><a href="http://nargalzius.github.io/ajax/joystick/expanding_lightbox/1.3/expandObj.js">1.3</a></h1>
 
-<ul><li>renamed JS file from <code>expandLightboxObj</code> to <code>expandObj.js</code></li><li>removed need for external css for core functionality</li><li>various fallbacks depending on unit state (and errors)</li></ul>
+<ul><li>Renamed JS file from <code>expandLightboxObj</code> to <code>expandObj.js</code></li><li>Removed need for external css for core functionality</li><li>Various fallbacks depending on unit state (and errors)</li></ul>
 
-<h2><a href="http://nargalzius.github.io/ajax/joystick/expanding_lightbox/1.2/expandLightboxObj.js">1.2</a></h2>
+<h1><a href="http://nargalzius.github.io/ajax/joystick/expanding_lightbox/1.2/expandLightboxObj.js">1.2</a></h1>
 
-<ul><li>renamed <code>userExpand</code> method to <code>expand</code></li><li>renamed <code>userCollapse</code> method to <code>collapse</code></li></ul>
+<ul><li>Renamed <code>userExpand</code> method to <code>expand</code></li><li>Renamed <code>userCollapse</code> method to <code>collapse</code></li></ul>
 
-<h2>1.1 (unavailable)</h2>
+<h1>1.1</h1>
 
-<ul><li>converted to <code>expanding</code> object/class</li><li>intergrated <code>preload</code> (image preloader) function</li><li>added <code>intro</code> method for custom intro actions</li><li>added <code>userExpand</code> method for custom expand actions</li><li>added <code>userCollapse</code> method for custom collapse actions</li></ul>
+<ul><li>Converted to <code>expanding</code> object/class</li><li>Intergrated <code>preload</code> (image preloader) function</li><li>Added <code>intro</code> method for custom intro actions</li><li>Added <code>userExpand</code> method for custom expand actions</li><li>Added <code>userCollapse</code> method for custom collapse actions</li></ul>
 
-<h2>1.0 (unavailable)</h2>
+<h1>1.0</h1>
 
-<ul><li>initial release</li></ul>
+<ul><li>Initial release</li></ul>
     </section>
+    <script>
+      $(document).ready(function() {
+       $('#usage pre').each(function(i, e) {hljs.highlightBlock(e)});
+      });
+    </script>
   </body>
 </html>

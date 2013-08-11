@@ -4,27 +4,36 @@ html
 		title Joystick Expandable Lightbox Class
 		link(rel="stylesheet", type="text/css", href="../../../f/c/changelog.css")
 
+		script(src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js")
+		script(src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/7.3/highlight.min.js")
+
 	body
 		
 		header#info
+
+			img#logo(src="../../../img/joystick/logo.png")
+
 			:markdown
 				Joystick Expandable Lightbox Class
 				----------------------------------
 
-				[Latest Build](http://nargalzius.github.io/ajax/joystick/expanding_lightbox/latest/expandObj.js)  
-				[Sandbox](http://codepen.io/nargalzius/pen/LGpDJ)  
-				[Documentation](#api)  
-				[Change log](#changelog)
+				### Resources
 
-				Requires
+				- [Latest Build](http://nargalzius.github.io/ajax/joystick/expanding_lightbox/latest/expandObj.js)  
+				- [Sandbox](http://cdpn.io/LGpDJ)  
+				- [Documentation](#api)  
+				- [Change log](#changelog)
+
+				### Requirements
 
 				- [jQuery](http://jquery.com) 
 				- [GreenSock Animation Platform](http://www.greensock.com/gsap-js) 
 				- [Lightbox\_me](https://github.com/buckwilson/Lightbox_me) 
 
-		section#usage	
-			h3 Quick Example
-			
+		section#usage
+
+			h2 Quick Example
+
 			pre.
 				<!-- REQUIRED SCRIPTS -->
 				<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
@@ -55,11 +64,11 @@ html
 					});
 				</script>
 
+
 		section#api
 			:markdown
 				API
 				---
-
 				
 				- **`minW`**`:number =` *`300`,*  
 				**`minW`**`:number =` *`250`,*  
@@ -70,7 +79,7 @@ html
 
 				- **`preload`**`:array =` *`null`*
 
-					If you enter a series of image urls here, the unit will delay displaying itself until all the images have been loaded to the cache. This in effect will ensure that everything is ready (for animations, etc.) by the time the user sees it.
+					Accepts a series of image urls. If present/set The unit will delay displaying itself until all the images have been loaded to the cache. This in effect will ensure that everything is ready (for animations, etc.) by the time the user sees it.
 
 					The `['SURE_FAIL']` example is to demonstrate how the unit falls back to simply displaying the collapsed state and disabling the expand functionality. If `exit` has been set, then it clicks through to the set url in place of the expand.
 
@@ -107,9 +116,9 @@ html
 				- **`intro`**`:function =` _`null`_
 
 					Allows you to set a custom intro function. By default, when the unit is ready to be shown, it simply fades-in the collapsed state. When `intro` is set, it instead immediately sets the opacity of the collapsed container to visible - and relies on your custom animation code for "flair."
-				
+
 					Triggers (click and/or rollover) for expansion will only work when the `isReady` variable is set to true. Normally, this is set automatically (e.g. after preloading or a straight-up `init()` without special parameters.
-				
+
 					Enabling the custom intro disables this process. And the user is required to manually set the `isReady` after the [custom] animation is done. This can be achieved by either setting the variable directly (`expanding.isReady = true`) or calling the `expanding.ready()` function.
 
 					If the `exit` variable is set, clicking on the ad during the intro will result in a clickthrough action. This will then revert to the normal expansion action once the `isReady` is finally set to *`true.`*
@@ -132,29 +141,34 @@ html
 				Change log
 				----------
 
-				## [1.4](http://nargalzius.github.io/ajax/joystick/expanding_lightbox/1.4/expandObj.js)
+				# [1.4](http://nargalzius.github.io/ajax/joystick/expanding_lightbox/1.4/expandObj.js)
 
 					- converted spinner to pure JS (using [spin.js](http://fgnass.github.io/spin.js))
 
-				## [1.3](http://nargalzius.github.io/ajax/joystick/expanding_lightbox/1.3/expandObj.js)
+				# [1.3](http://nargalzius.github.io/ajax/joystick/expanding_lightbox/1.3/expandObj.js)
 				
-					- renamed JS file from `expandLightboxObj` to `expandObj.js`
-					- removed need for external css for core functionality
-					- various fallbacks depending on unit state (and errors)
+					- Renamed JS file from `expandLightboxObj` to `expandObj.js`
+					- Removed need for external css for core functionality
+					- Various fallbacks depending on unit state (and errors)
 
-				## [1.2](http://nargalzius.github.io/ajax/joystick/expanding_lightbox/1.2/expandLightboxObj.js)
+				# [1.2](http://nargalzius.github.io/ajax/joystick/expanding_lightbox/1.2/expandLightboxObj.js)
 
-					- renamed `userExpand` method to `expand`
-					- renamed `userCollapse` method to `collapse`
+					- Renamed `userExpand` method to `expand`
+					- Renamed `userCollapse` method to `collapse`
 
-				## 1.1 (unavailable)
+				# 1.1
 
-					- converted to `expanding` object/class
-					- intergrated `preload` (image preloader) function
-					- added `intro` method for custom intro actions
-					- added `userExpand` method for custom expand actions
-					- added `userCollapse` method for custom collapse actions
+					- Converted to `expanding` object/class
+					- Intergrated `preload` (image preloader) function
+					- Added `intro` method for custom intro actions
+					- Added `userExpand` method for custom expand actions
+					- Added `userCollapse` method for custom collapse actions
 
-				## 1.0 (unavailable)
+				# 1.0
 
-					- initial release
+					- Initial release
+
+		script.
+			$(document).ready(function() {
+				$('#usage pre').each(function(i, e) {hljs.highlightBlock(e)});
+			});

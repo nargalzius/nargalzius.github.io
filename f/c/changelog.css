@@ -150,9 +150,19 @@ h2 {
     color: #cccccc;
     margin: 30px 0 20px 0; }
   #changelog ul {
-    font-family: Helvetica, Arial; }
+    font-family: Helvetica, Arial;
+    font-size: 1em; }
     #changelog ul li {
       margin: 0.5em; }
+  #changelog code {
+    text-shadow: black 1px 1px;
+    -webkit-text-shadow: black 1px 1px;
+    -moz-text-shadow: black 1px 1px;
+    -ms-text-shadow: black 1px 1px;
+    -o-text-shadow: black 1px 1px;
+    font-family: Menlo, Monaco, Consolas;
+    color: #eeeeee;
+    font-size: 0.9em; }
 
 #logo {
   display: block;

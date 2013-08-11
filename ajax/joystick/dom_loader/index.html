@@ -7,8 +7,9 @@
   <body>
     <header id="info"><h2>Joystick Generic DOM Loader</h2>
 
-<p><a href="http://nargalzius.github.io/ajax/joystick/dom_loader/latest/domLoader.js">Latest Build</a><br/><a href="http://codepen.io/nargalzius/pen/epftA">Sandbox</a><br/><a href="#api">Documentation</a><br/><a href="#changelog">Change log</a>
-Requires</p>
+<p><a href="http://nargalzius.github.io/ajax/joystick/dom_loader/latest/domLoader.js">Latest Build</a><br/><a href="http://codepen.io/nargalzius/pen/epftA">Sandbox</a><br/><a href="#api">Documentation</a><br/><a href="#changelog">Change log</a></p>
+
+<p>Requires</p>
 
 <ul><li><a href="http://jquery.com">jQuery</a> </li><li><a href="http://www.greensock.com/gsap-js">GreenSock Animation Platform</a></li></ul>
     </header>
@@ -19,15 +20,19 @@ Requires</p>
 &lt;script src=&quot;http://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js&quot;&gt;&lt;/script&gt;
 &lt;script src=&quot;http://nargalzius.github.io/ajax/joystick/dom_loader/latest/domLoader.js&quot;&gt;&lt;/script&gt;
 &lt;!-- CONTENT --&gt;
-&lt;div id=&quot;container&quot;&gt;
-&lt;img id=&quot;spinner&quot; src=&quot;http://nargalzius.github.io/img/joystick/spinner.gif&quot;&gt;
+&lt;div id=&quot;container&quot; class=&quot;sans&quot;&gt;
 &lt;div id=&quot;content&quot;&gt;
- &lt;div id=&quot;placeholder&quot;&gt;EXPANDED CONTENT HERE&lt;/div&gt;
+ &lt;!-- CONTENT HERE --&gt;
+ &lt;div id=&quot;placeholder&quot;&gt;
+  CONTENT
+ &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;!-- INITIALIZE --&gt;    
 &lt;script&gt;
- $(document).ready(dom.init);
+ $(document).ready(function(){
+  dom.init()
+ });
 &lt;/script&gt;
 </pre>
     </section>
@@ -35,15 +40,15 @@ Requires</p>
     </section>
     <section id="changelog"><h2>Change log</h2>
 
-<h2>1.2</h2>
+<h2><a href="http://nargalzius.github.io/ajax/joystick/dom_loader/1.2/domLoader.js">1.2</a></h2>
 
-<ul><li>renamed from <code>child.js</code> to <code>domLoader.js</code></li><li>class/object name is now <code>dom</code> (formerly <code>expandChild</code>)</li><li>adjusted TweenLite method to <code>fromTo</code> (formerly <code>to</code>) to make sure it starts invisible no matter what</li></ul>
+<ul><li>converted spinner to pure JS (using <a href="http://fgnass.github.io/spin.js">spin.js</a>)</li><li>class/object name is now <code>dom</code> (formerly <code>expandChild</code>)</li><li>adjusted TweenLite method to <code>fromTo</code> (formerly <code>to</code>) to make sure it starts invisible no matter what</li></ul>
 
-<h2>1.1</h2>
+<h2><a href="http://nargalzius.github.io/ajax/joystick/dom_loader/1.1/domLoader.js">1.1</a></h2>
 
-<ul><li>renamed from <code>expandChild.js</code> to <code>child.js</code></li></ul>
+<ul><li>renamed from <code>expandChild.js</code> to <code>domLoader.js</code></li></ul>
 
-<h2>1.0 (unavailable)</h2>
+<h2><a href="http://nargalzius.github.io/ajax/joystick/dom_loader/1.0/expandChild.js">1.0</a></h2>
 
 <ul><li>initial release	</li></ul>
     </section>

@@ -38,19 +38,21 @@ html
 					<iframe id="expandFrame" src="about:blank" scrolling="no" frameborder="0" class="iframe_cont"></iframe>
 				</div>
 				<!-- COLLAPSED SECTION-->
-				<div id="collapsed">
+				<div id="collapsed" class="sans">
 					<div id="content">
-						<button id="exp_btn"></button>
+						<button id="exp_btn" class="btn"></button>
 						<div id="expandText">EXPANDING...</div>
 						<div id="expandBar"></div>
 						<div id="col_bg"></div>
+						<!-- MORE COLLAPSED CONTENT HERE -->
 					</div>
-					<img id="spinner" src="http://nargalzius.github.io/img/joystick/spinner.png" />
 				</div>
 				
 				<!-- INITIALIZE -->    
 				<script>
-					$(document).ready(expanding.init);
+					$(document).ready(function(){
+						expanding.init();
+					});
 				</script>
 
 		section#api
@@ -130,25 +132,29 @@ html
 				Change log
 				----------
 
-				# 1.3
+				## [1.4](http://nargalzius.github.io/ajax/joystick/expanding_lightbox/1.4/expandObj.js)
+
+					- converted spinner to pure JS (using [spin.js](http://fgnass.github.io/spin.js))
+
+				## [1.3](http://nargalzius.github.io/ajax/joystick/expanding_lightbox/1.3/expandObj.js)
 				
-				- renamed JS file from `expandLightboxObj` to `expandObj.js`
-				- removed need for external css for core functionality
-				- various fallbacks depending on unit state (and errors)
+					- renamed JS file from `expandLightboxObj` to `expandObj.js`
+					- removed need for external css for core functionality
+					- various fallbacks depending on unit state (and errors)
 
-				# 1.2
+				## [1.2](http://nargalzius.github.io/ajax/joystick/expanding_lightbox/1.2/expandLightboxObj.js)
 
-				- renamed `userExpand` method to `expand`
-				- renamed `userCollapse` method to `collapse`
+					- renamed `userExpand` method to `expand`
+					- renamed `userCollapse` method to `collapse`
 
-				# 1.1 (unavailable)
+				## 1.1 (unavailable)
 
-				- converted to `expanding` object/class
-				- intergrated `preload` (image preloader) function
-				- added `intro` method for custom intro actions
-				- added `userExpand` method for custom expand actions
-				- added `userCollapse` method for custom collapse actions
+					- converted to `expanding` object/class
+					- intergrated `preload` (image preloader) function
+					- added `intro` method for custom intro actions
+					- added `userExpand` method for custom expand actions
+					- added `userCollapse` method for custom collapse actions
 
-				# 1.0 (unavailable)
+				## 1.0 (unavailable)
 
-				- initial release
+					- initial release

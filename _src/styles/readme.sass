@@ -1,6 +1,5 @@
 @import reset
 @import global.sass
-
 @import syntax_tomorrow.sass
 
 =mon
@@ -9,8 +8,36 @@
 =san
 	font-family: Helvetica, Arial
 
+=cor
+	font-family: "Courier New", "Courier"
+	+prefix(text-shadow, #000 1px 1px)
+
+
+=par($pT: null, $pR: null, $pB: 1.5em, $pL: null)
+	p
+		+mon
+		color: #FFF
+		padding-bottom: $pB
+		padding-top: $pT
+		padding-left: $pL
+		padding-right: $pR
+
+		em
+			font-style: italic
+
+		strong
+			font-weight: bold
+
+		code
+			+cor
+			background: #323232
+			padding: 2px 5px
+			+prefix(border-radius, 7px)
+			font-size: 1.2em
+
 $padding: 50px
 $base: #999
+$red: #d33a48
 
 body
 	background: #272722
@@ -29,9 +56,10 @@ a
 h2
 	+mon
 	font-size: 2em
+	line-height: 1.3em
 	text-align: center
-	margin-bottom: 30px
-	color: #d33a48
+	margin-bottom: 50px
+	color: $red
 	+prefix(text-shadow, #000 2px 2px)
 
 #info
@@ -39,7 +67,7 @@ h2
 	padding: 0 $padding $padding $padding
 
 	h3
-		color: #999
+		color: $red
 		font-size: 1.2em
 		+prefix(text-shadow, #000 1px 1px)
 
@@ -49,16 +77,22 @@ h2
 		li
 			font-size: 1.2em
 			line-height: 1.7em
+	+par
 
 #usage
+
+
 	pre
-		margin-bottom: 50px
+		margin-bottom: 40px
+
+	+par(null, $padding, 20px, $padding)
 
 #api
 	font-size: 1em
 	line-height: 1.7em
 	color: $base
-	padding: 20px $padding $padding $padding
+	padding: 40px $padding $padding $padding
+
 
 	p
 		font-size: 1.2em
@@ -67,7 +101,7 @@ h2
 
 	code
 		+prefix(text-shadow, #000 1px 1px)
-		font-family: "Courier New", "Courier"
+		+cor
 		color: #DDD
 
 	strong 

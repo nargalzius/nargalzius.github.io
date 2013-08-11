@@ -2,7 +2,7 @@
 html
 	head
 		title Joystick Expandable Class
-		link(rel="stylesheet", type="text/css", href="../../../f/c/changelog.css")
+		link(rel="stylesheet", type="text/css", href="../../../f/c/readme.css")
 
 		script(src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js")
 		script(src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/7.3/highlight.min.js")
@@ -17,29 +17,38 @@ html
 				Joystick Expanding HTML Class
 				-----------------------------
 
+				This is an HTML version of a basic Flash Expandable. Unlike with the [Expanding Lightbox](http://nargalzius.github.io/ajax/joystick/expanding_lightbox), _both_ collapsed _and_ expanded contents are present. And there is no "delay" before expanding.
+
+				The main container's positioning relative to the page is based on its _expanded_ dimensions (`maxW`, `maxH`, which you can set). The collapsed position is automatically calculated relative to the expanded dimensions and the direction you choose it to expand. This eliminates the need for any guesswork (all you have to worry about is how to position the unit relative to the main page)
+
 				### Resources
 
-				- [Latest Build](http://nargalzius.github.io/ajax/joystick/expanding/latest/expandObj.js)  
-				- [Sandbox](http://cdpn.io/KLaDz)  
-				- [Documentation](#api)  
-				- [Change log](#changelog)
+				- [Getting Started](#usage)
+				- [Sandbox](http://cdpn.io/KLaDz) (codepen)
+				- [Full Documentation](#api)
+				- [Latest Build](http://nargalzius.github.io/ajax/joystick/expanding/latest/expandObj.js) (.js)
+				- [Sample File](http://nargalzius.github.io/downloads/expanding/latest.zip) (.zip)
+				- [Changelog](#changelog)
 
-				### Requirements
+				### Dependencies
 
 				- [jQuery](http://jquery.com) 
 				- [GreenSock Animation Platform](http://www.greensock.com/gsap-js)
 
 		section#usage
 
-			h2 Quick Example
+			h2 Quick Start
 
-			pre.
-				<!-- REQUIRED SCRIPTS -->
+			p Include the following scripts in your document's <code>&lt;head></code>
+
+			pre.syntax.
 				<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 				<script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"></script>
 				<script src="http://nargalzius.github.io/ajax/joystick/expanding/latest/expandObj.js"></script>
-				
-				<!-- UNIT -->
+
+			p Here is the minimum markup you'll need. The <code>.sans</code> class is optional (the script automatically applies sans-serif fonts to the class)
+
+			pre.syntax.
 				<div id="unit" class="sans">
 					<div id="content">
 						<div id="collapsed" class="unit_component">
@@ -55,7 +64,10 @@ html
 						</div>
 					</div>
 				</div>
-				<!-- INITIALIZE -->    
+
+			p Finally, initialize it like so:
+
+			pre.syntax.
 				<script>
 					$(document).ready(function(){
 						expanding.init();
@@ -132,8 +144,8 @@ html
 		section#changelog
 
 			:markdown
-				Change log
-				----------
+				Changelog
+				---------
 
 				# [1.3](http://nargalzius.github.io/ajax/joystick/expanding/1.3/expandObj.js)
 

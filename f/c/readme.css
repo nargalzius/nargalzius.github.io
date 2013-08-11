@@ -45,12 +45,13 @@ table {
   color: #4271ae; }
 #usage .tomorrow-purple, #usage pre .keyword, #usage pre .javascript .function {
   color: #8959a8; }
-#usage pre, #usage code {
+#usage pre, #usage pre code {
   display: block;
   background: #dddddd;
+  overflow: hidden;
   color: #4d4d4c;
   font-family: Menlo, Monaco, Consolas, monospace;
-  font-size: 0.8em;
+  font-size: 0.9em;
   line-height: 1.5;
   border: 1px solid black;
   box-shadow: inset 0 0 2em #666666;
@@ -63,7 +64,7 @@ table {
   -moz-text-shadow: white 0 1px;
   -ms-text-shadow: white 0 1px;
   -o-text-shadow: white 0 1px;
-  padding: 40px 0 20px 40px;
+  padding: 20px 40px;
   margin: 0; }
 
 body {
@@ -82,8 +83,9 @@ a {
 h2 {
   font-family: Menlo, Monaco, Consolas;
   font-size: 2em;
+  line-height: 1.3em;
   text-align: center;
-  margin-bottom: 30px;
+  margin-bottom: 50px;
   color: #d33a48;
   text-shadow: black 2px 2px;
   -webkit-text-shadow: black 2px 2px;
@@ -95,7 +97,7 @@ h2 {
   font-family: Menlo, Monaco, Consolas;
   padding: 0 50px 50px 50px; }
   #info h3 {
-    color: #999999;
+    color: #d33a48;
     font-size: 1.2em;
     text-shadow: black 1px 1px;
     -webkit-text-shadow: black 1px 1px;
@@ -107,15 +109,63 @@ h2 {
     #info ul li {
       font-size: 1.2em;
       line-height: 1.7em; }
+  #info p {
+    font-family: Menlo, Monaco, Consolas;
+    color: white;
+    padding-bottom: 1.5em; }
+    #info p em {
+      font-style: italic; }
+    #info p strong {
+      font-weight: bold; }
+    #info p code {
+      font-family: "Courier New", "Courier";
+      text-shadow: black 1px 1px;
+      -webkit-text-shadow: black 1px 1px;
+      -moz-text-shadow: black 1px 1px;
+      -ms-text-shadow: black 1px 1px;
+      -o-text-shadow: black 1px 1px;
+      background: #323232;
+      padding: 2px 5px;
+      border-radius: 7px;
+      -webkit-border-radius: 7px;
+      -moz-border-radius: 7px;
+      -ms-border-radius: 7px;
+      -o-border-radius: 7px;
+      font-size: 1.2em; }
 
 #usage pre {
-  margin-bottom: 50px; }
+  margin-bottom: 40px; }
+#usage p {
+  font-family: Menlo, Monaco, Consolas;
+  color: white;
+  padding-bottom: 20px;
+  padding-left: 50px;
+  padding-right: 50px; }
+  #usage p em {
+    font-style: italic; }
+  #usage p strong {
+    font-weight: bold; }
+  #usage p code {
+    font-family: "Courier New", "Courier";
+    text-shadow: black 1px 1px;
+    -webkit-text-shadow: black 1px 1px;
+    -moz-text-shadow: black 1px 1px;
+    -ms-text-shadow: black 1px 1px;
+    -o-text-shadow: black 1px 1px;
+    background: #323232;
+    padding: 2px 5px;
+    border-radius: 7px;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    -ms-border-radius: 7px;
+    -o-border-radius: 7px;
+    font-size: 1.2em; }
 
 #api {
   font-size: 1em;
   line-height: 1.7em;
   color: #999999;
-  padding: 20px 50px 50px 50px; }
+  padding: 40px 50px 50px 50px; }
   #api p {
     font-size: 1.2em;
     font-family: Helvetica, Arial;
@@ -127,6 +177,11 @@ h2 {
     -ms-text-shadow: black 1px 1px;
     -o-text-shadow: black 1px 1px;
     font-family: "Courier New", "Courier";
+    text-shadow: black 1px 1px;
+    -webkit-text-shadow: black 1px 1px;
+    -moz-text-shadow: black 1px 1px;
+    -ms-text-shadow: black 1px 1px;
+    -o-text-shadow: black 1px 1px;
     color: #dddddd; }
   #api strong code {
     color: #d33a48;

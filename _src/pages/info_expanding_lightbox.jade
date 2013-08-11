@@ -2,7 +2,7 @@
 html
 	head
 		title Joystick Expandable Lightbox Class
-		link(rel="stylesheet", type="text/css", href="../../../f/c/changelog.css")
+		link(rel="stylesheet", type="text/css", href="../../../f/c/readme.css")
 
 		script(src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js")
 		script(src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/7.3/highlight.min.js")
@@ -17,14 +17,22 @@ html
 				Joystick Expandable Lightbox Class
 				----------------------------------
 
+				An implementation of an expandable ad, but it does it by loading an external file through a [Lightbox](https://github.com/buckwilson/Lightbox_me) (iFrame).
+
+				I've improved the implementation with other useful features - such as allowing an easy way to change the Lightbox width and height (and automatically adjusts other dependencies - such as the close button's position) without having to fiddle with CSS.
+
+				In fact, As far as the core functionality goes, the need to write CSS is almost eliminated entirely.
+
 				### Resources
 
-				- [Latest Build](http://nargalzius.github.io/ajax/joystick/expanding_lightbox/latest/expandObj.js)  
-				- [Sandbox](http://cdpn.io/LGpDJ)  
-				- [Documentation](#api)  
-				- [Change log](#changelog)
+				- [Getting Started](#usage)
+				- [Sandbox](http://cdpn.io/LGpDJ) (codepen)
+				- [Full Documentation](#api)  
+				- [Latest Build](http://nargalzius.github.io/ajax/joystick/expanding_lightbox/latest/expandObj.js) (.js)
+				- [Sample File](http://nargalzius.github.io/downloads/expanding_lightbox/latest.zip) (.zip)
+				- [Changelog](#changelog)
 
-				### Requirements
+				### Dependencies
 
 				- [jQuery](http://jquery.com) 
 				- [GreenSock Animation Platform](http://www.greensock.com/gsap-js) 
@@ -32,15 +40,19 @@ html
 
 		section#usage
 
-			h2 Quick Example
+			h2 Quick Start
 
-			pre.
-				<!-- REQUIRED SCRIPTS -->
+			p Include the following scripts in your document's <code>&lt;head></code>
+
+			pre.syntax.
 				<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 				<script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"></script>
 				<script src="http://nargalzius.github.io/ajax/lightbox_me/2.3/jquery.lightbox_me.js"></script>
 				<script src="http://nargalzius.github.io/ajax/joystick/expanding_lightbox/latest/expandObj.js"></script>
-				
+
+			p Here is the minimum markup you'll need. The <code>.sans</code> class is optional (the script automatically applies sans-serif fonts to the class)
+
+			pre.syntax.
 				<!-- EXPANDED SECTION-->
 				<div id="expanded">
 					<a id="close"><img src="http://nargalzius.github.io/img/joystick/lightbox_close.png" class="btn" /></a>
@@ -56,8 +68,10 @@ html
 						<!-- MORE COLLAPSED CONTENT HERE -->
 					</div>
 				</div>
-				
-				<!-- INITIALIZE -->    
+
+			p Finally, initialize it like so:
+
+			pre.syntax.
 				<script>
 					$(document).ready(function(){
 						expanding.init();
@@ -138,8 +152,8 @@ html
 		section#changelog
 
 			:markdown
-				Change log
-				----------
+				Changelog
+				---------
 
 				# [1.4](http://nargalzius.github.io/ajax/joystick/expanding_lightbox/1.4/expandObj.js)
 

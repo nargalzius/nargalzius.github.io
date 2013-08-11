@@ -1,0 +1,22 @@
+CHANGE LOG
+
+1.2
+changed default collapsed dimensions to 300x250
+changed default expanded dimensions to 500x250
+changed default expand direction to LEFT
+renamed "userExpand" to "expand"
+renamed "userCollapse" to "collapse"
+removed the need for external css
+various fallbacks depending on unit state (and errors)
+added dedicated expanding button reference (#exp_btn)
+
+1.1
+converted to "expanding" object/class
+intergrated preloader function (preload)
+changed default animation delay to .5 seconds
+added provision for custom intro actions (intro)
+added provision for custom expand actions (userExpand)
+added provision for custom collapse actions (userCollapse)
+
+1.0 (unavailable)
+initial release

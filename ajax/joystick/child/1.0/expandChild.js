@@ -1,6 +1,6 @@
 /*
 	BASIC LIGHTBOX EXPANDED CHILD
-	v1.1
+	v1.0
 	(c) 2013 Carlo Santos
 	
 	REQUIRES 
@@ -52,7 +52,7 @@ var expandChild = {
 	},
 	initExpandChild : function() {
 		expandChildReady = true;
-		$('#spinner').hide();
+		$('#spinner').fadeOut();
 
 		if(expandChild.intro)
 		{

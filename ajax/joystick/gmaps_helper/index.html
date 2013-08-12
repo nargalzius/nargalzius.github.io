@@ -1,54 +1,41 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Joystick Generic DOM Loader</title>
+    <title>Map Shiv for gmaps.js</title>
     <link rel="stylesheet" type="text/css" href="../../../f/c/readme.css">
     <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/7.3/highlight.min.js"></script>
   </head>
   <body>
-    <header id="info"><img id="logo" src="../../../img/joystick/logo.png"><h2>Joystick Generic DOM Loader</h2>
-
-<p>By nature, HTML data is ready before the &quot;heavier&quot; resources (e.g. images) are loaded in. This means DOM elements can already be manipulated even if the page as a whole is still not [visually] &quot;complete&quot;. </p>
-
-<p>This can be a problem when working with animations - as you <em>can</em> very well end up animating something that still hasn&#39;t finished loading.</p>
-
-<p>Just like how the <code>preload</code> function works on the <a href="http://nargalzius.github.io/ajax/joystick/expanding">expanding</a> and <a href="http://nargalzius.github.io/ajax/joystick/expanding_lightbox">expandable lightbox</a> classes, this class provides an easy way to mimmick a &quot;preloader&quot; commonly used in Flash. You simply pass along <strong>all</strong> the images you intend to use, and it&#39;ll immediately hide the main container - show it again only when all images are already cached to the browser.</p>
+    <header id="info"><img id="logo" src="../../../img/joystick/logo.png"><h2>Joystick Map Helper for gmaps.js</h2>
 
 <h3>Resources</h3>
 
-<ul><li><a href="#usage">Getting Started</a></li><li><a href="http://cdpn.io/epftA">Sandbox</a> (codepen)</li><li><a href="#api">Full Documentation</a>  </li><li><a href="http://nargalzius.github.io/ajax/joystick/dom_loader/latest/domLoader.js">Latest Build</a> (.js)</li><li><a href="#changelog">Changelog</a></li></ul>
+<ul><li><a href="#usage">Getting Started</a></li><li>[Sandbox]() (codepen)</li><li><a href="#api">Full Documentation</a>  </li><li><a href="http://nargalzius.github.io/ajax/joystick/gmaps_helper/latest/gmaps_helper.js">Latest Build</a> (.js)</li><li><a href="#changelog">Changelog</a></li></ul>
 
 <h3>Dependencies</h3>
 
-<ul><li><a href="http://jquery.com">jQuery</a></li><li><a href="http://www.greensock.com/gsap-js">GreenSock Animation Platform</a></li></ul>
+<ul><li><a href="http://jquery.com">jQuery</a></li><li><a href="http://maps.google.com/maps/api/js?sensor=true">GoogleMaps API</a></li><li><a href="http://hpneo.github.io/gmaps">gmaps.js</a></li></ul>
     </header>
     <section id="usage">
       <h2>Quick Start</h2>
       <p>Include the following scripts in your document's <code>&lt;head></code></p>
       <pre class="syntax">&lt;script src=&quot;http://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js&quot;&gt;&lt;/script&gt;
-&lt;script src=&quot;http://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js&quot;&gt;&lt;/script&gt;
-&lt;script src=&quot;http://nargalzius.github.io/ajax/joystick/dom_loader/latest/domLoader.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;http://maps.google.com/maps/api/js?sensor=true&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;http://cdnjs.cloudflare.com/ajax/libs/gmaps.js/0.3/gmaps.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;http://nargalzius.github.io/ajax/joystick/gmaps_helper/latest/gmaps_helper.js&quot;&gt;&lt;/script&gt;
 </pre>
-      <p>Here is the minimum markup you'll need. The <code>.sans</code> class is optional (the script automatically applies sans-serif fonts to the class)</p>
-      <pre class="syntax">&lt;div id=&quot;container&quot; class=&quot;sans&quot;&gt;
-&lt;div id=&quot;content&quot;&gt;
- &lt;!-- CONTENT HERE --&gt;
- &lt;div id=&quot;placeholder&quot;&gt;
-  CONTENT
- &lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
+      <p>Here is the minimum markup you'll need</p>
+      <pre class="syntax">&lt;div id=&quot;map&quot;&gt;&lt;/div&gt;
 </pre>
-      <P>When using the preloader, it's important to set the <code>width</code> and <code>height</code> of this container via css. This is to ensure that the dynamic spinner will be centered.</P>
       <p>Finally, initialize it like so:</p>
       <pre class="syntax">&lt;script&gt;
  $(document).ready(function(){
-  var images = [IMAGE_ARRAY_CONTENTS]
-  dom.init({ preload: images });
+  shiv.init();
  });
 &lt;/script&gt;
-</pre><p>Again, this is <em>minimal</em> code to get things working. Be sure to check out all the other &quot;features&quot; by playing with it in the <a href="http://codepen.io/nargalzius/pen/epftA">sandbox</a></p>
+</pre>
+      <p>Take note that the actual GMaps object of gmaps.js is initialized through the shiv. However, the `map` variable is reserved and assigned to the main map object when initialized. This means you can still access the main GMaps object normally through `map` (i.e. `map.hideInfoWindows()` & `shiv.proxy.hideInfoWindows` & `shiv.hidePopups()` to the same thing)</p><p>Again, this is <em>minimal</em> code to get things working. Be sure to check out all the other &quot;features&quot; by playing with it in the <a href="http://codepen.io/nargalzius/pen/epftA">sandbox</a></p>
     </section>
     <section id="api"><h2>API</h2>
 

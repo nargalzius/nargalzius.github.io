@@ -150,7 +150,8 @@ h2 {
   -webkit-text-shadow: black 2px 2px;
   -moz-text-shadow: black 2px 2px;
   -ms-text-shadow: black 2px 2px;
-  -o-text-shadow: black 2px 2px; }
+  -o-text-shadow: black 2px 2px;
+  font-weight: normal; }
 
 .tab {
   width: 2.5em;
@@ -226,12 +227,11 @@ h2 {
     font-size: 1.2em; }
 
 #api {
-  font-size: 1em;
+  font-size: 1.2em;
   line-height: 1.7em;
   color: #999999;
   padding: 40px 50px 50px 50px; }
   #api p {
-    font-size: 1.2em;
     font-family: Helvetica, Arial;
     margin-bottom: 1.2em; }
   #api code {
@@ -269,6 +269,8 @@ h2 {
     color: #e6db74;
     font-size: 1em;
     font-weight: bold; }
+  #api #quickCode {
+    font-size: 1em; }
 
 #changelog {
   padding: 0 50px 50px 50px;

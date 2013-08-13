@@ -107,23 +107,25 @@ html
 
 					p A complete marker object is as follows: <em>{ <strong>loc</strong>: string, <strong>icon</strong>: string, <strong>info</strong>: { <strong>pic</strong>: string, <strong>header</strong>: string, <strong>details</strong>: text } }</em>
 
-						li <strong><code>loc</code></strong><code>:string</code>
-
-							p Comma-delimited <code>lat</code>/<code>lng</code> coordinates (e.g. <code>40.72423,-73.999186</code>) just like with the <code>center</code> variable
-
-						li <strong><code>icon</code></strong><code>:string</code>
-
-							p Marker icon for the specific marker. In the event you have the <em>global</em> <code>icon</code> set, any marker with individual <code>icon</code> variables set will override the global icon. Any marker that doesn't, will use the global icon.  
-
-							p The same goes for not having a global icon set; any marker without an individual icon set will default to GoogleMaps' generic marker icon.
-
-						li <strong><code>info</code></strong><code>:string</code> <em>or</em> <code>object</code>
-
-							p If set, this automatically will generate an infoWindow, depending on the datatype.  
-
-							p If it's a string, it simply displays the text on the infowindow (still could be styled through <code>.infoWindow .info</code> class). If it's an object, it'll accept one, two, or all three of the keys: <code>pic</code> for an image, <code>header</code> for a title, and <code>details</code> for the blurb.  
-
-							p While the class automatically generates the divs and assigns the classes for each of these elements, it <strong>does not</strong> style them - so the user is still required to style the <code>.infoWindow</code> class and all its contents through CSS
+						ul
+	
+							li <strong><code>loc</code></strong><code>:string</code>
+	
+								p Comma-delimited <code>lat</code>/<code>lng</code> coordinates (e.g. <code>40.72423,-73.999186</code>) just like with the <code>center</code> variable
+	
+							li <strong><code>icon</code></strong><code>:string</code>
+	
+								p Marker icon for the specific marker. In the event you have the <em>global</em> <code>icon</code> set, any marker with individual <code>icon</code> variables set will override the global icon. Any marker that doesn't, will use the global icon.  
+	
+								p The same goes for not having a global icon set; any marker without an individual icon set will default to GoogleMaps' generic marker icon.
+	
+							li <strong><code>info</code></strong><code>:string</code> <em>or</em> <code>object</code>
+	
+								p If set, this automatically will generate an infoWindow, depending on the datatype.  
+	
+								p If it's a string, it simply displays the text on the infowindow (still could be styled through <code>.infoWindow .info</code> class). If it's an object, it'll accept one, two, or all three of the keys: <code>pic</code> for an image, <code>header</code> for a title, and <code>details</code> for the blurb.  
+	
+								p While the class automatically generates the divs and assigns the classes for each of these elements, it <strong>does not</strong> style them - so the user is still required to style the <code>.infoWindow</code> class and all its contents through CSS
 
 				li <strong><code>template</code></strong><code>:function =</code><em><code>null</code></em>
 
@@ -160,7 +162,9 @@ html
 							return { content: generateIWC(tempStr) };
 						}
 
-					p What happens is that if the class detects a <code>template</code> function, it will <strong>ignore</strong> the contents of the `info` key as basis of automatic marker generation and will instead generate the infoWindow <code>content</code> values based on the callback.
+					p What happens is that if the class detects a <code>template</code> function, it will <strong>ignore</strong> the contents of the <code>info</code> key as basis of automatic marker generation and will instead generate the infoWindow <code>content</code> values based on the callback. 
+
+					p Since it's no longer relaint on any particular value in the object, you can construct the callback function to generate pretty much anything. The only limitation is that it's <em>ultimately</em> going to be injected in Googlemaps' standard infoWindow.
 
 					p The number will serve as an index of the selected object from the marker array - meaning the function runs for every item on the list - and you can reference <strong>any</strong> value of that particular object. 
 

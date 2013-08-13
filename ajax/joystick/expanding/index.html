@@ -24,12 +24,12 @@
     <section id="usage">
       <h2>Quick Start</h2>
       <p>Include the following scripts in your document's <code>&lt;head></code></p>
-      <pre class="syntax">&lt;script src=&quot;http://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js&quot;&gt;&lt;/script&gt;
+      <pre class="syntax html">&lt;script src=&quot;http://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js&quot;&gt;&lt;/script&gt;
 &lt;script src=&quot;http://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js&quot;&gt;&lt;/script&gt;
 &lt;script src=&quot;http://nargalzius.github.io/ajax/joystick/expanding/latest/expandObj.js&quot;&gt;&lt;/script&gt;
 </pre>
       <p>Here is the minimum markup you'll need. The <code>.sans</code> class is optional (the script automatically applies sans-serif fonts to the class)</p>
-      <pre class="syntax">&lt;div id=&quot;unit&quot; class=&quot;sans&quot;&gt;
+      <pre class="syntax html">&lt;div id=&quot;unit&quot; class=&quot;sans&quot;&gt;
  &lt;div id=&quot;content&quot;&gt;
   &lt;div id=&quot;collapsed&quot; class=&quot;unit_component&quot;&gt;
    &lt;div class=&quot;background&quot;&gt;&lt;/div&gt;
@@ -46,11 +46,9 @@
 &lt;/div&gt;
 </pre>
       <p>Finally, initialize it like so:</p>
-      <pre class="syntax">&lt;script&gt;
- $(document).ready(function(){
-  expanding.init();
- });
-&lt;/script&gt;
+      <pre class="syntax javascript">$(document).ready(function(){
+ expanding.init();
+});
 </pre><p>Again, this is <em>minimal</em> code to get things working. Be sure to check out all the other &quot;features&quot; by playing with it in the <a href="http://codepen.io/nargalzius/pen/KLaDz">sandbox</a></p>
     </section>
     <section id="api"><h2>API</h2>

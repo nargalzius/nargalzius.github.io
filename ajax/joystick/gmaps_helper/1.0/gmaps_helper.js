@@ -53,14 +53,11 @@ var shiv = {
 		if(obj.icon)
 			mIcon = obj.icon;
 
-		if(shiv.template)
-		{
-			info = shiv.template(id);
-		}
-		else if(obj.info)
-		{
-			info = shiv.translateMarkerInfo(obj.info)
-		}
+		if(obj.info)
+			if(shiv.template)
+				info = shiv.template(id);
+			else
+				info = shiv.translateMarkerInfo(obj.info)
 
 		shiv.proxy.addMarker({
   			lat: obj.loc.split(',')[0],
@@ -126,4 +123,9 @@ function trace(val)
 		$('<p>').text(val).appendTo('#debug');
 		console.log(val);
 	}
+}
+
+function generateIWC(obj)
+{
+    return $('<div>').addClass(shiv.iwID).html(obj.wrap('<p>').parent().html()).wrap('<p>').parent().html().toString();
 }

@@ -1,7 +1,7 @@
 !!!5
 html
 	head
-		title Map Shiv for gmaps.js
+		title gmaps.js Helper Class
 		link(rel="stylesheet", type="text/css", href="../../../f/c/readme.css")
 
 		script(src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js")
@@ -14,13 +14,21 @@ html
 			img#logo(src="../../../img/joystick/logo.png")
 
 			:markdown
-				Joystick Map Helper for gmaps.js
-				--------------------------------
+				Helper Class for gmaps.js
+				-------------------------
+
+				A GoogleMaps helper class for [gmaps.js](http://hpneo.github.io/gmaps) that allows quicker implementation of common requested "features" for work demos.
+
+				It's primary purpose is as a "marker helper" - because that's a given whenever I make demos that involve using an interactive map. I decided to call it a general helper class in case more "features" are added down the road.
+
+				It still uses the default `infoWindow` of GoogleMaps, but it provides a much easier way of plugging in and customizing the `content` variable of said `infoWindow`
+
+				I decided to call it a general helper class in case more features are added down the road.
 
 				### Resources
 
 				- [Getting Started](#usage)
-				- [Sandbox]() (codepen)
+				- [Sandbox](http://jsfiddle.net/nargalzius/B2Hdt) (JSFiddle)
 				- [Full Documentation](#api)  
 				- [Latest Build](http://nargalzius.github.io/ajax/joystick/gmaps_helper/latest/gmaps_helper.js) (.js)
 				- [Changelog](#changelog)
@@ -37,48 +45,126 @@ html
 
 			p Include the following scripts in your document's <code>&lt;head></code>
 
-			pre.syntax.
+			pre.syntax.html.
 				<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 				<script src="http://maps.google.com/maps/api/js?sensor=true"></script>
 				<script src="http://cdnjs.cloudflare.com/ajax/libs/gmaps.js/0.3/gmaps.min.js"></script>
 				<script src="http://nargalzius.github.io/ajax/joystick/gmaps_helper/latest/gmaps_helper.js"></script>
 
-			p Here is the minimum markup you'll need
+			p Below is the minimum markup you'll need; basically just a container for the map.
 
-			pre.syntax.
+			pre.syntax.html.
 				<div id="map"></div>
 
 			p Finally, initialize it like so:
 
-			pre.syntax.
-				<script>
-					$(document).ready(function(){
-						shiv.init();
-					});
-				</script>
-
-			p Take note that the actual GMaps object of gmaps.js is initialized through the shiv. However, the `map` variable is reserved and assigned to the main map object when initialized. This means you can still access the main GMaps object normally through `map` (i.e. `map.hideInfoWindows()` & `shiv.proxy.hideInfoWindows` & `shiv.hidePopups()` to the same thing)
+			pre.syntax.javascript.
+				
+				$(document).ready(function(){
+					shiv.init();
+				});
 
 			:markdown
-				Again, this is _minimal_ code to get things working. Be sure to check out all the other "features" by playing with it in the [sandbox](http://codepen.io/nargalzius/pen/epftA)
+				Take note that the actual GMaps object of gmaps.js is initialized through the helper. However, the `map` variable is reserved and assigned to the main map object when initialized. This means you can still access the main `GMaps` object normally through `map` (i.e. `map.hideInfoWindows()` & `shiv.proxy.hideInfoWindows()` & `shiv.hidePopups()` to the same thing)
+
+				Again, this is _minimal_ code to get things working. Be sure to check out all the other "features" by playing with it in the [sandbox](http://jsfiddle.net/nargalzius/B2Hdt)
 
 
 		section#api
-			:markdown
-				API
-				---
 
-				- **`preload`**`:array =` _`null`_
+			h2 API
 
-					Accepts a series of image urls. If present/set The container will delay displaying itself until all the images have been loaded to the cache. This in effect will ensure that everything is ready (for animations, etc.) by the time the user sees it.
+			ul
+				li <strong><code>center</code></strong><code>:string =</code><em><code>'40.72423,-73.999186'</code></em>
 
-				- **`content`**`:DOM element =` _`$('#content')`_
+					p A comma-delimited <code>lat</code>/<code>lng</code> string for the map origin point. This allows for faster <code>lat</code>/<code>lng</code> input instead of creating an object with two separate values.
 
-					The overall `div` that contians all visible elements. It's important to use/set this value when doing a preload, as it automatically hides the container (i.e. everything) until it's ready to show.
+				li <strong><code>container</code></strong><code>:string =</code><em><code>'#map'</code></em>
 
-				- **`intro`**`:function =` _`null`_
+					p DOM element <code>id</code> where the map will be plugged into.
 
-					Allows you to set a custom intro function. By default, when the unit is ready to be shown, it simply fades-in. When `intro` is set, it instead immediately sets the opacity container to visible - and relies on your custom animation code for "flair."
+				li <strong><code>zoom</code></strong><code>:number =</code><em><code>13</code></em>
+
+					p Default zoom setting of the map.
+
+				li <strong><code>icon</code></strong><code>:string =</code><em><code>null</code></em>
+
+					p Custom <strong>global</strong> marker icon.
+
+				li <strong><code>iwID</code></strong><code>:string =</code><em><code>'infoWindow'</code></em>
+
+					p Designated infoWindow class. This is injected into the infoWindow's <code>content</code> to allow easy styling of the elements within. 
+
+					p Take note that while it's designated as an <strong>id</strong>, it's actually injected as a <strong>class</strong>. So be sure to access it through <code>.infoWindow</code>.
+
+				li <strong><code>w</code></strong><code>: =</code><em><code>null,</code></em><br/><strong><code>h</code></strong><code>: =</code><em><code>null</code></em>
+
+					p Map canvas dimensions. It's recommended to set this via CSS, but if you're too lazy and just want to see something appear immediately, you can set it here. It's also worth remembering that setting this will <strong>bypass</strong> any value set via CSS
+
+				li <strong><code>markers</code></strong><code>:array =</code><em><code>null</code></em>
+
+					p An array of marker objects. The base implementation can recognize the following object keys:
+
+					p A complete marker object is as follows: <em>{ <strong>loc</strong>: string, <strong>icon</strong>: string, <strong>info</strong>: { <strong>pic</strong>: string, <strong>header</strong>: string, <strong>details</strong>: text } }</em>
+
+						li <strong><code>loc</code></strong><code>:string</code>
+
+							p Comma-delimited <code>lat</code>/<code>lng</code> coordinates (e.g. <code>40.72423,-73.999186</code>) just like with the <code>center</code> variable
+
+						li <strong><code>icon</code></strong><code>:string</code>
+
+							p Marker icon for the specific marker. In the event you have the <em>global</em> <code>icon</code> set, any marker with individual <code>icon</code> variables set will override the global icon. Any marker that doesn't, will use the global icon.  
+
+							p The same goes for not having a global icon set; any marker without an individual icon set will default to GoogleMaps' generic marker icon.
+
+						li <strong><code>info</code></strong><code>:string</code> <em>or</em> <code>object</code>
+
+							p If set, this automatically will generate an infoWindow, depending on the datatype.  
+
+							p If it's a string, it simply displays the text on the infowindow (still could be styled through <code>.infoWindow .info</code> class). If it's an object, it'll accept one, two, or all three of the keys: <code>pic</code> for an image, <code>header</code> for a title, and <code>details</code> for the blurb.  
+
+							p While the class automatically generates the divs and assigns the classes for each of these elements, it <strong>does not</strong> style them - so the user is still required to style the <code>.infoWindow</code> class and all its contents through CSS
+
+				li <strong><code>template</code></strong><code>:function =</code><em><code>null</code></em>
+
+					p This is the most powerful feature for customizing markers. You can have something like:
+
+					pre#quickCode.syntax.javascript.
+						var markerArray = [
+							{ loc: '40.730994,-74.003134', info: { url: 'http://google.com', name: 'Google Inc.' } },
+							{ loc: '40.717595,-74.001417', info: { url: 'http://microsoft.com', name: 'Microsoft'} }
+						];
+
+						$(document).ready(function(){
+							shiv.init({
+								markers: markerArray,
+								template: customTemplate
+							});
+						});
+
+						function customTemplate(num) {
+							// PLACEHOLDER OBJECT
+							var tempStr = $('<div>');
+
+							// DYNAMICALLY POPULATE PLACEHOLDER
+							$('<div>')
+								.append($('<a>').attr({
+									'href': markerArray[num].info.url,
+									'target': '_blank'
+								}).text(markerArray[num].info.name))
+								.appendTo(tempStr);
+							$('<div>').text('lat: '+markerArray[num].loc.split(',')[0]).appendTo(tempStr);
+							$('<div>').text('lng: '+markerArray[num].loc.split(',')[1]).appendTo(tempStr);
+
+							// CONVERT TO HTML STRING AND PASS BACK AS OBJECT TO gmaps.js
+							return { content: generateIWC(tempStr) };
+						}
+
+					p What happens is that if the class detects a <code>template</code> function, it will <strong>ignore</strong> the contents of the `info` key as basis of automatic marker generation and will instead generate the infoWindow <code>content</code> values based on the callback.
+
+					p The number will serve as an index of the selected object from the marker array - meaning the function runs for every item on the list - and you can reference <strong>any</strong> value of that particular object. 
+
+					p Yes, that means you're not limited by the contents of the <code>info</code> object. As demonstrated by the code above, you have now put arbitrary keys (e.g. <code>url</code>, <code>name</code>) in the <code>info</code> object instead of the usual <code>pic</code>, <code>header</code>, & <code>details</code>. In addition to that, we've also used values <em>outside</em> of it (e.g. <code>loc</code>)
 
 		section#changelog
 
@@ -86,20 +172,11 @@ html
 				Changelog
 				---------
 
-				# [1.2](http://nargalzius.github.io/ajax/joystick/dom_loader/1.2/domLoader.js)
-					- Converted/integrated spinner to a pure JS generated one (using [spin.js](http://fgnass.github.io/spin.js))
-					- Class/object name is now `dom` (formerly `expandChild`)
-					- Adjusted TweenLite method to `fromTo` (formerly `to`) to make sure it starts invisible no matter what
-
-				# [1.1](http://nargalzius.github.io/ajax/joystick/dom_loader/1.1/domLoader.js)
-
-					- Renamed from `expandChild.js` to `domLoader.js`
-
-				# [1.0](http://nargalzius.github.io/ajax/joystick/dom_loader/1.0/expandChild.js)
+				# [1.0](http://nargalzius.github.io/ajax/joystick/gmaps_helper/1.0/expandChild.js)
 
 					- Initial release
 
 		script.
 			$(document).ready(function() {
-				$('pre.syntax').each(function(i, e) {hljs.highlightBlock(e)});
+				$('.syntax').each(function(i, e) {hljs.highlightBlock(e)});
 			});

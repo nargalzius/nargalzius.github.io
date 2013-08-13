@@ -1,34 +1,3 @@
-/* START RESET */
-html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font-size: 100%;
-  font: inherit;
-  vertical-align: baseline; }
-
-article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
-  display: block; }
-
-body {
-  line-height: 1; }
-
-ol, ul {
-  list-style: none; }
-
-blockquote, q {
-  quotes: none; }
-
-blockquote:before, blockquote:after,
-q:before, q:after {
-  content: "";
-  content: none; }
-
-table {
-  border-collapse: collapse;
-  border-spacing: 0; }
-
-/* END RESET */
 #usage .tomorrow-comment, #usage pre .comment, #usage pre .title {
   color: #8e908c; }
 #usage .tomorrow-red, #usage pre .variable, #usage pre .attribute, #usage pre .tag, #usage pre .regexp, #usage pre .ruby .constant, #usage pre .xml .tag .title, #usage pre .xml .pi, #usage pre .xml .doctype, #usage pre .html .doctype, #usage pre .css .id, #usage pre .css .class, #usage pre .css .pseudo {
@@ -67,6 +36,96 @@ table {
   padding: 20px 40px;
   margin: 0; }
 
+#api pre {
+  display: block;
+  font-size: 1.2em;
+  text-shadow: black 1px 1px;
+  -webkit-text-shadow: black 1px 1px;
+  -moz-text-shadow: black 1px 1px;
+  -ms-text-shadow: black 1px 1px;
+  -o-text-shadow: black 1px 1px;
+  line-height: 1.2em;
+  padding: 0 20px;
+  color: #eeeeee; }
+  #api pre .tag, #api pre code {
+    color: #f8f8f2; }
+  #api pre .keyword,
+  #api pre .function,
+  #api pre .literal,
+  #api pre .change,
+  #api pre .winutils,
+  #api pre .flow,
+  #api pre .lisp .title,
+  #api pre .clojure .built_in,
+  #api pre .nginx .title,
+  #api pre .tex .special {
+    color: #66d9ef; }
+  #api pre .variable,
+  #api pre .params {
+    color: #fd9720; }
+  #api pre .constant {
+    color: #66d9ef; }
+  #api pre .title,
+  #api pre .class .title,
+  #api pre .css .class {
+    color: #a6e22e; }
+  #api pre .attribute,
+  #api pre .symbol,
+  #api pre .symbol .string,
+  #api pre .tag .title,
+  #api pre .value,
+  #api pre .css .tag {
+    color: #f92672; }
+  #api pre .number,
+  #api pre .preprocessor,
+  #api pre .regexp {
+    color: #ae81ff; }
+  #api pre .tag .value,
+  #api pre .string,
+  #api pre .css .id,
+  #api pre .subst,
+  #api pre .haskell .type,
+  #api pre .ruby .class .parent,
+  #api pre .built_in,
+  #api pre .sql .aggregate,
+  #api pre .django .template_tag,
+  #api pre .django .variable,
+  #api pre .smalltalk .class,
+  #api pre .django .filter .argument,
+  #api pre .smalltalk .localvars,
+  #api pre .smalltalk .array,
+  #api pre .attr_selector,
+  #api pre .pseudo,
+  #api pre .addition,
+  #api pre .stream,
+  #api pre .envvar,
+  #api pre .apache .tag,
+  #api pre .apache .cbracket,
+  #api pre .tex .command,
+  #api pre .prompt {
+    color: #e6db74; }
+  #api pre .comment,
+  #api pre .javadoc,
+  #api pre .java .annotation,
+  #api pre .python .decorator,
+  #api pre .template_comment,
+  #api pre .pi,
+  #api pre .doctype,
+  #api pre .deletion,
+  #api pre .shebang,
+  #api pre .apache .sqbracket,
+  #api pre .tex .formula {
+    color: #75715e; }
+  #api pre .coffeescript .javascript,
+  #api pre .javascript .xml,
+  #api pre .tex .formula {
+    opacity: 0.5; }
+  #api pre .xml .javascript,
+  #api pre .xml .vbscript,
+  #api pre .xml .css,
+  #api pre .xml .cdata {
+    opacity: 0.5; }
+
 body {
   background: #272722;
   color: #999999;
@@ -92,6 +151,11 @@ h2 {
   -moz-text-shadow: black 2px 2px;
   -ms-text-shadow: black 2px 2px;
   -o-text-shadow: black 2px 2px; }
+
+.tab {
+  width: 2.5em;
+  display: inline-block;
+  overflow: hidden; }
 
 #info {
   font-family: Menlo, Monaco, Consolas;
@@ -183,18 +247,28 @@ h2 {
     -ms-text-shadow: black 1px 1px;
     -o-text-shadow: black 1px 1px;
     color: #dddddd; }
+  #api em {
+    font-style: italic; }
+  #api strong {
+    color: #dddddd; }
   #api strong code {
     color: #d33a48;
     padding: 5px 0;
-    font-size: 1.2em; }
+    font-size: 1.2em;
+    font-weight: normal; }
   #api em code {
     background: #323232;
     padding: 2px 5px;
+    font-style: normal;
     border-radius: 7px;
     -webkit-border-radius: 7px;
     -moz-border-radius: 7px;
     -ms-border-radius: 7px;
     -o-border-radius: 7px; }
+  #api li li strong code {
+    color: #e6db74;
+    font-size: 1em;
+    font-weight: bold; }
 
 #changelog {
   padding: 0 50px 50px 50px;

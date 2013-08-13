@@ -3,8 +3,7 @@
 	v1.3
 	(c) 2013 Carlo Santos
 	
-	DOCS: nargalzius.github.io/ajax/joystick/expanding
-	
+	DOCS: nargalzius.github.io/ajax/joystick/expanding	
 */
 
 var debug	  = false;

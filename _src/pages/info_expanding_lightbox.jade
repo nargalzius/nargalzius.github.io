@@ -44,7 +44,7 @@ html
 
 			p Include the following scripts in your document's <code>&lt;head></code>
 
-			pre.syntax.
+			pre.syntax.html.
 				<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 				<script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"></script>
 				<script src="http://nargalzius.github.io/ajax/lightbox_me/2.3/jquery.lightbox_me.js"></script>
@@ -52,7 +52,7 @@ html
 
 			p Here is the minimum markup you'll need. The <code>.sans</code> class is optional (the script automatically applies sans-serif fonts to the class)
 
-			pre.syntax.
+			pre.syntax.html.
 				<!-- EXPANDED SECTION-->
 				<div id="expanded">
 					<a id="close"><img src="http://nargalzius.github.io/img/joystick/lightbox_close.png" class="btn" /></a>
@@ -71,12 +71,10 @@ html
 
 			p Finally, initialize it like so:
 
-			pre.syntax.
-				<script>
-					$(document).ready(function(){
-						expanding.init();
-					});
-				</script>
+			pre.syntax.javascript.
+				$(document).ready(function(){
+					expanding.init();
+				});
 
 			:markdown
 				Again, this is _minimal_ code to get things working. Be sure to check out all the other "features" by playing with it in the [sandbox](http://codepen.io/nargalzius/pen/LGpDJ)

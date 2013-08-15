@@ -1,0 +1,150 @@
+@import url(http://fonts.googleapis.com/css?family=Asap:400,700,400italic,700italic);
+/* DO NOT EDIT .CSS FILE DIRECTLY. EDIT .SASS FILE(S) INSTEAD */
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/*----------------------------------------------------------------------- */
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: "Asap", "Helvetica", "Arial", sans-serif;
+  background-color: white;
+}
+
+#logo {
+  display: block;
+  position: relative;
+  width: 76px;
+  height: 76px;
+  margin: 50px auto 30px auto;
+  background: url(http://nargalzius.github.io/img/joystick/logo.png) no-repeat;
+}
+
+#container {
+  display: block;
+  margin: 0 auto 100px auto;
+  text-align: center;
+}
+
+header {
+  text-align: center;
+}
+header h1 {
+  font-size: 1.7em;
+  margin: 0 0 30px 0;
+  font-weight: bold;
+}
+header #byline {
+  font-size: 1em;
+  margin: 10px 0 30px 0;
+  line-height: 1.2em;
+}
+header #byline a {
+  color: maroon;
+  text-decoration: none;
+}
+header #byline a:hover {
+  text-decoration: underline;
+}
+
+#preloader {
+  margin-top: 60px;
+}
+#preloader #preloadText {
+  display: block;
+  color: #999999;
+  margin-top: -10px;
+}
+#preloader #preloadIcon {
+  margin-top: 30px;
+  display: block;
+}
+
+#container {
+  position: relative;
+}
+#container div.image {
+  margin: 20px 10px;
+}
+#container div.image .header {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+  font-size: 1em;
+}
+#container div.image img {
+  display: block;
+  margin: 0 auto;
+}
+#container div.image .description {
+  margin-top: 5px;
+  display: block;
+  font-size: 0.8em;
+}
+#container .grouped {
+  display: inline-table;
+}
+
+#flashcontent {
+  position: absolute;
+  overflow: hidden;
+}
+
+#pushdown {
+  display: block;
+  position: absolute;
+}
+
+#errorMSG {
+  background: red;
+  display: block;
+  max-width: 300px;
+}
+#errorMSG code {
+  font-family: "Courrier New", "Monaco";
+  color: maroon;
+}
+
+#pd_placeholder {
+  position: absolute;
+  background: #eeeeee;
+  overflow: hidden;
+  display: block;
+}
+#pd_placeholder .phtext {
+  margin-top: 50px;
+}

@@ -11,9 +11,11 @@
 
 <p>An implementation of an expandable ad, but it does it by loading an external file through a <a href="https://github.com/buckwilson/Lightbox_me">Lightbox</a> (iFrame).</p>
 
-<p>I&#39;ve improved the implementation with other useful features - such as allowing an easy way to change the Lightbox width and height (and automatically adjusts other dependencies - such as the close button&#39;s position) without having to fiddle with CSS.</p>
+<p>This was created when I had to make a series of lightbox-based demos based on an existing ones - and realized that most if not all of them didn&#39;t have enough abstraction to be reusable without major tinkering for each implementation.</p>
 
-<p>In fact, As far as the core functionality goes, the need to write CSS is almost eliminated entirely.</p>
+<p>I&#39;ve improved the implementation, by sepearating the actual lightbox features and common animations present in all the demos, and a provision to inject other animations as callbacks. This allows a practical way of customization on both collapsed/expanding behavior without having to touch the core functionality.</p>
+
+<p>I also added some other useful features - such as allowing an easy way to change the Lightbox width and height, image preloader, as well as being CSS agnostic as far as the core functionality goes. Best read the <a href="#api">API</a> or try it on the <a href="http://cdpn.io/LGpDJ">sanbox</a> to see all that it can do.</p>
       <h3>Resources</h3>
       <ul>
         <li> <a href="#usage">Getting Started</a></li>

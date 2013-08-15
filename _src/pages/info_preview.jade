@@ -1,0 +1,115 @@
+!!!5
+html
+	head
+		title Joystick Generic DOM Loader
+		link(rel="stylesheet", type="text/css", href="../../../f/c/readme.css")
+
+		script(src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js")
+		script(src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/7.3/highlight.min.js")
+
+	body
+		
+		header#info
+
+			img#logo(src="../../../img/joystick/logo.png")
+
+			:markdown
+				Joystick Generic DOM Loader
+				---------------------------
+
+				By nature, HTML data is ready before the "heavier" resources (e.g. images) are loaded in. This means DOM elements can already be manipulated even if the page as a whole is still not [visually] "complete". 
+
+				This can be a problem when working with animations - as you _can_ very well end up animating something that still hasn't finished loading.
+
+				Just like how the `preload` function works on the [expanding](http://nargalzius.github.io/ajax/joystick/expanding) and [expandable lightbox](http://nargalzius.github.io/ajax/joystick/expanding_lightbox) classes, this class provides an easy way to mimmick a "preloader" commonly used in Flash. You simply pass along **all** the images you intend to use, and it'll immediately hide the main container - show it again only when all images are already cached to the browser.
+
+				### Resources
+
+				- [Getting Started](#usage)
+				- [Sandbox](http://cdpn.io/epftA) (codepen)
+				- [Full Documentation](#api)  
+				- [Latest Build](http://nargalzius.github.io/ajax/joystick/dom_loader/latest/domLoader.js) (.js)
+				- [Changelog](#changelog)
+
+				### Dependencies
+
+				- [jQuery](http://jquery.com)
+				- [GreenSock Animation Platform](http://www.greensock.com/gsap-js)
+
+		section#usage
+
+			h2 Quick Start
+
+			p Include the following scripts in your document's <code>&lt;head></code>
+
+			pre.syntax.html.
+				<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+				<script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"></script>
+				<script src="http://nargalzius.github.io/ajax/joystick/dom_loader/latest/domLoader.js"></script>
+
+			p Here is the minimum markup you'll need. The <code>.sans</code> class is optional (the script automatically applies sans-serif fonts to the class)
+
+			pre.syntax.html.
+				<div id="container" class="sans">
+				<div id="content">
+					<!-- CONTENT HERE -->
+					<div id="placeholder">
+						CONTENT
+					</div>
+				</div>
+				</div>
+
+			P When using the preloader, it's important to set the <code>width</code> and <code>height</code> of this container via css. This is to ensure that the dynamic spinner will be centered.
+
+			p Finally, initialize it like so:
+
+			pre.syntax.javascript.
+				$(document).ready(function(){
+					var images = [IMAGE_ARRAY_CONTENTS]
+					dom.init({ preload: images });
+				});
+
+			:markdown
+				Again, this is _minimal_ code to get things working. Be sure to check out all the other "features" by playing with it in the [sandbox](http://codepen.io/nargalzius/pen/epftA)
+
+
+		section#api
+			:markdown
+				API
+				---
+
+				- **`preload`**`:array =` _`null`_
+
+					Accepts a series of image urls. If present/set The container will delay displaying itself until all the images have been loaded to the cache. This in effect will ensure that everything is ready (for animations, etc.) by the time the user sees it.
+
+				- **`content`**`:DOM element =` _`$('#content')`_
+
+					The overall `div` that contians all visible elements. It's important to use/set this value when doing a preload, as it automatically hides the container (i.e. everything) until it's ready to show.
+
+				- **`intro`**`:function =` _`null`_
+
+					Allows you to set a custom intro function. By default, when the unit is ready to be shown, it simply fades-in. When `intro` is set, it instead immediately sets the opacity container to visible - and relies on your custom animation code for "flair."
+
+		section#changelog
+
+			:markdown
+				Changelog
+				---------
+
+				# [1.2](http://nargalzius.github.io/ajax/joystick/dom_loader/1.2/domLoader.js)
+					- Converted/integrated spinner to a pure JS generated one (using [spin.js](http://fgnass.github.io/spin.js))
+					- Class/object name is now `dom` (formerly `expandChild`)
+					- Adjusted TweenLite method to `fromTo` (formerly `to`) to make sure it starts invisible no matter what
+
+				# [1.1](http://nargalzius.github.io/ajax/joystick/dom_loader/1.1/domLoader.js)
+
+					- Renamed from `expandChild.js` to `domLoader.js`
+
+				# [1.0](http://nargalzius.github.io/ajax/joystick/dom_loader/1.0/expandChild.js)
+
+					- Initial release
+
+		script.
+			$(document).ready(function() {
+				$('pre.syntax').each(function(i, e) {hljs.highlightBlock(e)});
+			});

@@ -30,14 +30,24 @@ var preview = {
 			'color':this.color
 		});
 
+		/* DECIDE WHAT TO DO */
+
 		if(this.page)
-			this.loadBG(this.page);
+		{
+			if(this.img && !this.flash)
+				this.preloadIMG(this.img);
+			else
+				this.loadBG(this.page);
+		}
 		else
 			if(this.flash)
 				this.initFlash(this.flash);
 		else
 			if(this.img)
 				this.preloadIMG(this.img);
+
+		
+		/* END DECIDE WHAT TO DO */
 
 		var titlestring = 'Joystick Interactive: ';
 

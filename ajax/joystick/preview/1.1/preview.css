@@ -134,9 +134,11 @@ header #byline a:hover {
   display: block;
   max-width: 300px;
 }
-#errorMSG code {
-  font-family: "Courrier New", "Monaco";
-  color: maroon;
+
+code {
+  font-family: "Monaco", "Courrier New", "Courrier", monospace !important;
+  color: maroon !important;
+  font-size: 0.9em !important;
 }
 
 #pd_placeholder {

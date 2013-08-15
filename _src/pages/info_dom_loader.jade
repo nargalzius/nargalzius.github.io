@@ -1,3 +1,5 @@
+version = '1.2'
+
 !!!5
 html
 	head
@@ -23,13 +25,23 @@ html
 
 				Just like how the `preload` function works on the [expanding](http://nargalzius.github.io/ajax/joystick/expanding) and [expandable lightbox](http://nargalzius.github.io/ajax/joystick/expanding_lightbox) classes, this class provides an easy way to mimmick a "preloader" commonly used in Flash. You simply pass along **all** the images you intend to use, and it'll immediately hide the main container - show it again only when all images are already cached to the browser.
 
-				### Resources
+			h3 Resources
 
-				- [Getting Started](#usage)
-				- [Sandbox](http://cdpn.io/epftA) (codepen)
-				- [Full Documentation](#api)  
-				- [Latest Build](http://nargalzius.github.io/ajax/joystick/dom_loader/latest/domLoader.js) (.js)
-				- [Changelog](#changelog)
+			ul
+				li
+					a(href="#usage") Getting Started
+				li
+					a(target="_blank", href="http://cdpn.io/epftA") Sandbox
+					|  (codepen)
+				li
+					a(href="#api") Full Documentation  
+				li
+					a(target="_blank", href="http://nargalzius.github.io/ajax/joystick/dom_loader/#{version}/domLoader.js") Latest Build
+					|  (.js)
+				li
+					a(href="#changelog") Changelog
+
+			:markdown
 
 				### Dependencies
 
@@ -45,7 +57,7 @@ html
 			pre.syntax.html.
 				<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 				<script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"></script>
-				<script src="http://nargalzius.github.io/ajax/joystick/dom_loader/latest/domLoader.js"></script>
+				<script src="http://nargalzius.github.io/ajax/joystick/dom_loader/#{version}/domLoader.js"></script>
 
 			p Here is the minimum markup you'll need. The <code>.sans</code> class is optional (the script automatically applies sans-serif fonts to the class)
 

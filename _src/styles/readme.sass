@@ -7,7 +7,7 @@
 	font-family: Menlo, Monaco, Consolas
 
 =san
-	font-family: Helvetica, Arial
+	font-family: "Asap", "Helvetica", "Arial"
 
 =cor
 	font-family: "Courier New", "Courier"
@@ -16,12 +16,13 @@
 
 =par($pT: null, $pR: null, $pB: 1.5em, $pL: null)
 	p
-		+mon
+		+san
 		color: #FFF
 		padding-bottom: $pB
 		padding-top: $pT
 		padding-left: $pL
 		padding-right: $pR
+		font-size: 1.1em
 
 		em
 			font-style: italic
@@ -30,16 +31,19 @@
 			font-weight: bold
 
 		code
-			+cor
+			//+cor
+			+mon
 			background: #323232
 			padding: 2px 5px
 			+prefix(border-radius, 7px)
-			font-size: 1.2em
 
 $padding: 50px
 $base: #999
 $red: #d33a48
 $yellow: #e6db74
+
+html, body, div, p, a
+	+san
 
 body
 	background: #272722
@@ -56,14 +60,13 @@ a
 		text-decoration: underline
 
 h2
-	+mon
+	+san
 	font-size: 2em
 	line-height: 1.3em
 	text-align: center
 	margin-bottom: 50px
 	color: $red
 	+prefix(text-shadow, #000 2px 2px)
-	font-weight: normal
 
 .tab
 	width: 2.5em
@@ -71,12 +74,13 @@ h2
 	overflow: hidden
 
 #info
-	+mon
+	+san
 	padding: 0 $padding $padding $padding
 
 	h3
 		color: $red
 		font-size: 1.2em
+		font-weight: normal
 		+prefix(text-shadow, #000 1px 1px)
 
 	ul
@@ -108,7 +112,8 @@ h2
 
 	code
 		+prefix(text-shadow, #000 1px 1px)
-		+cor
+		//+cor
+		+mon
 		color: #DDD
 
 	em
@@ -121,7 +126,6 @@ h2
 		code
 			color: #d33a48
 			padding: 5px 0
-			font-size: 1.2em
 			font-weight: normal
 
 	em
@@ -139,7 +143,8 @@ h2
 					font-size: 1em
 					font-weight: bold
 
-	#quickCode
+
+	.quickCode
 		font-size: 1em
 
 #changelog

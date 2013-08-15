@@ -1,3 +1,5 @@
+version = '1.5'
+
 !!!5
 html
 	head
@@ -23,14 +25,26 @@ html
 
 				In fact, As far as the core functionality goes, the need to write CSS is almost eliminated entirely.
 
-				### Resources
+			h3 Resources
 
-				- [Getting Started](#usage)
-				- [Sandbox](http://cdpn.io/LGpDJ) (codepen)
-				- [Full Documentation](#api)  
-				- [Latest Build](http://nargalzius.github.io/ajax/joystick/expanding_lightbox/latest/expandObj.js) (.js)
-				- [Sample File](http://nargalzius.github.io/downloads/expanding_lightbox/latest.zip) (.zip)
-				- [Changelog](#changelog)
+			ul
+				li 
+					a(href="#usage") Getting Started
+				li 
+					a(target="_blank", href="http://cdpn.io/LGpDJ") Sandbox
+					|  (codepen)
+				li 
+					a(href="#api") Full Documentation
+				li 
+					a(target="_blank", href="http://nargalzius.github.io/ajax/joystick/expanding_lightbox/#{version}/expandObj.js") Latest Build
+					|  (.js)
+				li 
+					a(href="http://nargalzius.github.io/downloads/expanding_lightbox/sample_#{version}.zip") Sample File
+					|  (.zip)
+				li 
+					a(href="#changelog") Changelog
+
+			:markdown
 
 				### Dependencies
 
@@ -48,7 +62,7 @@ html
 				<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 				<script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"></script>
 				<script src="http://nargalzius.github.io/ajax/lightbox_me/2.3/jquery.lightbox_me.js"></script>
-				<script src="http://nargalzius.github.io/ajax/joystick/expanding_lightbox/latest/expandObj.js"></script>
+				<script src="http://nargalzius.github.io/ajax/joystick/expanding_lightbox/#{version}/expandObj.js"></script>
 
 			p Here is the minimum markup you'll need. The <code>.sans</code> class is optional (the script automatically applies sans-serif fonts to the class)
 
@@ -62,7 +76,7 @@ html
 				<div id="collapsed" class="sans">
 					<div id="content">
 						<button id="exp_btn" class="btn"></button>
-						<div id="expandText">EXPANDING...</div>
+						<div id="expandText">Expanding...</div>
 						<div id="expandBar"></div>
 						<div id="col_bg"></div>
 						<!-- MORE COLLAPSED CONTENT HERE -->
@@ -94,8 +108,6 @@ html
 				- **`preload`**`:array =` *`null`*
 
 					Accepts a series of image urls. If present/set The unit will delay displaying itself until all the images have been loaded to the cache. This in effect will ensure that everything is ready (for animations, etc.) by the time the user sees it.
-
-					The `['SURE_FAIL']` example is to demonstrate how the unit falls back to simply displaying the collapsed state and disabling the expand functionality. If `exit` has been set, then it clicks through to the set url in place of the expand.
 
 				- **`rollover`**`:boolean =` *`true`*
 
@@ -149,11 +161,19 @@ html
 
 					Expanded url to be loaded into the lightbox (iframe). Default is `expanded.html` located in the same directory as the index file.
 
+				- **`isLegacy`**`:boolean =` _`false`_
+
+					Force the script to use the old "expanding" animation (22px height, 128px max bar width, mixed case Verdana, etc.)
+
 		section#changelog
 
 			:markdown
 				Changelog
 				---------
+
+				# [1.5](http://nargalzius.github.io/ajax/joystick/expanding_lightbox/1.5/expandObj.js)
+
+					- Added `isLegacy` flag (to use the old way of animating the expanding bar)
 
 				# [1.4](http://nargalzius.github.io/ajax/joystick/expanding_lightbox/1.4/expandObj.js)
 

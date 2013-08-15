@@ -1,3 +1,5 @@
+version = '1.1'
+
 !!!5
 html
 	head
@@ -14,23 +16,32 @@ html
 			img#logo(src="../../../img/joystick/logo.png")
 
 			:markdown
-				Joystick Generic DOM Loader
-				---------------------------
+				Joystick Preview Prototype
+				--------------------------
 
-				By nature, HTML data is ready before the "heavier" resources (e.g. images) are loaded in. This means DOM elements can already be manipulated even if the page as a whole is still not [visually] "complete". 
+				One of the most common things we do as Joystick employees is to create "preview" pages. This can be painfully repetitive. Of course, this is only limited to the "quick and dirty" previews we all know and... err... love ;) 
 
-				This can be a problem when working with animations - as you _can_ very well end up animating something that still hasn't finished loading.
+				As such, I've decided to create a multi-purpose template that can reliably and neatly generate these pages. I'm sure those of us who have been using the same old template (which looking at the code, I believe is the one I myself made from the beginning of time) are familiar with the tediousness of configuring them for different files. The goal of this script was to standardize image/flash embedding while minimizing CSS (which you can still do if you wish) and putting all relative scripts (swfObject, etc.) in the cloud.
 
-				Just like how the `preload` function works on the [expanding](http://nargalzius.github.io/ajax/joystick/expanding) and [expandable lightbox](http://nargalzius.github.io/ajax/joystick/expanding_lightbox) classes, this class provides an easy way to mimmick a "preloader" commonly used in Flash. You simply pass along **all** the images you intend to use, and it'll immediately hide the main container - show it again only when all images are already cached to the browser.
+				The result is you can just save the code as a snippet, then whenever you need an index.html, you simply create it and paste the code in - no need for extra js files, no need for adjusting CSS (unless absolutely necessary), and most importantly, you only focus on ONE area on the code to generate the entire thing.				
 
-				### Resources
+			h3 Resources
 
-				- [Getting Started](#usage)
-				- [Sandbox](http://cdpn.io/epftA) (codepen)
-				- [Full Documentation](#api)  
-				- [Latest Build](http://nargalzius.github.io/ajax/joystick/dom_loader/latest/domLoader.js) (.js)
-				- [Changelog](#changelog)
+			ul
+				li
+					a(href="#usage") Getting Started
+				li
+					a(target="_blank", href="http://jsfiddle.net/nargalzius/K3QTx") Sandbox
+					|  (jsfiddle)
+				li
+					a(href="#api") Full Documentation
+				li
+					a(target="_blank", href="http://nargalzius.github.io/ajax/joystick/preview/#{version}/preview.js") Latest Build
+					|  (.js)
+				li
+					a(href="#changelog") Changelog
 
+			:markdown
 				### Dependencies
 
 				- [jQuery](http://jquery.com)
@@ -38,74 +49,151 @@ html
 
 		section#usage
 
-			h2 Quick Start
+			h2 Usage
 
-			p Include the following scripts in your document's <code>&lt;head></code>
+			p Because of the nature of this particular script, the whole blob of code below is needed for it to work properly - so that at the very least it can fallback to displaying a message with a link to the documentation.
 
-			pre.syntax.html.
-				<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-				<script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"></script>
-				<script src="http://nargalzius.github.io/ajax/joystick/dom_loader/latest/domLoader.js"></script>
-
-			p Here is the minimum markup you'll need. The <code>.sans</code> class is optional (the script automatically applies sans-serif fonts to the class)
-
-			pre.syntax.html.
-				<div id="container" class="sans">
-				<div id="content">
-					<!-- CONTENT HERE -->
-					<div id="placeholder">
-						CONTENT
-					</div>
-				</div>
-				</div>
-
-			P When using the preloader, it's important to set the <code>width</code> and <code>height</code> of this container via css. This is to ensure that the dynamic spinner will be centered.
-
-			p Finally, initialize it like so:
+			p The parts that aren't meant to be touched have been minified, only exposing the user-configurable stuff. Every file referenced in the page is pulled from a CDN, so even at it's very basic form, uncommenting everything (except for the image array comment - as it's just meant to be a reference) will actually work out of the box.
 
 			pre.syntax.javascript.
+				<!DOCTYPE html>
+				<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><link rel="stylesheet" type="text/css" href="http://nargalzius.github.io/ajax/joystick/preview/#{version}/preview.css"/><script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script><script src="http://cdnjs.cloudflare.com/ajax/libs/swfobject/2.2/swfobject.js"></script><script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"></script><script src="http://nargalzius.github.io/ajax/joystick/preview/#{version}/preview.js"></script><style>
+
+				/* YOUR CUSTOM STYLES HERE */
+
+				</style></head><body><header><a id="logo" href="http://joystickinteractive.com" title="Joystick Interactive" target="_blank"></a><h1 id="header">Joystick Interactive Preview Template</h1><div id="byline"> <p>Hi there, it seems you&#39;re viewing <a href="http://www.nargalzius.com">my</a> nifty little multi-purpose template<br/>which was created for faster prototyping and world peace ;)<br/>Read on how to use it <a href="http://nargalzius.github.io/ajax/joystick/preview">here</a></p></div><div id="preloader"><div id="preloadText"></div><div id="preloadIcon"></div></div></header><div id="container"><div id="flashcontent" class="flashalign"><div id="unit"></div></div><div id="pushdown"></div></div><script>
+
+				debug = false;
+
+				/* IMAGE SETTINGS */
+				var i = [];
+				//i.push({src: null, title: null, desc: null, group: null});
+
+				/* FLASH SETTINGS */
+				var f = {
+					src	: 'http://nargalzius.github.io/f/s/970x66_exp.swf',
+					w 	: 970, 
+					h 	: 400,
+					//x 	: 1,
+					//y 	: 133,
+					//minH: 66,
+					//page: 'http://nargalzius.github.io/img/joystick/background.png',
+					//push: 'http://nargalzius.github.io/img/joystick/pd_fg.png'
+				};
+
+				/* INITLIALIZE PREVIEW */
 				$(document).ready(function(){
-					var images = [IMAGE_ARRAY_CONTENTS]
-					dom.init({ preload: images });
+					preview.init({ 
+						//img  : i,
+						//swf  : f,
+						//title: 'Title',
+						//desc : 'Description'
+					});
 				});
 
-			:markdown
-				Again, this is _minimal_ code to get things working. Be sure to check out all the other "features" by playing with it in the [sandbox](http://codepen.io/nargalzius/pen/epftA)
+				</script></body></html>
 
+			:markdown
+
+				In a nutshell, the script waits for either of two things: an array of image objects (`img`), or a flash file (`swf`) object.
+
+				If you want to create a preview of an image (or series of images) you simply popuplate the image array. Doesn't matter how many images you put in there, it'll generate them all, and it'll center them all. And if you wish to group some images together, you can do that too (discussed [below](#api))
+
+				If you want to embed a flash file, you just input all relevant data; source, width, height, etc. and it'll likewise embed, and center the unit without you having to adjust anything in the CSS.
+
+				The flash functionality does more than that, but it'd be redundant to mention them here, so I'll save it for the [API](#api) section. 
+
+				Sufficed to say, trying it out on the [sandbox](http://jsfiddle.net/nargalzius/K3QTx) will give you an idea of how to use it - and hopefully it'll be as useful to you as it is to me.
 
 		section#api
-			:markdown
-				API
-				---
+			
+			h2 API
 
-				- **`preload`**`:array =` _`null`_
+			ul
 
-					Accepts a series of image urls. If present/set The container will delay displaying itself until all the images have been loaded to the cache. This in effect will ensure that everything is ready (for animations, etc.) by the time the user sees it.
+				li <strong><code>img</code></strong><code>:array</code>
+					
+					p The image array that contains each image as objects. The keys available are <code>src</code>, <code>title</code>, <code>desc</code>, and <code>group</code>, all of which are strings.
 
-				- **`content`**`:DOM element =` _`$('#content')`_
+						ul
+							li 
+								p <code>src</code> is the only required parameter, as it is the url of your image
 
-					The overall `div` that contians all visible elements. It's important to use/set this value when doing a preload, as it automatically hides the container (i.e. everything) until it's ready to show.
+							li 
+								p <code>title</code> Optional. This is similar to the main document <code>title</code>, it puts header text on top of each image.
 
-				- **`intro`**`:function =` _`null`_
+							li 
+								p <code>desc</code> Optional. This is similar to the main document <code>desc</code>, but it puts the subtext <strong>below</strong> the image
 
-					Allows you to set a custom intro function. By default, when the unit is ready to be shown, it simply fades-in. When `intro` is set, it instead immediately sets the opacity container to visible - and relies on your custom animation code for "flair."
+							li 
+								p <code>group</code> Optional. An <code>id</code> assigned to the wrapper div of a series of images you choose to group.
+
+								p The normal way of displaying images is centered and stacked on top of each other. This can be annoying if you have a series of thin vertical images, wherein you would prefer to simply have them display side-by-side. 
+
+								p Assigning them to the same <code>group</code> id will put them in a container, and set each to the css <code>display: inline-table</code> flow.
+
+				li <strong><code>swf</code></strong><code>:object</code>
+
+					p The flash object that contains data needed to initialize the flash embed. The parameters are: <code>src</code>, <code>w</code>, <code>h</code>, <code>x</code>, <code>y</code>, <code>page</code>, <code>push</code>
+
+						ur
+							li
+								p <code>src</code>:  the source flash file.
+							li
+								p <code>w</code>: flash file width
+							li
+								p <code>h</code>: flash file height
+							li
+								p <code>page</code>: Optional. Normally, the flash unit is automatically centered. But if you want to create a "mockup" page, you can create a background image of the site you want to plug the unit into and put it here.
+
+								p if this is set, it'll automatically clear the entire container (logo, text, etc.) and instead "convert" it to a container with a background image. Your unit will now be set to absolute 0 0 in relation to the container, which you can now adjust the unit's offset through the next parameters.
+							li
+								p <code>x</code>: & <code>y</code>: Optional. Top and left offset of the unit. Usually used in conjucntion with page so you can place the unit in a spsc
+							li
+								p <code>push</code>: Optional. This is just a bonus, if you want "pushdown" functionality. You just put here an image of the section of the mock site you want to push down. Take note that if you use this option, you'll have to add an <code>ExternalInterface</code> in your flash the functions to call are <code>expand()</code> and <code>collapse()</code> (duh!)
+							li
+								p <code>minH</code> Optional. "collapsed" height. This variable is only used when you have <code>push</code> set/enabled. 
+
+								p You <strong>have</strong> to set this or the elements to be expanded are most likely to be loaded below the full expanded height of your unit. 
+
+								p Since a pushdown is really just a vertical oriented expand, all the calculations are done in the background. What it does is it takes the dimension/position of your unit, and calculates that against the minimized height to decide the Y values it needs for the expand/collapse animations
+
+				li <strong><code>title</code></strong><code>:string</code>
+
+					p Optional. This enters a centered title-header below the logo. If this is set, it will <strong>also</strong> change the browser title bar.
+
+				li <strong><code>desc</code></strong><code>:string</code>
+
+					p Optional. A sub header below the title. Note that the <code>title</code> and the <code>desc</code> are independent of each other - so you may use either one, both, or none.
+
+				li <strong><code>backgroundColor</code></strong><code>:string</code>
+
+					p Optional. Changes the entire document's background color - for previews that require a dark background.
+
+				li <strong><code>color</code></strong><code>:string</code>
+
+					p Optional. Changes the document's default text color - for previews that require a dark background.
+
+			p As of the moment, for some reason it breaks when you try to load a file in a folder. It works fine when loading from the same folder or from a url.
+
+			p Also, the pushdown is far from bullet-proof, it works for the most part, but it also largely depends on how the browser handles <code>ExternalInterface</code> calls.
 
 		section#changelog
 
 			:markdown
 				Changelog
 				---------
+				# [1.1](http://nargalzius.github.io/ajax/joystick/preview/1.1/preview.js)
 
-				# [1.2](http://nargalzius.github.io/ajax/joystick/dom_loader/1.2/domLoader.js)
-					- Converted/integrated spinner to a pure JS generated one (using [spin.js](http://fgnass.github.io/spin.js))
-					- Class/object name is now `dom` (formerly `expandChild`)
-					- Adjusted TweenLite method to `fromTo` (formerly `to`) to make sure it starts invisible no matter what
+					- Renamed `minY` to `minH`
 
-				# [1.1](http://nargalzius.github.io/ajax/joystick/dom_loader/1.1/domLoader.js)
+					- Renamed the flash object key from `flash` to `swf`.
 
-					- Renamed from `expandChild.js` to `domLoader.js`
+					- Added more error handling
 
-				# [1.0](http://nargalzius.github.io/ajax/joystick/dom_loader/1.0/expandChild.js)
+					- Moved the `page` (background image) and `push` (pusdhown image) settings inside the `swf` object. The reason being it's most more often that a "mockup" scenario is needed only for flash-based demos.
+
+				# [1.0](http://nargalzius.github.io/ajax/joystick/preview/1.0/preview.js)
 
 					- Initial release
 

@@ -7,7 +7,7 @@
 */
 var debug = false;
 var spinner;
-var errorMSG = 'You seem to have called the <code>init()</code> function,<br />but failed to provide some required variables.';
+var errorMSG = 'You seem to have initalized the script,<br />but failed to provide some required variables.';
 var preview = {
 	isError: false,
 	init: function(obj) {
@@ -183,9 +183,9 @@ var preview = {
 	
 		// CALCULATE PUSHDOWN OFFSET
 		
-		preview.col = obj.y + obj.minY;
+		preview.col = obj.y + obj.minH;
 		preview.exp	= obj.y + obj.h;
-		preview.diff = obj.h - obj.minY;
+		preview.diff = obj.h - obj.minH;
 		
 		preview.pd.css({"top": preview.col+"px"});
 		this.swfunit.css('background','#FFF');
@@ -211,7 +211,7 @@ var preview = {
 				$('<div>').attr('id','pd_placeholder')
 					.append($('<div>').addClass('phtext').text('PUSHDOWN IMAGE FAILED TO LOAD. USING PLACEHOLDER ELEMENT TO TEST'))
 					.css({
-						'height': (preview.content.height()-(preview.swf.y+preview.swf.minY)) +'px',
+						'height': (preview.content.height()-(preview.swf.y+preview.swf.minH)) +'px',
 						'width': preview.content.width()+'px'
 					})
 					.appendTo(preview.pd);

@@ -1,3 +1,4 @@
+@import url(http://fonts.googleapis.com/css?family=Asap:400,700,400italic,700italic);
 #usage .tomorrow-comment, #usage pre .comment, #usage pre .title {
   color: #8e908c; }
 #usage .tomorrow-red, #usage pre .variable, #usage pre .attribute, #usage pre .tag, #usage pre .regexp, #usage pre .ruby .constant, #usage pre .xml .tag .title, #usage pre .xml .pi, #usage pre .xml .doctype, #usage pre .html .doctype, #usage pre .css .id, #usage pre .css .class, #usage pre .css .pseudo {
@@ -126,6 +127,9 @@
   #api pre .xml .cdata {
     opacity: 0.5; }
 
+html, body, div, p, a {
+  font-family: "Asap", "Helvetica", "Arial"; }
+
 body {
   background: #272722;
   color: #999999;
@@ -140,7 +144,7 @@ a {
     text-decoration: underline; }
 
 h2 {
-  font-family: Menlo, Monaco, Consolas;
+  font-family: "Asap", "Helvetica", "Arial";
   font-size: 2em;
   line-height: 1.3em;
   text-align: center;
@@ -150,8 +154,7 @@ h2 {
   -webkit-text-shadow: black 2px 2px;
   -moz-text-shadow: black 2px 2px;
   -ms-text-shadow: black 2px 2px;
-  -o-text-shadow: black 2px 2px;
-  font-weight: normal; }
+  -o-text-shadow: black 2px 2px; }
 
 .tab {
   width: 2.5em;
@@ -159,11 +162,12 @@ h2 {
   overflow: hidden; }
 
 #info {
-  font-family: Menlo, Monaco, Consolas;
+  font-family: "Asap", "Helvetica", "Arial";
   padding: 0 50px 50px 50px; }
   #info h3 {
     color: #d33a48;
     font-size: 1.2em;
+    font-weight: normal;
     text-shadow: black 1px 1px;
     -webkit-text-shadow: black 1px 1px;
     -moz-text-shadow: black 1px 1px;
@@ -175,56 +179,46 @@ h2 {
       font-size: 1.2em;
       line-height: 1.7em; }
   #info p {
-    font-family: Menlo, Monaco, Consolas;
+    font-family: "Asap", "Helvetica", "Arial";
     color: white;
-    padding-bottom: 1.5em; }
+    padding-bottom: 1.5em;
+    font-size: 1.1em; }
     #info p em {
       font-style: italic; }
     #info p strong {
       font-weight: bold; }
     #info p code {
-      font-family: "Courier New", "Courier";
-      text-shadow: black 1px 1px;
-      -webkit-text-shadow: black 1px 1px;
-      -moz-text-shadow: black 1px 1px;
-      -ms-text-shadow: black 1px 1px;
-      -o-text-shadow: black 1px 1px;
+      font-family: Menlo, Monaco, Consolas;
       background: #323232;
       padding: 2px 5px;
       border-radius: 7px;
       -webkit-border-radius: 7px;
       -moz-border-radius: 7px;
       -ms-border-radius: 7px;
-      -o-border-radius: 7px;
-      font-size: 1.2em; }
+      -o-border-radius: 7px; }
 
 #usage pre {
   margin-bottom: 40px; }
 #usage p {
-  font-family: Menlo, Monaco, Consolas;
+  font-family: "Asap", "Helvetica", "Arial";
   color: white;
   padding-bottom: 20px;
   padding-left: 50px;
-  padding-right: 50px; }
+  padding-right: 50px;
+  font-size: 1.1em; }
   #usage p em {
     font-style: italic; }
   #usage p strong {
     font-weight: bold; }
   #usage p code {
-    font-family: "Courier New", "Courier";
-    text-shadow: black 1px 1px;
-    -webkit-text-shadow: black 1px 1px;
-    -moz-text-shadow: black 1px 1px;
-    -ms-text-shadow: black 1px 1px;
-    -o-text-shadow: black 1px 1px;
+    font-family: Menlo, Monaco, Consolas;
     background: #323232;
     padding: 2px 5px;
     border-radius: 7px;
     -webkit-border-radius: 7px;
     -moz-border-radius: 7px;
     -ms-border-radius: 7px;
-    -o-border-radius: 7px;
-    font-size: 1.2em; }
+    -o-border-radius: 7px; }
 
 #api {
   font-size: 1.2em;
@@ -232,7 +226,7 @@ h2 {
   color: #999999;
   padding: 40px 50px 50px 50px; }
   #api p {
-    font-family: Helvetica, Arial;
+    font-family: "Asap", "Helvetica", "Arial";
     margin-bottom: 1.2em; }
   #api code {
     text-shadow: black 1px 1px;
@@ -240,12 +234,7 @@ h2 {
     -moz-text-shadow: black 1px 1px;
     -ms-text-shadow: black 1px 1px;
     -o-text-shadow: black 1px 1px;
-    font-family: "Courier New", "Courier";
-    text-shadow: black 1px 1px;
-    -webkit-text-shadow: black 1px 1px;
-    -moz-text-shadow: black 1px 1px;
-    -ms-text-shadow: black 1px 1px;
-    -o-text-shadow: black 1px 1px;
+    font-family: Menlo, Monaco, Consolas;
     color: #dddddd; }
   #api em {
     font-style: italic; }
@@ -254,7 +243,6 @@ h2 {
   #api strong code {
     color: #d33a48;
     padding: 5px 0;
-    font-size: 1.2em;
     font-weight: normal; }
   #api em code {
     background: #323232;
@@ -269,7 +257,7 @@ h2 {
     color: #e6db74;
     font-size: 1em;
     font-weight: bold; }
-  #api #quickCode {
+  #api .quickCode {
     font-size: 1em; }
 
 #changelog {
@@ -281,7 +269,7 @@ h2 {
     color: #cccccc;
     margin: 30px 0 20px 0; }
   #changelog ul {
-    font-family: Helvetica, Arial;
+    font-family: "Asap", "Helvetica", "Arial";
     font-size: 1em; }
     #changelog ul li {
       margin: 0.5em; }

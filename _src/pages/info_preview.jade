@@ -130,11 +130,11 @@ html
 
 								p The normal way of displaying images is centered and stacked on top of each other. This can be annoying if you have a series of thin vertical images, wherein you would prefer to simply have them display side-by-side. 
 
-								p Assigning them to the same <code>group</code> id will put them in a container, and set each to the css <code>display: inline-table</code> flow.
+								p Assigning them to the same <code>group</code> id will put them in a container, and set each to the css <code>display: inline-table</code> flow. Meaning that if they could be, they will be displayed side-by-side, but if the viewport is too small, they will re-flow accordingly.
 
 				li <strong><code>swf</code></strong><code>:object</code>
 
-					p The flash object that contains data needed to initialize the flash embed. The parameters are: <code>src</code>, <code>w</code>, <code>h</code>, <code>x</code>, <code>y</code>, <code>page</code>, <code>push</code>
+					p The flash object that contains data needed to initialize the flash embed. The parameters are: <code>src</code>, <code>w</code>, <code>h</code>, <code>x</code>, <code>y</code>, <code>page</code>, <code>push</code>, & <code>minH</code>
 
 						ur
 							li

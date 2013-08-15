@@ -61,6 +61,7 @@ html, body {
 }
 
 header {
+  display: block;
   text-align: center;
 }
 header h1 {

@@ -146,6 +146,10 @@ var preview = {
 
 		if(preview.swf.push && preview.swf.page)
 			preview.initPushdown(preview.swf.push, obj);
+
+		$('header').css({
+			'min-width':obj.w+'px'
+		});
 	},
 	killLoader: function() {
 		spinner.stop();

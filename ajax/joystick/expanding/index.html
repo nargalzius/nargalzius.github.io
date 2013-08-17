@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>Joystick Expandable Class</title>
     <link rel="stylesheet" type="text/css" href="../../../f/c/readme.css">
     <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/7.3/highlight.min.js"></script>
   </head>
   <body>
-    <header id="info"><img id="logo" src="../../../img/joystick/logo.png"><h2>Joystick Expanding HTML Class</h2>
+    <header id="info"><img id="logo" src="../../../img/joystick/logo.png" alt="Joystick Interactive"><h1>Joystick HTML Expandable</h1>
 
 <p>This is an HTML version of a basic Flash Expandable. Unlike with the <a href="http://nargalzius.github.io/ajax/joystick/expanding_lightbox">Expanding Lightbox</a>, <em>both</em> collapsed <em>and</em> expanded contents are present. And there is no &quot;delay&quot; before expanding.</p>
 
@@ -24,15 +25,17 @@
 
 <ul><li><a href="http://jquery.com">jQuery</a> </li><li><a href="http://www.greensock.com/gsap-js">GreenSock Animation Platform</a></li></ul>
     </header>
-    <section id="usage">
-      <h2>Quick Start</h2>
-      <p>Include the following scripts in your document's <code>&lt;head></code></p>
-      <pre class="syntax html">&lt;script src=&quot;http://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js&quot;&gt;&lt;/script&gt;
+    <section id="usage"><h1>Quick Start</h1>
+
+<p>Include the following scripts in your document&#39;s <code>&lt;head&gt;</code></p>
+      <div class="fullCode">
+        <pre class="syntax html">&lt;script src=&quot;http://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js&quot;&gt;&lt;/script&gt;
 &lt;script src=&quot;http://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js&quot;&gt;&lt;/script&gt;
 &lt;script src=&quot;http://nargalzius.github.io/ajax/joystick/expanding/1.3/expandObj.js&quot;&gt;&lt;/script&gt;
 </pre>
-      <p>Here is the minimum markup you'll need. The <code>.sans</code> class is optional (the script automatically applies sans-serif fonts to the class)</p>
-      <pre class="syntax html">&lt;div id=&quot;unit&quot; class=&quot;sans&quot;&gt;
+      </div><p>Here&#39;s the minimum markup you&#39;ll need. The <code>.sans</code> class is optional (the script automatically applies sans-serif fonts to the class)</p>
+      <div class="fullCode">
+        <pre class="syntax html">&lt;div id=&quot;unit&quot; class=&quot;sans&quot;&gt;
  &lt;div id=&quot;content&quot;&gt;
   &lt;div id=&quot;collapsed&quot; class=&quot;unit_component&quot;&gt;
    &lt;div class=&quot;background&quot;&gt;&lt;/div&gt;
@@ -48,28 +51,65 @@
  &lt;/div&gt;
 &lt;/div&gt;
 </pre>
+      </div>
       <p>Finally, initialize it like so:</p>
-      <pre class="syntax javascript">$(document).ready(function(){
+      <div class="fullCode">
+        <pre class="syntax javascript">$(document).ready(function(){
  expanding.init();
 });
-</pre><p>Again, this is <em>minimal</em> code to get things working. Be sure to check out all the other &quot;features&quot; by playing with it in the <a href="http://codepen.io/nargalzius/pen/KLaDz">sandbox</a></p>
+</pre>
+      </div><p>Again, this is <em>minimal</em> code to get things working. Be sure to check out all the other &quot;features&quot; by playing with it in the <a href="http://codepen.io/nargalzius/pen/KLaDz">sandbox</a></p>
     </section>
-    <section id="api"><h2>API</h2>
+    <section id="api"><h1>API</h1>
+      <ul>
+        <li><strong> <code>minW </code></strong><code>: number = </code><em> <code>300</code></em>,<br><strong> <code>minH </code></strong><code>: number = </code><em> <code>250</code></em>,<br><strong> <code>maxW </code></strong><code>: number = </code><em> <code>500</code></em>,<br><strong> <code>maxH </code></strong><code>: number = </code><em> <code>250</code></em><p>The collapsed/expanded width/height. All [main] elements/animations (i.e. expanding bar &amp; animation, etc.) are automatically positioned based on these values.</p>
+        </li>
+        <li><strong> <code>direction </code></strong><code>: string = </code><em> <code>LEFT</code></em><p>The direction of the expand. Accepts <code>LEFT</code>, <code>RIGHT</code>, <code>UP</code>, <code>DOWN</code> and is <strong>case sensitive</strong></p>
+        </li>
+        <li><strong> <code>preload </code></strong><code>: array = </code><em> <code>null </code></em><p>Accepts a series of image urls. If present/set The unit will delay displaying itself until all the images have been loaded to the cache. This in effect will ensure that everything is ready (for animations, etc.) by the time the user sees it.</p>
 
-<ul><li><p><strong><code>minW</code></strong><code>:number =</code> <em><code>300</code>,</em><br/><strong><code>minH</code></strong><code>:number =</code> <em><code>250</code>,</em><br/><strong><code>maxW</code></strong><code>:number =</code> <em><code>500</code>,</em><br/><strong><code>maxH</code></strong><code>:number =</code> <em><code>250</code></em></p><p>The collapsed/expanded width/height. All [main] elements/animations (i.e. expanding bar &amp; animation, etc.) are automatically positioned based on these values.</p></li><li><p><strong><code>direction</code></strong><code>:string =</code> <em><code>LEFT</code></em></p><p>The direction of the expand. Accepts <code>LEFT</code>, <code>RIGHT</code>, <code>UP</code>, <code>DOWN</code> and is <strong>case sensitive</strong></p></li><li><p><strong><code>preload</code></strong><code>:array =</code> <em><code>null</code></em></p><p>Accepts a series of image urls. If present/set The unit will delay displaying itself until all the images have been loaded to the cache. This in effect will ensure that everything is ready (for animations, etc.) by the time the user sees it.</p><p>The <code>[&#39;SURE_FAIL&#39;]</code> example is to demonstrate how the unit falls back to simply displaying the collapsed state and disabling the expand functionality. If <code>exit</code> has been set, then it clicks through to the set url in place of the expand.</p></li><li><p><strong><code>rollover</code></strong><code>:boolean =</code> <em><code>true</code></em></p><p>Sets the <em>type</em> of expand trigger. Set to <code>false</code> if you wish for <em>click-to-expand</em> functionality</p><p>An expansion triggered by a click will bypass the expanding bar animation and immediately call the lightbox.</p></li><li><p><strong><code>mouseout</code></strong><code>:boolean =</code> <em><code>false</code></em></p><p>If set to <code>true</code>, an expanded unit will automatically collapse when the cursor leaves the unit.</p></li><li><p><strong><code>delay</code></strong><code>:number =</code> <em><code>.5</code></em></p><p>Speed/duration of the expand animation.</p></li><li><p><strong><code>trigger</code></strong><code>:DOM element =</code> <em><code>$(&#39;#exp_btn&#39;)</code></em></p><p>Sets the expand trigger. By default, the entire collapsed unit is the trigger. But if you set it to a DOM element, only interaction with that element will trigger the expland.</p><p>If <code>exit</code> is set, the trigger will do the expand action while the background will clicktrhough. If it&#39;s not, then <strong>clicking</strong> on the background will trigger a manual expand.</p></li><li><p><strong><code>exit</code></strong><code>:string =</code> <em><code>null</code></em></p><p>Intended for a URL string. If set, then the collapsed background (assuming <code>trigger</code> is set) and expanded background will be set to click-though to the exit URL.</p></li><li><p><strong><code>intro</code></strong><code>:function =</code> <em><code>null</code></em></p><p>Allows you to set a custom intro function. By default, when the unit is ready to be shown, it simply fades-in the collapsed state. When <code>intro</code> is set, it instead immediately sets the opacity of the collapsed container to visible - and relies on your custom animation code for &quot;flair.&quot;</p><p>Triggers (click and/or rollover) for expansion will only work when the <code>isReady</code> variable is set to true. Normally, this is set automatically (e.g. after preloading or a straight-up <code>init()</code> without special parameters.</p><p>Enabling the custom intro disables this process. And the user is required to manually set the <code>isReady</code> after the [custom] animation is done. This can be achieved by either setting the variable directly (<code>expanding.isReady = true</code>) or calling the <code>expanding.ready()</code> function.</p><p>If the <code>exit</code> variable is set, clicking on the ad during the intro will result in a clickthrough action. This will then revert to the normal expansion action once the <code>isReady</code> is finally set to <em><code>true.</code></em></p></li><li><p><strong><code>expand</code></strong><code>:function =</code> <em><code>null</code></em></p><p>Similar to <code>intro</code>, this allows you to run custom actions on expand should you need to.</p></li><li><p><strong><code>collapse</code></strong><code>:function =</code> <em><code>null</code></em></p><p>Similar to <code>intro</code>, this allows you to run custom actions on collapse should you need to.</p></li></ul>
+<p>The <code>[&#39;SURE_FAIL&#39;]</code> example is to demonstrate how the unit falls back to simply displaying the collapsed state and disabling the expand functionality. If <code>exit</code> has been set, then it clicks through to the set url in place of the expand.</p>
+        </li>
+        <li><strong> <code>rollover </code></strong><code>: boolean = </code><em> <code>true</code></em><p>Sets the <em>type</em> of expand trigger. Set to <code>false</code> if you wish for <em>click-to-expand</em> functionality</p>
+
+<p>An expansion triggered by a click will bypass the expanding bar animation and immediately call the lightbox.</p>
+        </li>
+        <li><strong> <code>mouseout </code></strong><code>: boolean = </code><em> <code>false</code></em><p>If set to <code>true</code>, an expanded unit will automatically collapse when the cursor leaves the unit.</p>
+        </li>
+        <li><strong> <code>delay </code></strong><code>: number = </code><em> <code>.5</code></em><p>Speed/duration of the expand animation.</p>
+        </li>
+        <li><strong> <code>trigger </code></strong><code>: DOM element = </code><em> <code>$('#exp_btn')</code></em><p>Sets the expand trigger. By default, the entire collapsed unit is the trigger. But if you set it to a DOM element, only interaction with that element will trigger the expland.</p>
+
+<p>If <code>exit</code> is set, the trigger will do the expand action while the background will clicktrhough. If it&#39;s not, then <strong>clicking</strong> on the background will trigger a manual expand.</p>
+        </li>
+        <li><strong> <code>exit </code></strong><code>: string = </code><em><code>null</code></em><p>Intended for a URL string. If set, then the collapsed background (assuming <code>trigger</code> is set) and expanded background will be set to click-though to the exit URL.</p>
+        </li>
+        <li><strong> <code>intro </code></strong><code>: function = </code><em><code>null</code></em><p>Allows you to set a custom intro function. By default, when the unit is ready to be shown, it simply fades-in the collapsed state. When <code>intro</code> is set, it instead immediately sets the opacity of the collapsed container to visible - and relies on your custom animation code for &quot;flair.&quot;</p>
+
+<p>Triggers (click and/or rollover) for expansion will only work when the <code>isReady</code> variable is set to true. Normally, this is set automatically (e.g. after preloading or a straight-up <code>init()</code> without special parameters.</p>
+
+<p>Enabling the custom intro disables this process. And the user is required to manually set the <code>isReady</code> after the [custom] animation is done. This can be achieved by either setting the variable directly (<code>expanding.isReady = true</code>) or calling the <code>expanding.ready()</code> function.</p>
+
+<p>If the <code>exit</code> variable is set, clicking on the ad during the intro will result in a clickthrough action. This will then revert to the normal expansion action once the <code>isReady</code> is finally set to <em><code>true.</code></em></p>
+        </li>
+        <li><strong> <code>expand </code></strong><code>: function = </code><em><code>null</code></em><p>Similar to <code>intro</code>, this allows you to run custom actions on expand should you need to.</p>
+        </li>
+        <li><strong> <code>collapse </code></strong><code>: function = </code><em><code>null</code></em><p>Similar to <code>intro</code>, this allows you to run custom actions on collapse should you need to.</p>
+        </li>
+      </ul>
     </section>
-    <section id="changelog"><h2>Changelog</h2>
+    <section id="changelog"><h1>Changelog</h1>
 
-<h1><a href="http://nargalzius.github.io/ajax/joystick/expanding/1.3/expandObj.js">1.3</a></h1>
+<h2><a href="http://nargalzius.github.io/ajax/joystick/expanding/1.3/expandObj.js">1.3</a></h2>
 
 <ul><li>Converted/integrated spinner to a pure JS generated one (using <a href="http://fgnass.github.io/spin.js">spin.js</a>)</li><li>Changed <code>min_height</code>, <code>min_width</code>, <code>max_height</code>, <code>max_width</code> to <code>minW</code>, <code>minH</code>, <code>maxW</code>, <code>maxH</code> </li></ul>
 
-<h1><a href="http://nargalzius.github.io/ajax/joystick/expanding/1.2/expandObj.js">1.2</a></h1>
+<h2><a href="http://nargalzius.github.io/ajax/joystick/expanding/1.2/expandObj.js">1.2</a></h2>
 
 <ul><li>Changed default collapsed dimensions to 300x250</li><li>Changed default expanded dimensions to 500x250</li><li>Changed default expand direction to LEFT</li><li>Renamed <code>userExpand</code> to <code>expand</code></li><li>Renamed <code>userCollapse</code> to <code>collapse</code></li><li>Removed need for external css for core functionality</li><li>Various fallbacks depending on unit state (and errors)</li><li><p>Added dedicated expanding button reference (#exp_btn)
-# <a href="http://nargalzius.github.io/ajax/joystick/expanding/1.1/expandObj.js">1.1</a></p></li><li><p>Converted to <code>expanding</code> object/class</p></li><li>Intergrated preloader function (preload)</li><li>Changed default animation delay to 500 milliseconds</li><li>Added <code>intro</code> method for custom intro actions</li><li>Added <code>userExpand</code> method for custom expand actions</li><li>Added <code>userCollapse</code> method for custom collapse actions</li></ul>
+## <a href="http://nargalzius.github.io/ajax/joystick/expanding/1.1/expandObj.js">1.1</a></p></li><li><p>Converted to <code>expanding</code> object/class</p></li><li>Intergrated preloader function (preload)</li><li>Changed default animation delay to 500 milliseconds</li><li>Added <code>intro</code> method for custom intro actions</li><li>Added <code>userExpand</code> method for custom expand actions</li><li>Added <code>userCollapse</code> method for custom collapse actions</li></ul>
 
-<h1>1.0</h1>
+<h2>1.0</h2>
 
 <ul><li>Initial release</li></ul>
     </section>

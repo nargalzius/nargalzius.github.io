@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>Joystick Generic DOM Loader</title>
     <link rel="stylesheet" type="text/css" href="../../../f/c/readme.css">
     <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/7.3/highlight.min.js"></script>
   </head>
   <body>
-    <header id="info"><img id="logo" src="../../../img/joystick/logo.png"><h2>Joystick Generic DOM Loader</h2>
+    <header id="info"><img id="logo" src="../../../img/joystick/logo.png" alt="Joystick Interactive"><h1>Joystick Generic DOM Loader</h1>
 
 <p>By nature, HTML data is ready before the &quot;heavier&quot; resources (e.g. images) are loaded in. This means DOM elements can already be manipulated even if the page as a whole is still not [visually] &quot;complete&quot;. </p>
 
@@ -25,46 +26,57 @@
 
 <ul><li><a href="http://jquery.com">jQuery</a></li><li><a href="http://www.greensock.com/gsap-js">GreenSock Animation Platform</a></li></ul>
     </header>
-    <section id="usage">
-      <h2>Quick Start</h2>
-      <p>Include the following scripts in your document's <code>&lt;head></code></p>
-      <pre class="syntax html">&lt;script src=&quot;http://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js&quot;&gt;&lt;/script&gt;
+    <section id="usage"><h1>Quick Start</h1>
+
+<p>Include the following scripts in your document&#39;s <code>&lt;head&gt;</code></p>
+      <div class="fullCode">
+        <pre class="syntax html">&lt;script src=&quot;http://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js&quot;&gt;&lt;/script&gt;
 &lt;script src=&quot;http://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js&quot;&gt;&lt;/script&gt;
 &lt;script src=&quot;http://nargalzius.github.io/ajax/joystick/dom_loader/1.2/domLoader.js&quot;&gt;&lt;/script&gt;
 </pre>
-      <p>Here is the minimum markup you'll need. The <code>.sans</code> class is optional (the script automatically applies sans-serif fonts to the class)</p>
-      <pre class="syntax html">&lt;div id=&quot;container&quot; class=&quot;sans&quot;&gt;
-&lt;div id=&quot;content&quot;&gt;
- &lt;!-- CONTENT HERE --&gt;
- &lt;div id=&quot;placeholder&quot;&gt;
-  CONTENT
+      </div><p>Here is the minimum markup you&#39;ll need. The &lt;code&gt;.sans&lt;/code&gt; class is optional (the script automatically applies sans-serif fonts to the class)</p>
+      <div class="fullCode">
+        <pre class="syntax html">&lt;div id=&quot;container&quot; class=&quot;sans&quot;&gt;
+ &lt;div id=&quot;content&quot;&gt;
+  &lt;!-- CONTENT HERE --&gt;
+  &lt;div id=&quot;placeholder&quot;&gt;
+   CONTENT
+  &lt;/div&gt;
  &lt;/div&gt;
 &lt;/div&gt;
-&lt;/div&gt;
 </pre>
-      <P>When using the preloader, it's important to set the <code>width</code> and <code>height</code> of this container via css. This is to ensure that the dynamic spinner will be centered.</P>
-      <p>Finally, initialize it like so:</p>
-      <pre class="syntax javascript">$(document).ready(function(){
+      </div><p>When using the preloader, it&#39;s important to set the <code>width</code> and <code>height</code> of this container via css. This is to ensure that the dynamic spinner will be centered.</p>
+
+<p>Finally, initialize it like so:</p>
+      <div class="fullCode">
+        <pre class="syntax javascript">$(document).ready(function(){
  var images = [IMAGE_ARRAY_CONTENTS]
  dom.init({ preload: images });
 });
-</pre><p>Again, this is <em>minimal</em> code to get things working. Be sure to check out all the other &quot;features&quot; by playing with it in the <a href="http://codepen.io/nargalzius/pen/epftA">sandbox</a></p>
+</pre>
+      </div><p>Again, this is <em>minimal</em> code to get things working. Be sure to check out all the other &quot;features&quot; by playing with it in the <a href="http://codepen.io/nargalzius/pen/epftA">sandbox</a></p>
     </section>
-    <section id="api"><h2>API</h2>
-
-<ul><li><p><strong><code>preload</code></strong><code>:array =</code> <em><code>null</code></em></p><p>Accepts a series of image urls. If present/set The container will delay displaying itself until all the images have been loaded to the cache. This in effect will ensure that everything is ready (for animations, etc.) by the time the user sees it.</p></li><li><p><strong><code>content</code></strong><code>:DOM element =</code> <em><code>$(&#39;#content&#39;)</code></em></p><p>The overall <code>div</code> that contians all visible elements. It&#39;s important to use/set this value when doing a preload, as it automatically hides the container (i.e. everything) until it&#39;s ready to show.</p></li><li><p><strong><code>intro</code></strong><code>:function =</code> <em><code>null</code></em></p><p>Allows you to set a custom intro function. By default, when the unit is ready to be shown, it simply fades-in. When <code>intro</code> is set, it instead immediately sets the opacity container to visible - and relies on your custom animation code for &quot;flair.&quot;</p></li></ul>
+    <section id="api"># API
+      <ul>
+        <li><strong><code>preload </code></strong><code>: array = </code><em><code>null</code></em><p>Accepts a series of image urls. If present/set The container will delay displaying itself until all the images have been loaded to the cache. This in effect will ensure that everything is ready (for animations, etc.) by the time the user sees it.</p>
+        </li>
+        <li><strong><code>content </code></strong><code>: DOM element = </code><em><code>$('#content')</code></em><p>The overall <code>div</code> that contians all visible elements. It&#39;s important to use/set this value when doing a preload, as it automatically hides the container (i.e. everything) until it&#39;s ready to show.</p>
+        </li>
+        <li><strong><code>intro </code></strong><code>: function = </code><em><code>null</code></em><p>Allows you to set a custom intro function. By default, when the unit is ready to be shown, it simply fades-in. When <code>intro</code> is set, it instead immediately sets the opacity container to visible - and relies on your custom animation code for &quot;flair.&quot;</p>
+        </li>
+      </ul>
     </section>
-    <section id="changelog"><h2>Changelog</h2>
+    <section id="changelog"><h1>Changelog</h1>
 
-<h1><a href="http://nargalzius.github.io/ajax/joystick/dom_loader/1.2/domLoader.js">1.2</a></h1>
+<h2><a href="http://nargalzius.github.io/ajax/joystick/dom_loader/1.2/domLoader.js">1.2</a></h2>
 
 <ul><li>Converted/integrated spinner to a pure JS generated one (using <a href="http://fgnass.github.io/spin.js">spin.js</a>)</li><li>Class/object name is now <code>dom</code> (formerly <code>expandChild</code>)</li><li>Adjusted TweenLite method to <code>fromTo</code> (formerly <code>to</code>) to make sure it starts invisible no matter what</li></ul>
 
-<h1><a href="http://nargalzius.github.io/ajax/joystick/dom_loader/1.1/domLoader.js">1.1</a></h1>
+<h2><a href="http://nargalzius.github.io/ajax/joystick/dom_loader/1.1/domLoader.js">1.1</a></h2>
 
 <ul><li>Renamed from <code>expandChild.js</code> to <code>domLoader.js</code></li></ul>
 
-<h1><a href="http://nargalzius.github.io/ajax/joystick/dom_loader/1.0/expandChild.js">1.0</a></h1>
+<h2><a href="http://nargalzius.github.io/ajax/joystick/dom_loader/1.0/expandChild.js">1.0</a></h2>
 
 <ul><li>Initial release</li></ul>
     </section>

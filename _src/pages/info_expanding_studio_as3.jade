@@ -1,0 +1,403 @@
+version = '1.0'
+
+!!!5
+html
+	head
+		meta(http-equiv="Content-Type", content="text/html; charset=utf-8")
+		title Joystick 
+		link(rel="stylesheet", type="text/css", href="../f/c/readme.css")
+
+		script(src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js")
+		script(src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/7.3/highlight.min.js")
+
+	body
+		
+		header#info
+
+			img#logo(src="../img/joystick/logo.png", alt="Joystick Interactive")
+
+			:markdown
+				Joystick Studio v2 Expandable
+				=============================
+
+				Intro text
+
+			h3 Resources
+
+			ul
+				li
+					a(href="#usage") Getting Started
+				li
+					a(href="#api") Full Documentation  
+				li
+					a(target="_blank", href="http://nargalzius.github.io/#{version}") Latest build
+					|  (.filetype)
+				li
+					a(href="#changelog") Changelog
+
+			:markdown
+
+				### Dependencies
+
+				- [NAME](http://nargalzius.github.io/)
+
+		section#usage
+
+			h1 Quick Start
+
+			:markdown
+
+				So let's say we want to make a `300x250` unit that expands to `500x250` to the _left._ We'll use the [typical] 3-file approach: One file as `parent.swf` with a canvas size of 500x250, the other as `collapsed.swf` with a canvas size of 300x250, and lastly, one called `expanded.swf` with 500x250 as its canvas size.
+
+				For `parent.swf`, we only need to have TWO components on the stage; the `Studio enabler`, and the `expanding component` - both of which are included in the DoubleClick Studio Extension set. That's it, nothing more, no buttons, no movieclips, etc. - the rest we'll do programatically ;)
+
+				Set the `expanding component` to the size of your collapsed state (300x250) and position it where you wish it to be placed relative to its expanded state. Do not set anything on the component via the inspector. Merely resize it and position it.
+
+				Now set `parent.swf's` **document class** to `com.joystick.studio.v2.Expand`. What you just did was include a base class that automatically calculates and generates the masks, movieclips, animations, event handlers, etc. that for core expanding functionality. 
+
+				Only thing left to do is initialize it manually _after_ we set some parameters via ActionScript. Put this AS3 code in the first frame of your actions layer.
+
+			.fullCode
+				pre.syntax.html.
+					/* SET PARAMETERS */
+					cFile = "collapsed.swf";
+					eFile = "expanded.swf";
+					//aTime = 1;
+					//autoExpand = true;
+					//autoCollapse = 8;
+					//acMouse = false;
+					//mouseCollapse = true;
+					//pushdown = true;
+					//dir = "L";
+
+					/* INITIALIZE STUDIO */
+					init();
+
+			:markdown
+
+				The full details on the variables listed above are discussed in the [API section](#api). But for our purposes, All you need to uncomment is the `dir` variable - which is conveniently set to `L`. 
+
+				You can see that at the end of it all, the initialization call `init()` is made. Your `parent.swf` is now ready. Let's move on and setup the children.
+
+				For the `collapsed.swf` we need two things on the stage: a **background exit** button, and an **expand** trigger.
+
+				Normally, you'd use DC's `exit button` component for your exit button, but you'd still have to use the component inspector to set its reporting id. Ain't nobody got time fo dat! Instead just create an invisible movieclip (it has to be a movieclip since a button doesn't work, more on this later), then set its `alpha` to zero and put it anywhere on the stage, doesn't even matter what size it is (you can probably even put outside of the canvas, but I haven't really tried that.) and give it an instance name.
+
+				Next, create a button (yes, this could be a button) for the expand trigger, also give it an instance name.
+
+				Set the document class of your collapsed swf to `com.joystick.studio.v2.CollapsedChild`
+
+				Now paste this code on the actions layer
+
+			.fullCode
+				pre.syntax.actionscript.
+					function metaHandler(e:Event):void
+					{
+						switch(e.type)
+						{
+							case "META_EXPANDING": 
+								/* USER ACTIONS WHEN EXPAND IS TRIGGERED */
+							break;
+							case "META_EXPANDED": 
+								/* USER ACTIONS WHEN EXPAND IS DONE */
+							break;
+							case "META_COLLAPSING": 
+								/* USER ACTIONS WHEN COLLAPSE IS TRIGGERED */
+							break;
+							case "META_COLLAPSED": 
+								/* USER ACTIONS WHEN COLLAPSE IS DONE */
+							break;
+						}
+					}
+					
+					init(EXPAND_BUTTON_INSTANCE, YOUR_EXIT_BUTTON_INSTANCE);
+
+			:markdown
+
+				I'll discuss the metaHandler later, but for now just take a look at the `init()` call. You simply plug in your expand button and exit button as the two values. The class will automatically generate the appropriate listeners and calls for expand and exit, make the exit button transparent and resize it to fill the entire stage.
+
+				For the expanded file, simply duplicate the collapsed file and resize the stage to the expanded dimensions (500x250). Also, change its document class to `com.joystick.studio.v2.ExpandedChild`. 
+
+				What you just did was _automatically_ switch the behavior of the [expand] trigger to **collapse** the ad, and the exit button to report a background exit from the expanded state. All you really need to do at this point is simply change the text on your "trigger button" (which I imagene would be something like "click to expand") to better represent a **close/collapse** action.
+
+				Congratulations. You now have a basic working expanding ad. Of course I need not remind you that Studio-related events will not fire unless you're running everything from the main parent (with the main Enabler).
+
+				The template does so much more behind the scenes, so let's see if discussing it in the API would help 	understand it better.
+
+				## The metaHandler function
+	
+				The parent swf fires some targetted `META` events to the children swfs depending on the ad's state, etc. The children, in turn, listen for these and pass them to the `metaHandler` for interpretation.
+
+				The use of the metahandler is to allow the user to "inject" specific actions at certain points of expand/collapse without having to modify the core code in the class files. More on this in the API
+
+
+		section#api
+			h1 API
+
+			h2 PARENT SWF
+
+			:markdown
+				Document class file:  
+				`com.joystick.studio.v2.Expand`
+
+				Initialization string:
+
+			.quickCode
+				pre.syntax.actionscript.
+					init();
+
+
+			ul
+				li
+					strong
+						code cFile 
+					code : String
+
+					:markdown
+
+						Filname of collapsed file.
+
+						The parent swf automatically generates a container, which the collapsed file is loaded into. Furthermore, it creates a mask (for the sake of neatness) for the child based on the dimensions of the `expanding` component (which you manually set) - it then positions the child (and it's mask) on the same location of the expanding component.
+
+						This is the reason why it's not necessary to "set" the expanding component to load any file via its component inspector.
+
+				li
+					strong
+						code eFile 
+					code : String
+
+					:markdown
+
+						Filname of expanded file.
+
+						Like with the collapsed swf, the parent generates the appropriate container in which to load the file onto. It also generates the appropriate mask.
+
+						When an expand is triggered, the expand animation only starts when the expanded has been fully loaded. Likewise, it is fully unloaded when a collapse completes.
+
+				li
+					strong
+						code aTime 
+					code : Number = 1
+
+					:markdown
+
+						The default expansion animation time. You may set it faster for normal expands, but it's advisable to keep it at `1` second or longer for pushdowns.
+
+						set it to `0` if you want an immediate expand (popup)
+				li
+					strong
+						code autoExpand 
+					code : Boolean = false
+
+					:markdown
+						Self-explanatory. When enabled, the collapsed state will be invisible on initial load. This is to make sure that the first thing the user sees is the expanded animation/state.
+				li
+					strong
+						code autoCollapse 
+					code : Number = 0
+
+					:markdown
+						Self-explanatory. When set to 0, it's disabled. 
+				li
+					strong
+						code acMouse 
+					code : Boolean = true;
+
+					:markdown
+						Cancel auto-collapse on user interaction. This listens for the `StudioEvent.INTERACTION` event - which means that even moving the mouse over the ad will cancel the auto-collapse.
+
+						Set this to false if you wish to have more control of what cancels the auto-collapse (i.e. assign it to a button click, etc.)
+
+						The parent can be manually called to cancel the auto-collapse with the following event:
+
+					.quickCode
+						pre.syntax.actionscript.
+							parent.dispatchEvent(new Event("KILL_AC"));
+				li
+					strong
+						code mouseCollapse 
+					code : Boolean = false
+
+					:markdown
+						Collapse on mouseout. If the user navigates away from the unit, it will collapse. 
+				li
+					strong
+						code pushdown 
+					code : Boolean = false
+
+					:markdown
+						Set triggers for pushdown. Both regular expandables and pushdowns call `expanding.expand()` at the same time. But they call `expanding.collapse()` at different times.
+
+						Regular animated expands have to make the call when the collapse animation is done, whereas the pushdowns call it at the same time the collapse animation starts.
+
+						Pushdowns also have no easing in their expansion animations - to match the lack of easing on the HTML animations.
+				li
+					strong
+						code dir  
+					code : string = 'D'
+
+					:markdown
+						Direction of the expand. Mask transitions/animations are done automatically. Accepts the following values (case sensitive):
+
+					ul
+						li 
+							code D 
+							| (Down, default) expands downward from top
+
+					ul
+						li 
+							code U 
+							| (Up) expands upward from bottom
+					ul
+						li 
+							code L 
+							| (Left) expands left from right
+					ul
+						li 
+							code R 
+							| (Right) expands right from left
+					ul
+						li 
+							code LU 
+							| (Left/Up) expands diagonally to top-left from bottom-right
+
+					ul
+						li 
+							code LD 
+							| (Left/Down) expands diagonally to bottom-left from top-right
+
+					ul
+						li 
+							code RU 
+							| (Right/Up) expands diagonally to top-right from bottom-left
+
+					ul
+						li 
+							code RD 
+							| (Right/Down) expands diagonally to bottom-right from top-left
+					ul
+						li 
+							code O 
+							| (Omni) expands outward to all directions from center of collapsed child
+			
+			h2 Children SWFs
+
+			:markdown
+
+				Document class file(s):  
+				`com.joystick.studio.v2.CollapsedChild`  
+				`com.joystick.studio.v2.ExpandedChild`
+
+				Initialization string: 
+
+			.quickCode
+				pre.syntax.actionscript.
+					init(a, b, c);
+
+			ul
+				li
+					strong
+						code a 
+					code : Button / MovieClip
+
+					:markdown
+						Required. The trigger button instance on the stage. It expands or collapses the ad depending on the document class assigned.
+				li
+					strong
+						code b 
+					code : MovieClip
+
+					:markdown
+						Required. Exit object instance on stage. Reports a collapsed or expanded exit depending on the document class assigned.
+				li
+					strong
+						code c 
+					code : Boolean = false
+
+					:markdown
+						Optional. Set's trigger button (`a`) to expand on rollover.
+
+			:markdown
+
+				The parent swf basically listens for **two** events from either of the children swfs. Normally, these are already done automatically by the buttons you assigned through the document class.
+
+				If you feel that you want to override or augment the functionality, you can manually trigger expands/collapses by using the follwing events:
+
+			.quickCode
+				pre.syntax.actionscript.
+					this.parent.dispatchEvent(new Event("AD_EXPAND"));
+
+					this.parent.dispatchEvent(new Event("AD_COLLAPSE"));
+
+			:markdown
+				One scenario I can imagine this to be useful is when you need a special type of auto-expand, wherein you want the child to first go through an intro animation _before_ it actually auto-expands. The `autoExpand` functionality baked-in the document class cannot accomplish this (as it immediately loads the expanded file). So what you'll do is set `autoExpand` to **false**, then code your intro animation and manually call the `this.parent.dispatchEvent(new Event("AD_EXPAND"));` at the end. 
+
+				Luckily, the `autoCollapse` functionality is independent of this, so you can still use it even if you have the default `autoExpand` off.
+
+			:markdown
+				### The `metaHandler()` function
+
+				From the code snippet above, these are the events that the metaHandler intercepts.
+
+			ul
+				li
+					strong
+						code META_EXPANDING 
+					code : Event
+
+					:markdown
+						Triggered when expand starts. Not particularly useful, since the `META_EXPANDED` seems to do the job better.
+
+						Only available to the `collapsed` swf - as you can always code directly to the `expanded` swf anything you wish it to do on load.
+
+
+				li
+					strong
+						code META_EXPANDED
+					code : Event
+
+					:markdown
+						Triggered when expand has completed.
+
+						Useful if you want to delay your expanded file's actions and only have them start when the expand is complete.
+
+						For example, initializing a YouTube player has a performance penalty which is very noticable during animations. If you set it to initalize normally (when the swf) is loaded, there's a chance that this may affect the actual expansion tween. This circumvents that by initializing it only when the expanding animations are completed.
+
+						You can also use this to change displayed frames of the child after collapse.
+
+				li
+					strong
+						code META_COLLAPSING
+					code : Event
+
+					:markdown
+						Triggered when collapse starts. **Very** useful for garbage collection. 
+
+						For example, a YouTube player component left alone to play will continue to play (audio) even if the swf's been unloaded. You can use this to call a `destroy()` on the player upon collapsing.
+
+				li
+					strong
+						code META_COLLAPSED
+					code : Event
+
+					:markdown
+						Triggered when collapse has completed. Useful for creatives that require the collapsed child to (re)animate after a collapse.
+
+						Only available to the `collapsed` swf - as the `expanded` swf is unloaded at this point.
+
+
+
+		section#changelog
+
+			:markdown
+				Changelog
+				=========
+
+				## [1.0](http://nargalzius.github.io/)
+
+					- Initial release
+
+		script.
+			$(document).ready(function() {
+				$('pre.syntax').each(function(i, e) {hljs.highlightBlock(e)});
+			});

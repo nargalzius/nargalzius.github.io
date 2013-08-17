@@ -1,4 +1,4 @@
-//@import reset
+@import normalize.scss
 @import global.sass
 @import syntax_tomorrow.sass
 @import syntax_monokai.sass
@@ -16,13 +16,10 @@
 
 =par($pT: null, $pR: null, $pB: 1.5em, $pL: null)
 	p
-		+san
-		color: #FFF
 		padding-bottom: $pB
 		padding-top: $pT
 		padding-left: $pL
 		padding-right: $pR
-		font-size: 1.1em
 
 		em
 			font-style: italic
@@ -31,24 +28,25 @@
 			font-weight: bold
 
 		code
-			//+cor
 			+mon
 			background: #323232
 			padding: 2px 5px
 			+prefix(border-radius, 7px)
+			color: #FFF
 
 $padding: 50px
-$base: #999
+$base: #BBB
 $red: #d33a48
 $yellow: #e6db74
+$size: 1.2em
 
 html, body, div, p, a
 	+san
 
 body
+	font-size: $size
 	background: #272722
 	color: $base
-	font-size: .9em
 	line-height: 1.5em
 
 a
@@ -59,62 +57,72 @@ a
 		color: #FFF
 		text-decoration: underline
 
-h2
-	+san
-	font-size: 2em
-	line-height: 1.3em
-	text-align: center
-	margin-bottom: 50px
-	color: $red
-	+prefix(text-shadow, #000 2px 2px)
-
 .tab
 	width: 2.5em
 	display: inline-block
 	overflow: hidden
 
+#logo
+	+setblock(76px, 76px, relative)
+	margin: $padding auto $padding*.7 auto
+
+h1
+	+san
+	font-size: 2em
+	line-height: 1.3em
+	text-align: center
+	margin-bottom: $padding*.8
+	color: $red
+	+prefix(text-shadow, #000 2px 2px)
+
+h2
+	color: #FFF
+	font-size: 1.4em
+
+h3
+	color: #FFF
+	font-size: 1.3em
+
 #info
 	+san
 	padding: 0 $padding $padding $padding
-
+	
 	h3
-		color: $red
-		font-size: 1.2em
-		font-weight: normal
 		+prefix(text-shadow, #000 1px 1px)
-
+		color: $red
+		font-weight: normal !important
+		padding-left: $padding
+		
+	
 	ul
 		margin: 15px 0 15px 40px
 
 		li
-			font-size: 1.2em
 			line-height: 1.7em
 	+par
 
 #usage
-
 
 	pre
 		margin-bottom: 40px
 
 	+par(null, $padding, 20px, $padding)
 
+	.quickCode
+		padding-left: $padding*2
+
+	h2, h3
+		padding-left: $padding
+
 #api
-	font-size: 1.2em
 	line-height: 1.7em
 	color: $base
 	padding: 40px $padding $padding $padding
 
-
-	p
-		+san
-		margin-bottom: 1.2em
-
 	code
 		+prefix(text-shadow, #000 1px 1px)
-		//+cor
 		+mon
-		color: #DDD
+		color: #FFF
 
 	em
 		font-style: italic
@@ -136,30 +144,35 @@ h2
 			+prefix(border-radius, 7px)
 
 	li
-		li
-			strong
-				code
-					color: $yellow
-					font-size: 1em
-					font-weight: bold
+		ul
+			margin-left: $padding/2
 
+	ul
+		margin-left: $padding*-1 + 10
 
-	.quickCode
-		font-size: 1em
+		li 
+			list-style: none
+
+			p
+				margin-left: $padding/2
+
+.quickCode
+	pre
+		font-size: $size*.6
+		margin-left: $padding
+
+.fullCode
+	pre 
+		font-size: $size*.6
+		padding-left: $padding
 
 #changelog
 	padding: 0 $padding $padding $padding
-	font-size: 1.2em
 
-	h1
-		+mon
-		font-size: 1.5em
-		color: #CCC
-		margin: 30px 0 20px 0	
+	h2
+		font-size: $size*1.5
 
-	ul
-		+san
-		font-size: 1em
+	ul	
 		li
 			margin: .5em
 
@@ -167,8 +180,4 @@ h2
 		+prefix(text-shadow, #000 1px 1px)
 		+mon
 		color: #EEE
-		font-size: .9em
 
-#logo
-	+setblock(76px, 76px, relative)
-	margin: $padding auto

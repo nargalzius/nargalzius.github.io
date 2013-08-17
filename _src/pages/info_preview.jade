@@ -3,6 +3,7 @@ version = '1.1'
 !!!5
 html
 	head
+		meta(http-equiv="Content-Type", content="text/html; charset=utf-8")
 		title Joystick Generic DOM Loader
 		link(rel="stylesheet", type="text/css", href="../../../f/c/readme.css")
 
@@ -13,11 +14,11 @@ html
 		
 		header#info
 
-			img#logo(src="../../../img/joystick/logo.png")
+			img#logo(src="../../../img/joystick/logo.png", alt="Joystick Interactive")
 
 			:markdown
-				Joystick Preview Prototype
-				--------------------------
+				Joystick Automatic Preview
+				==========================
 
 				One of the most common things we do as Joystick employees is to create "preview" pages. This can be painfully repetitive. Of course, this is only limited to the "quick and dirty" previews we all know and... err... love ;) 
 
@@ -49,49 +50,52 @@ html
 
 		section#usage
 
-			h2 Usage
+			:markdown
 
-			p Because of the nature of this particular script, the whole blob of code below is needed for it to work properly - so that at the very least it can fallback to displaying a message with a link to the documentation.
+				Quick Start
+				===========
 
-			p The parts that aren't meant to be touched have been minified, only exposing the user-configurable stuff. Every file referenced in the page is pulled from a CDN, so even at it's very basic form, uncommenting everything (except for the image array comment - as it's just meant to be a reference) will actually work out of the box.
+				Because of the nature of this particular script, the whole blob of code below is needed for it to work properly - so that at the very least it can fallback to displaying a message with a link to the documentation.
 
-			pre.syntax.javascript.
-				<!DOCTYPE html>
-				<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><link rel="stylesheet" type="text/css" href="http://nargalzius.github.io/ajax/joystick/preview/#{version}/preview.css"/><script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script><script src="http://cdnjs.cloudflare.com/ajax/libs/swfobject/2.2/swfobject.js"></script><script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"></script><script src="http://nargalzius.github.io/ajax/joystick/preview/#{version}/preview.js"></script><style>
+				The parts that aren't meant to be touched have been minified, only exposing the user-configurable stuff. Every file referenced in the page is pulled from a CDN, so even at it's very basic form, uncommenting everything (except for the image array comment - as it's just meant to be a reference) will actually work out of the box.
 
-				/* YOUR CUSTOM STYLES HERE */
+			.fullCode
+				pre.syntax.javascript.
+					<!DOCTYPE html><html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><link rel="stylesheet" type="text/css" href="http://nargalzius.github.io/ajax/joystick/preview/1.1/preview.css"/><script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script><script src="http://cdnjs.cloudflare.com/ajax/libs/swfobject/2.2/swfobject.js"></script><script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"></script><script src="http://nargalzius.github.io/ajax/joystick/preview/1.1/preview.js"></script><style>
 
-				</style></head><body><header><a id="logo" href="http://joystickinteractive.com" title="Joystick Interactive" target="_blank"></a><h1 id="header">Joystick Interactive Preview Template</h1><div id="byline"> <p>Hi there, it seems you&#39;re viewing <a href="http://www.nargalzius.com">my</a> nifty little multi-purpose template<br/>which was created for faster prototyping and world peace ;)<br/>Read on how to use it <a href="http://nargalzius.github.io/ajax/joystick/preview">here</a></p></div><div id="preloader"><div id="preloadText"></div><div id="preloadIcon"></div></div></header><div id="container"><div id="flashcontent" class="flashalign"><div id="unit"></div></div><div id="pushdown"></div></div><script>
+					/* CUSTOM STYLES HERE */
 
-				debug = false;
+					</style></head><body><header><a id="logo" href="http://joystickinteractive.com" title="Joystick Interactive" target="_blank"></a><h1 id="header">Joystick Interactive</h1><div id="byline"> <p>Documentation of this automated preview template can be found <a href="http://nargalzius.github.io/ajax/joystick/preview">here.</a></p></div><div id="preloader"><div id="preloadText"></div><div id="preloadIcon"></div></div></header><div id="container"><div id="flashcontent" class="flashalign"><div id="unit"></div></div><div id="pushdown"></div></div><script>
 
-				/* IMAGE SETTINGS */
-				var i = [];
-				//i.push({src: null, title: null, desc: null, group: null});
+					debug = false;
 
-				/* FLASH SETTINGS */
-				var f = {
-					src	: 'http://nargalzius.github.io/f/s/970x66_exp.swf',
-					w 	: 970, 
-					h 	: 400,
-					//x 	: 1,
-					//y 	: 133,
-					//minH: 66,
-					//page: 'http://nargalzius.github.io/img/joystick/background.png',
-					//push: 'http://nargalzius.github.io/img/joystick/pd_fg.png'
-				};
+					/* IMAGE SETTINGS */
+					var i = [];
+					//i.push({src: null, title: null, desc: null, group: null});
 
-				/* INITLIALIZE PREVIEW */
-				$(document).ready(function(){
-					preview.init({ 
-						//img  : i,
-						//swf  : f,
-						//title: 'Title',
-						//desc : 'Description'
+					/* FLASH SETTINGS */
+					var f = {
+						src	: 'http://nargalzius.github.io/f/s/970x66_exp.swf',
+						w 	: 970, 
+						h 	: 400,
+						//x 	: 1,
+						//y 	: 133,
+						//minH: 66,
+						//page: 'http://nargalzius.github.io/img/joystick/background.png',
+						//push: 'http://nargalzius.github.io/img/joystick/pd_fg.png'
+					};
+
+					/* INITLIALIZE PREVIEW */
+					$(document).ready(function(){
+						preview.init({ 
+							//img  : i,
+							//swf  : f,
+							//title: 'Title',
+							//desc : 'Description'
+						});
 					});
-				});
 
-				</script></body></html>
+					</script></body></html>
 
 			:markdown
 
@@ -107,7 +111,7 @@ html
 
 		section#api
 			
-			h2 API
+			h1 API
 
 			ul
 
@@ -115,48 +119,48 @@ html
 					
 					p The image array that contains each image as objects. The keys available are <code>src</code>, <code>title</code>, <code>desc</code>, and <code>group</code>, all of which are strings.
 
-						ul
-							li 
-								p <code>src</code> is the only required parameter, as it is the url of your image
+					ul
+						li 
+							p <code>src</code> is the only required parameter, as it is the url of your image
 
-							li 
-								p <code>title</code> Optional. This is similar to the main document <code>title</code>, it puts header text on top of each image.
+						li 
+							p <code>title</code> Optional. This is similar to the main document <code>title</code>, it puts header text on top of each image.
 
-							li 
-								p <code>desc</code> Optional. This is similar to the main document <code>desc</code>, but it puts the subtext <strong>below</strong> the image
+						li 
+							p <code>desc</code> Optional. This is similar to the main document <code>desc</code>, but it puts the subtext <strong>below</strong> the image
 
-							li 
-								p <code>group</code> Optional. An <code>id</code> assigned to the wrapper div of a series of images you choose to group.
+						li 
+							p <code>group</code> Optional. An <code>id</code> assigned to the wrapper div of a series of images you choose to group.
 
-								p The normal way of displaying images is centered and stacked on top of each other. This can be annoying if you have a series of thin vertical images, wherein you would prefer to simply have them display side-by-side. 
+							p The normal way of displaying images is centered and stacked on top of each other. This can be annoying if you have a series of thin vertical images, wherein you would prefer to simply have them display side-by-side. 
 
-								p Assigning them to the same <code>group</code> id will put them in a container, and set each to the css <code>display: inline-table</code> flow. Meaning that if they could be, they will be displayed side-by-side, but if the viewport is too small, they will re-flow accordingly.
+							p Assigning them to the same <code>group</code> id will put them in a container, and set each to the css <code>display: inline-table</code> flow. Meaning that if they could be, they will be displayed side-by-side, but if the viewport is too small, they will re-flow accordingly.
 
 				li <strong><code>swf</code></strong><code>:object</code>
 
 					p The flash object that contains data needed to initialize the flash embed. The parameters are: <code>src</code>, <code>w</code>, <code>h</code>, <code>x</code>, <code>y</code>, <code>page</code>, <code>push</code>, & <code>minH</code>
 
-						ul
-							li
-								p <code>src</code>:  the source flash file.
-							li
-								p <code>w</code>: flash file width
-							li
-								p <code>h</code>: flash file height
-							li
-								p <code>page</code>: Optional. Normally, the flash unit is automatically centered. But if you want to create a "mockup" page, you can create a background image of the site you want to plug the unit into and put it here.
+					ul
+						li
+							p <code>src</code>:  the source flash file.
+						li
+							p <code>w</code>: flash file width
+						li
+							p <code>h</code>: flash file height
+						li
+							p <code>page</code>: Optional. Normally, the flash unit is automatically centered. But if you want to create a "mockup" page, you can create a background image of the site you want to plug the unit into and put it here.
 
-								p if this is set, it'll automatically clear the entire container (logo, text, etc.) and instead "convert" it to a container with a background image. Your unit will now be set to absolute 0 0 in relation to the container, which you can now adjust the unit's offset through the next parameters.
-							li
-								p <code>x</code>: & <code>y</code>: Optional. Top and left offset of the unit. Usually used in conjucntion with page so you can place the unit in a spsc
-							li
-								p <code>push</code>: Optional. This is just a bonus, if you want "pushdown" functionality. You just put here an image of the section of the mock site you want to push down. Take note that if you use this option, you'll have to add an <code>ExternalInterface</code> in your flash the functions to call are <code>expand()</code> and <code>collapse()</code> (duh!)
-							li
-								p <code>minH</code> Optional. "collapsed" height. This variable is only used when you have <code>push</code> set/enabled. 
+							p if this is set, it'll automatically clear the entire container (logo, text, etc.) and instead "convert" it to a container with a background image. Your unit will now be set to absolute 0 0 in relation to the container, which you can now adjust the unit's offset through the next parameters.
+						li
+							p <code>x</code>: & <code>y</code>: Optional. Top and left offset of the unit. Usually used in conjucntion with page so you can place the unit in a spsc
+						li
+							p <code>push</code>: Optional. This is just a bonus, if you want "pushdown" functionality. You just put here an image of the section of the mock site you want to push down. Take note that if you use this option, you'll have to add an <code>ExternalInterface</code> in your flash the functions to call are <code>expand()</code> and <code>collapse()</code> (duh!)
+						li
+							p <code>minH</code> Optional. "collapsed" height. This variable is only used when you have <code>push</code> set/enabled. 
 
-								p You <strong>have</strong> to set this or the elements to be expanded are most likely to be loaded below the full expanded height of your unit. 
+							p You <strong>have</strong> to set this or the elements to be expanded are most likely to be loaded below the full expanded height of your unit. 
 
-								p Since a pushdown is really just a vertical oriented expand, all the calculations are done in the background. What it does is it takes the dimension/position of your unit, and calculates that against the minimized height to decide the Y values it needs for the expand/collapse animations
+							p Since a pushdown is really just a vertical oriented expand, all the calculations are done in the background. What it does is it takes the dimension/position of your unit, and calculates that against the minimized height to decide the Y values it needs for the expand/collapse animations
 
 				li <strong><code>title</code></strong><code>:string</code>
 
@@ -182,8 +186,8 @@ html
 
 			:markdown
 				Changelog
-				---------
-				# [1.1](http://nargalzius.github.io/ajax/joystick/preview/1.1/preview.js)
+				=========
+				## [1.1](http://nargalzius.github.io/ajax/joystick/preview/1.1/preview.js)
 
 					- Renamed `minY` to `minH`
 
@@ -193,7 +197,7 @@ html
 
 					- Moved the `page` (background image) and `push` (pusdhown image) settings inside the `swf` object. The reason being it's most more often that a "mockup" scenario is needed only for flash-based demos.
 
-				# [1.0](http://nargalzius.github.io/ajax/joystick/preview/1.0/preview.js)
+				## [1.0](http://nargalzius.github.io/ajax/joystick/preview/1.0/preview.js)
 
 					- Initial release
 

@@ -3,6 +3,7 @@ version = '1.5'
 !!!5
 html
 	head
+		meta(http-equiv="Content-Type", content="text/html; charset=utf-8")
 		title Joystick Expandable Lightbox Class
 		link(rel="stylesheet", type="text/css", href="../../../f/c/readme.css")
 
@@ -13,11 +14,12 @@ html
 		
 		header#info
 
-			img#logo(src="../../../img/joystick/logo.png")
+			img#logo(src="../../../img/joystick/logo.png", alt="Joystick Interactive")
 
 			:markdown
-				Joystick Expandable Lightbox Class
-				----------------------------------
+
+				Joystick HTML Expandable Lightbox
+				=================================
 
 				An implementation of an expandable ad, but it does it by loading an external file through a [Lightbox](https://github.com/buckwilson/Lightbox_me) (iFrame).
 
@@ -56,143 +58,262 @@ html
 
 		section#usage
 
-			h2 Quick Start
+			:markdown
 
-			p Include the following scripts in your document's <code>&lt;head></code>
+				Quick Start
+				===========
 
-			pre.syntax.html.
-				<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-				<script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"></script>
-				<script src="http://nargalzius.github.io/ajax/lightbox_me/2.3/jquery.lightbox_me.js"></script>
-				<script src="http://nargalzius.github.io/ajax/joystick/expanding_lightbox/#{version}/expandObj.js"></script>
+				Include the following scripts in your document's `<head>`
 
-			p Here is the minimum markup you'll need. The <code>.sans</code> class is optional (the script automatically applies sans-serif fonts to the class)
+			.fullCode
+				pre.syntax.html.
+					<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+					<script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"></script>
+					<script src="http://nargalzius.github.io/ajax/lightbox_me/2.3/jquery.lightbox_me.js"></script>
+					<script src="http://nargalzius.github.io/ajax/joystick/expanding_lightbox/#{version}/expandObj.js"></script>
 
-			pre.syntax.html.
-				<!-- EXPANDED SECTION-->
-				<div id="expanded">
-					<a id="close"><img src="http://nargalzius.github.io/img/joystick/lightbox_close.png" class="btn" /></a>
-					<iframe id="expandFrame" src="about:blank" scrolling="no" frameborder="0" class="iframe_cont"></iframe>
-				</div>
-				<!-- COLLAPSED SECTION-->
-				<div id="collapsed" class="sans">
-					<div id="content">
-						<button id="exp_btn" class="btn"></button>
-						<div id="expandText">Expanding...</div>
-						<div id="expandBar"></div>
-						<div id="col_bg"></div>
-						<!-- MORE COLLAPSED CONTENT HERE -->
+			:markdown
+
+				Here is the minimum markup you'll need. The `.sans` class is optional (the script automatically applies sans-serif fonts to the class)
+
+			.fullCode
+				pre.syntax.html.
+					<!-- EXPANDED SECTION-->
+					<div id="expanded">
+						<a id="close"><img src="http://nargalzius.github.io/img/joystick/lightbox_close.png" class="btn" /></a>
+						<iframe id="expandFrame" src="about:blank" scrolling="no" frameborder="0" class="iframe_cont"></iframe>
 					</div>
-				</div>
+					<!-- COLLAPSED SECTION-->
+					<div id="collapsed" class="sans">
+						<div id="content">
+							<button id="exp_btn" class="btn"></button>
+							<div id="expandText">Expanding...</div>
+							<div id="expandBar"></div>
+							<div id="col_bg"></div>
+							<!-- MORE COLLAPSED CONTENT HERE -->
+						</div>
+					</div>
 
 			p Finally, initialize it like so:
 
-			pre.syntax.javascript.
-				$(document).ready(function(){
-					expanding.init();
-				});
+			.fullCode
+				pre.syntax.javascript.
+					$(document).ready(function(){
+						expanding.init();
+					});
 
 			:markdown
 				Again, this is _minimal_ code to get things working. Be sure to check out all the other "features" by playing with it in the [sandbox](http://codepen.io/nargalzius/pen/LGpDJ)
 
 		section#api
+			
 			:markdown
+
 				API
-				---
+				===
+
+			ul
+				li
+					strong
+						code minW 
+					code : number = 
+					em 
+						code 300
+					br
+					strong
+						code minH 
+					code : number = 
+					em 
+						code 250
+					br
+					strong
+						code maxW 
+					code : number = 
+					em 
+						code 500
+					br
+					strong
+						code maxH 
+					code : number = 
+					em 
+						code 250
+
+					:markdown
+
+						The collapsed/expanded width/height. All [main] elements/animations (i.e. expanding bar & animation, etc.) are automatically positioned based on these values.
+
+			ul
+				li
+					strong
+						code preload 
+					code : array = 
+					em 
+						code null
+
+					:markdown
+
+						Accepts a series of image urls. If present/set The unit will delay displaying itself until all the images have been loaded to the cache. This in effect will ensure that everything is ready (for animations, etc.) by the time the user sees it.
+
+			ul
+				li
+					strong
+						code rollover 
+					code : boolean = 
+					em 
+						code true
 				
-				- **`minW`**`:number =` *`300`,*  
-				**`minH`**`:number =` *`250`,*  
-				**`maxW`**`:number =` *`500`,*  
-				**`maxH`**`:number =` *`250`*
+					p Sets the _type_ of expand trigger. Set to `false` if you wish for _click-to-expand_ functionality
+					
+					p An expansion triggered by a click will bypass the expanding bar animation and immediately call the lightbox.
+			ul
+				li
+					strong
+						code hold 
+					code : boolean = 
+					em 
+						code true
+					
+					:markdown
 
-					The collapsed/expanded width/height. All [main] elements/animations (i.e. expanding bar & animation, etc.) are automatically positioned based on these values.
+						This flag was created to avoid accidentally triggering an expand for `rollover` enabled units. This is set to `true` by default. This essentially requires the user to keep the mouse over the trigger for a certain amount of time before the unit triggers the expand.
 
-				- **`preload`**`:array =` *`null`*
+			ul
+				li
+					strong
+						code delay 
+					code : number = 
+					em 
+						code 1
 
-					Accepts a series of image urls. If present/set The unit will delay displaying itself until all the images have been loaded to the cache. This in effect will ensure that everything is ready (for animations, etc.) by the time the user sees it.
+					:markdown
 
-				- **`rollover`**`:boolean =` *`true`*
+						If `hold` is set to *`true`*, this serves as the threshold of which a user must keep the cursor over the trigger in order to expand the unit.
 
-					Sets the _type_ of expand trigger. Set to `false` if you wish for _click-to-expand_ functionality
+						If `hold` is set to *`false`*, this acts as a "rigged" tween duration (for the expanding bar) before the ad expands.
 
-					An expansion triggered by a click will bypass the expanding bar animation and immediately call the lightbox.
+						If `rollover` is set to *`false`*, (i.e. _click-to-expand),_ this value is ignored.
 
-				- **`hold`**`:boolean =` *`true`*
+						It's worth reiterating that expansions triggered through clicking (when avaiable) will **always** bypass the expanding bar animation and immediately call the lightbox.
+			ul
+				li
+					strong
+						code trigger 
+					code : DOM element = 
+					em 
+						code $('#exp_btn')
 
-					This flag was created to avoid accidentally triggering an expand for `rollover` enabled units. This is set to `true` by default. This essentially requires the user to keep the mouse over the trigger for a certain amount of time before the unit triggers the expand.
+					:markdown
 
-				- **`delay`**`:number =` *`1`*
+						Sets the expand trigger. By default, the entire collapsed unit is the trigger. But if you set it to a DOM element, only interaction with that element will trigger the expland.
+						
+						If `exit` is set, the trigger will do the expand action while the background will clicktrhough. If it's not, then **clicking** on the background will trigger a manual expand.
 
-					If `hold` is set to *`true,`* this serves as the threshold of which a user must keep the cursor over the trigger in order to expand the unit.
+			ul
+				li
+					strong
+						code exit 
+					code : string = 
+					em
+						code null
+					
+					:markdown
 
-					If `hold` is set to *`false,`* this acts as a "rigged" tween duration (for the expanding bar) before the ad expands.
+						Intended for a URL string. If set, then the collapsed background (assuming `trigger` is set) and expanded background will be set to click-though to the exit URL.
 
-					If `rollover` is set to *`false,`* (i.e. _click-to-expand),_ this value is ignored.
+			ul
+				li
+					strong
+						code intro 
+					code : function = 
+					em
+						code null
 
-					It's worth reiterating that expansions triggered through clicking (when avaiable) will **always** bypass the expanding bar animation and immediately call the lightbox.
+					:markdown
 
-				- **`trigger`**`:DOM element =` *`$('#exp_btn')`*
+						Allows you to set a custom intro function. By default, when the unit is ready to be shown, it simply fades-in the collapsed state. When `intro` is set, it instead immediately sets the opacity of the collapsed container to visible - and relies on your custom animation code for "flair."
 
-					Sets the expand trigger. By default, the entire collapsed unit is the trigger. But if you set it to a DOM element, only interaction with that element will trigger the expland.
+						Triggers (click and/or rollover) for expansion will only work when the `isReady` variable is set to true. Normally, this is set automatically (e.g. after preloading or a straight-up `init()` without special parameters.
 
-					If `exit` is set, the trigger will do the expand action while the background will clicktrhough. If it's not, then **clicking** on the background will trigger a manual expand.
+						Enabling the custom intro disables this process. And the user is required to manually set the `isReady` after the [custom] animation is done. This can be achieved by either setting the variable directly (`expanding.isReady = true`) or calling the `expanding.ready()` function.
 
-				- **`exit`**`:string =` _`null`_
+						If the `exit` variable is set, clicking on the ad during the intro will result in a clickthrough action. This will then revert to the normal expansion action once the `isReady` is finally set to *`true.`*
 
-					Intended for a URL string. If set, then the collapsed background (assuming `trigger` is set) and expanded background will be set to click-though to the exit URL.
+			ul
+				li
+					strong
+						code expand 
+					code : function = 
+					em
+						code null
 
-				- **`intro`**`:function =` _`null`_
+					:markdown
 
-					Allows you to set a custom intro function. By default, when the unit is ready to be shown, it simply fades-in the collapsed state. When `intro` is set, it instead immediately sets the opacity of the collapsed container to visible - and relies on your custom animation code for "flair."
+						Similar to `intro`, this allows you to run custom actions on expand should you need to.
 
-					Triggers (click and/or rollover) for expansion will only work when the `isReady` variable is set to true. Normally, this is set automatically (e.g. after preloading or a straight-up `init()` without special parameters.
+			ul
+				li
+					strong
+						code collapse 
+					code : function = 
+					em
+						code null
 
-					Enabling the custom intro disables this process. And the user is required to manually set the `isReady` after the [custom] animation is done. This can be achieved by either setting the variable directly (`expanding.isReady = true`) or calling the `expanding.ready()` function.
+					:markdown
 
-					If the `exit` variable is set, clicking on the ad during the intro will result in a clickthrough action. This will then revert to the normal expansion action once the `isReady` is finally set to *`true.`*
+						Similar to `intro`, this allows you to run custom actions on collapse should you need to.
 
-				- **`expand`**`:function =` _`null`_
+			ul
+				li
+					strong
+						code exp_url 
+					code : string = 
+					em
+						code 'expanded.html'
 
-					Similar to `intro`, this allows you to run custom actions on expand should you need to.
+					:markdown
 
-				- **`collapse`**`:function =` _`null`_
+						Expanded url to be loaded into the lightbox (iframe). Default is `expanded.html` located in the same directory as the index file.
 
-					Similar to `intro`, this allows you to run custom actions on collapse should you need to.
+			ul
+				li
+					strong
+						code isLegacy 
+					code : boolean = 
+					em
+						code false
 
-				- **`exp_url`**`:string =` _`"expanded.html"`_
+					:markdown
 
-					Expanded url to be loaded into the lightbox (iframe). Default is `expanded.html` located in the same directory as the index file.
+						Normally, the expanding bar spans the entire width of the unit regardless of it's size. Setting `isLegacy` to *`true`* forces the script to use the old "expanding" animation (22px height, 128px max bar width, mixed case Verdana, etc.)
 
-				- **`isLegacy`**`:boolean =` _`false`_
-
-					Force the script to use the old "expanding" animation (22px height, 128px max bar width, mixed case Verdana, etc.)
 
 		section#changelog
 
 			:markdown
-				Changelog
-				---------
 
-				# [1.5](http://nargalzius.github.io/ajax/joystick/expanding_lightbox/1.5/expandObj.js)
+				Changelog
+				=========
+
+				## [1.5](http://nargalzius.github.io/ajax/joystick/expanding_lightbox/1.5/expandObj.js)
 
 					- Added `isLegacy` flag (to use the old way of animating the expanding bar)
 
-				# [1.4](http://nargalzius.github.io/ajax/joystick/expanding_lightbox/1.4/expandObj.js)
+				## [1.4](http://nargalzius.github.io/ajax/joystick/expanding_lightbox/1.4/expandObj.js)
 
 					- Converted/integrated spinner to a pure JS generated one (using [spin.js](http://fgnass.github.io/spin.js))
 
-				# [1.3](http://nargalzius.github.io/ajax/joystick/expanding_lightbox/1.3/expandObj.js)
+				## [1.3](http://nargalzius.github.io/ajax/joystick/expanding_lightbox/1.3/expandObj.js)
 				
 					- Renamed JS file from `expandLightboxObj` to `expandObj.js`
 					- Removed need for external css for core functionality
 					- Various fallbacks depending on unit state (and errors)
 
-				# [1.2](http://nargalzius.github.io/ajax/joystick/expanding_lightbox/1.2/expandLightboxObj.js)
+				## [1.2](http://nargalzius.github.io/ajax/joystick/expanding_lightbox/1.2/expandLightboxObj.js)
 
 					- Renamed `userExpand` method to `expand`
 					- Renamed `userCollapse` method to `collapse`
 
-				# 1.1
+				## 1.1
 
 					- Converted to `expanding` object/class
 					- Intergrated `preload` (image preloader) function
@@ -200,7 +321,7 @@ html
 					- Added `userExpand` method for custom expand actions
 					- Added `userCollapse` method for custom collapse actions
 
-				# 1.0
+				## 1.0
 
 					- Initial release
 

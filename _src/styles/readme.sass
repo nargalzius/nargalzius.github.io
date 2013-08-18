@@ -83,6 +83,10 @@ h3
 	color: #FFF
 	font-size: 1.3em
 
+h4
+	color: #FFF
+	font-size: 1.1em
+
 #info
 	+san
 	padding: 0 $padding $padding $padding
@@ -101,6 +105,12 @@ h3
 			line-height: 1.7em
 	+par
 
+	strong
+		color: #FFF
+
+	em
+		text-transform: italic
+
 #usage
 
 	pre
@@ -113,6 +123,15 @@ h3
 
 	h2, h3
 		padding-left: $padding
+
+	code
+		+mon
+		color: #FFF
+		+prefix(text-shadow, #000 2px 2px)
+
+	ul, ol, h4
+		margin-left: $padding
+		margin-right: $padding
 
 #api
 	line-height: 1.7em

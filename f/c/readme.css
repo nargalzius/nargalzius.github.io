@@ -506,6 +506,10 @@ h3 {
   color: white;
   font-size: 1.3em; }
 
+h4 {
+  color: white;
+  font-size: 1.1em; }
+
 #info {
   font-family: "Asap", "Helvetica", "Arial";
   padding: 0 50px 50px 50px; }
@@ -538,6 +542,10 @@ h3 {
       -ms-border-radius: 7px;
       -o-border-radius: 7px;
       color: white; }
+  #info strong {
+    color: white; }
+  #info em {
+    text-transform: italic; }
 
 #usage pre {
   margin-bottom: 40px; }
@@ -563,6 +571,17 @@ h3 {
   padding-left: 100px; }
 #usage h2, #usage h3 {
   padding-left: 50px; }
+#usage code {
+  font-family: Menlo, Monaco, Consolas;
+  color: white;
+  text-shadow: black 2px 2px;
+  -webkit-text-shadow: black 2px 2px;
+  -moz-text-shadow: black 2px 2px;
+  -ms-text-shadow: black 2px 2px;
+  -o-text-shadow: black 2px 2px; }
+#usage ul, #usage ol, #usage h4 {
+  margin-left: 50px;
+  margin-right: 50px; }
 
 #api {
   line-height: 1.7em;

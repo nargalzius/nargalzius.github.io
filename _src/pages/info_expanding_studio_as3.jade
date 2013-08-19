@@ -25,7 +25,7 @@ html
 
 				The purpose of this set of AS3 Class files is to standardize the implementation of core functionality of Studio expandables used by the organization and accomodate typical behavior required for most implementations.
 
-				As an example, take a look at the various implementations of ads in [this demo campaign](http://www.google.com/doubleclick/studio/ua/externalpreview#gr8bWOl_S3KVZB9PcCSb7w). Have the same document classes under the hood.
+				As an example, take a look at the various implementations of ads in [this [test] demo campaign](http://www.google.com/doubleclick/studio/ua/externalpreview#gr8bWOl_S3KVZB9PcCSb7w). All the files have the same document classes under the hood, and have minimal code and elements to accomplish the animations, maskings, borders, etc.
 
 				Another goal of such an approach is that since majority the core expandable functionality has been abstracted outside of the Flash files, it is possible to create similar document classes for non-Studio expandables in such a way that porting regular demos to Studio implementations can be achieved mostly by just switching the document classes. 
 
@@ -46,8 +46,10 @@ html
 
 			:markdown
 
-				### Dependencies
+				### Requirements/Dependencies
 
+				- Flash Player 9 or higher
+				- ActionScript 3
 				- [DoubleClick Studio Component v2 (AS3)](https://support.google.com/richmedia/answer/2389098?hl=en)
 				- [GreenSock Animation Platform (AS3)](http://www.greensock.com)
 
@@ -192,10 +194,10 @@ html
 			ul
 				li
 					strong
-						code debug  
-					code : Boolean = 
+						code.property debug  
+					code.property : Boolean = 
 					em 
-						code false
+						code.property false
 
 					:markdown
 						Toggle trace of various actions for debugging
@@ -209,8 +211,8 @@ html
 
 				li
 					strong
-						code _COLLAPSED 
-					code : String
+						code.property _COLLAPSED 
+					code.property : String
 
 					:markdown
 
@@ -222,8 +224,8 @@ html
 
 				li
 					strong
-						code _EXPANDED 
-					code : String
+						code.property _EXPANDED 
+					code.property : String
 
 					:markdown
 
@@ -235,10 +237,10 @@ html
 
 				li
 					strong
-						code _DURATION 
-					code : Number = 
+						code.property _DURATION 
+					code.property : Number = 
 					em
-						code 1
+						code.property 1
 
 					:markdown
 
@@ -247,28 +249,28 @@ html
 						set it to `0` if you want an immediate expand (popup). [Example](http://www.google.com/doubleclick/studio/ua/externalpreview#gr8bWOl_S3KVZB9PcCSb7w/creativeId=24665846)
 				li
 					strong
-						code _AUTOEXPAND 
-					code : Boolean = 
+						code.property _AUTOEXPAND 
+					code.property : Boolean = 
 					em
-						code false
+						code.property false
 
 					:markdown
 						Self-explanatory. When enabled, the collapsed state will be invisible on initial load. This is to make sure that the first thing the user sees is the expanded animation/state. [Example](http://www.google.com/doubleclick/studio/ua/externalpreview#gr8bWOl_S3KVZB9PcCSb7w/creativeId=24666758)
 				li
 					strong
-						code _AUTOCOLLAPSE 
-					code : Number = 
+						code.property _AUTOCOLLAPSE 
+					code.property : Number = 
 					em
-						code 0
+						code.property 0
 
 					:markdown
 						The number of seconds before an auto-collapse is executed. When set to 0, it's disabled. [Example](http://www.google.com/doubleclick/studio/ua/externalpreview#gr8bWOl_S3KVZB9PcCSb7w/creativeId=24666758)
 				li
 					strong
-						code _ACCOI 
-					code : Boolean = 
+						code.property _ACCOI 
+					code.property : Boolean = 
 					em
-						code true
+						code.property true
 
 					:markdown
 						Short for **A**uto **C**ollapse **C**ancel **O**n **I**nteraction. This listens for the `StudioEvent.INTERACTION` event, which is Studio's own way of telling if a user has interacted with a unit. [Example](http://www.google.com/doubleclick/studio/ua/externalpreview#gr8bWOl_S3KVZB9PcCSb7w/creativeId=24666763)
@@ -282,19 +284,19 @@ html
 							parent.dispatchEvent(new Event("KILL_AUTOCOLLAPSE"));
 				li
 					strong
-						code _MOUSECOLLAPSE 
-					code : Boolean = 
+						code.property _MOUSECOLLAPSE 
+					code.property : Boolean = 
 					em
-						code false
+						code.property false
 
 					:markdown
 						Collapse on mouseout. If the user navigates away from the unit, it will collapse. [Example](http://www.google.com/doubleclick/studio/ua/externalpreview#gr8bWOl_S3KVZB9PcCSb7w/creativeId=24666755)
 				li
 					strong
-						code _PUSHDOWN 
-					code : Boolean = 
+						code.property _PUSHDOWN 
+					code.property : Boolean = 
 					em
-						code false
+						code.property false
 
 					:markdown
 						Set triggers for Pushdown functionality. Both regular expandables and pushdowns call `expanding.expand()` at the same time. But they call `expanding.collapse()` at different times.
@@ -304,63 +306,62 @@ html
 						Pushdowns also have no easing in their expansion animations - to match the lack of easing on the HTML animations. [Example](http://www.google.com/doubleclick/studio/ua/externalpreview#gr8bWOl_S3KVZB9PcCSb7w/creativeId=24666758)
 				li
 					strong
-						code _DIRECTION  
-					code : string = 
+						code.property _DIRECTION  
+					code.property : string = 
 					em 
-						code 'D'
+						code.property 'D'
 
 					:markdown
 						Direction of the expand. Mask transitions/animations are done automatically. Accepts the following values (case sensitive):
 
 					ul
 						li 
-							code D 
+							code.property D 
 							| (Down, default) expands downward from top
 
-					ul
+						
 						li 
-							code U 
+							code.property U 
 							| (Up) expands upward from bottom
-					ul
+						
 						li 
-							code L 
+							code.property L 
 							| (Left) expands left from right
-					ul
+						
 						li 
-							code R 
+							code.property R 
 							| (Right) expands right from left
-					ul
+						
 						li 
-							code LU 
+							code.property LU 
 							| (Left/Up) expands diagonally to top-left from bottom-right 
 							a(href="http://www.google.com/doubleclick/studio/ua/externalpreview#gr8bWOl_S3KVZB9PcCSb7w/creativeId=24665841") Example
 
-					ul
 						li 
-							code LD 
+							code.property LD 
 							| (Left/Down) expands diagonally to bottom-left from top-right
 
-					ul
+						
 						li 
-							code RU 
+							code.property RU 
 							| (Right/Up) expands diagonally to top-right from bottom-left
 
-					ul
+						
 						li 
-							code RD 
+							code.property RD 
 							| (Right/Down) expands diagonally to bottom-right from top-left
-					ul
+						
 						li 
-							code O 
+							code.property O 
 							| (Omni) expands outward to all directions from center of collapsed child 
 
 							a(href="http://www.google.com/doubleclick/studio/ua/externalpreview#gr8bWOl_S3KVZB9PcCSb7w/creativeId=24666763") Example
 				li
 					strong
-						code _BORDER 
-					code : Number = 
+						code.property _BORDER 
+					code.property : Number = 
 					em
-						code 0x000000
+						code.property 0x000000
 
 					:markdown
 						Automatically generates a stroke/border around the expanded/collapsed MCs as they are loaded to the stage.
@@ -380,42 +381,42 @@ html
 			ul
 				li
 					strong
-						code debug  
-					code : Boolean = 
+						code.property debug  
+					code.property : Boolean = 
 					em 
-						code false
+						code.property false
 
 					:markdown
 						Toggle trace of various actions for debugging
 				li
 					strong
-						code _TRIGGER 
-					code : Button / MovieClip
+						code.property _TRIGGER 
+					code.property : Button / MovieClip
 
 					:markdown
 						Trigger button. Whether it triggers an expand or collapse depends on what document class your file is using.
 				li
 					strong
-						code _EXIT 
-					code : MovieClip
+						code.property _EXIT 
+					code.property : MovieClip
 
 					:markdown
 						Studio fails to register the exit event if this is set to a button. But it's basically your background exit button.
 				li
 					strong
-						code _DELAY 
-					code : Boolean = 
+						code.property _DELAY 
+					code.property : Boolean = 
 					em
-						code false
+						code.property false
 
 					:markdown
-						A delay before the expand or collapse is called. This is useful if you want your child swf to animate to something before triggering an expand/collapse. [Example](http://www.google.com/doubleclick/studio/ua/externalpreview#gr8bWOl_S3KVZB9PcCSb7w/creativeId=24677336)
+						A delay before the expand or collapse is called. Useful to for having pre-expand/collapse animations. [Example](http://www.google.com/doubleclick/studio/ua/externalpreview#gr8bWOl_S3KVZB9PcCSb7w/creativeId=24677336)
 				li
 					strong
-						code _ROLLOVER 
-					code : Boolean = 
+						code.property _ROLLOVER 
+					code.property : Boolean = 
 					em
-						code false
+						code.property false
 
 					:markdown
 						Assigns your trigger to be fired on rollover. [Example](http://www.google.com/doubleclick/studio/ua/externalpreview#gr8bWOl_S3KVZB9PcCSb7w/creativeId=24666755)
@@ -430,18 +431,20 @@ html
 			ul
 				li
 					strong
-						code META_TRIGGERED 
-					code : Event
+						code.property META_TRIGGERED 
+					code.property : Event
 
 					:markdown
 						Fired when a collapse/expand is triggered.
 
-						In the case of a delayed call (`_DELAY`), it's triggered **before** the actual expand/collapse animation.
+						It's worth remembering that this isn't necessarily an "immediate trigger" - triggers from either state (collapsed/expanded) will both respect whatever `_DELAY` setting you have.
+
+						However, in the case of the collapsed state trying to expand, it will only "trigger" once it has confirmed with the parent that the expanded swf is ready to be displayed.
 
 				li
 					strong
-						code META_EXPANDING 
-					code : Event
+						code.property META_EXPANDING 
+					code.property : Event
 
 					:markdown
 						Fired when the expanding animation starts.
@@ -449,24 +452,24 @@ html
 
 				li
 					strong
-						code META_EXPANDED
-					code : Event
+						code.property META_EXPANDED
+					code.property : Event
 
 					:markdown
 						Triggered when expand has completed.
 
 				li
 					strong
-						code META_COLLAPSING
-					code : Event
+						code.property META_COLLAPSING
+					code.property : Event
 
 					:markdown
 						Triggered when collapse starts.
 
 				li
 					strong
-						code META_COLLAPSED
-					code : Event
+						code.property META_COLLAPSED
+					code.property : Event
 
 					:markdown
 						Triggered when collapse has completed.

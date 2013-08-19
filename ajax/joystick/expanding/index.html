@@ -62,29 +62,29 @@
     </section>
     <section id="api"><h1>API</h1>
       <ul>
-        <li><strong> <code>minW </code></strong><code>: number = </code><em> <code>300</code></em>,<br><strong> <code>minH </code></strong><code>: number = </code><em> <code>250</code></em>,<br><strong> <code>maxW </code></strong><code>: number = </code><em> <code>500</code></em>,<br><strong> <code>maxH </code></strong><code>: number = </code><em> <code>250</code></em><p>The collapsed/expanded width/height. All [main] elements/animations (i.e. expanding bar &amp; animation, etc.) are automatically positioned based on these values.</p>
+        <li><strong> <code class="property">minW </code></strong><code class="property">: number = </code><em> <code class="property">300</code></em>,<br><strong> <code class="property">minH </code></strong><code class="property">: number = </code><em> <code class="property">250</code></em>,<br><strong> <code class="property">maxW </code></strong><code class="property">: number = </code><em> <code class="property">500</code></em>,<br><strong> <code class="property">maxH </code></strong><code class="property">: number = </code><em> <code class="property">250</code></em><p>The collapsed/expanded width/height. All [main] elements/animations (i.e. expanding bar &amp; animation, etc.) are automatically positioned based on these values.</p>
         </li>
-        <li><strong> <code>direction </code></strong><code>: string = </code><em> <code>LEFT</code></em><p>The direction of the expand. Accepts <code>LEFT</code>, <code>RIGHT</code>, <code>UP</code>, <code>DOWN</code> and is <strong>case sensitive</strong></p>
+        <li><strong> <code class="property">direction </code></strong><code class="property">: string = </code><em> <code class="property">LEFT</code></em><p>The direction of the expand. Accepts <code>LEFT</code>, <code>RIGHT</code>, <code>UP</code>, <code>DOWN</code> and is <strong>case sensitive</strong></p>
         </li>
-        <li><strong> <code>preload </code></strong><code>: array = </code><em> <code>null </code></em><p>Accepts a series of image urls. If present/set The unit will delay displaying itself until all the images have been loaded to the cache. This in effect will ensure that everything is ready (for animations, etc.) by the time the user sees it.</p>
+        <li><strong> <code class="property">preload </code></strong><code class="property">: array = </code><em> <code class="property">null </code></em><p>Accepts a series of image urls. If present/set The unit will delay displaying itself until all the images have been loaded to the cache. This in effect will ensure that everything is ready (for animations, etc.) by the time the user sees it.</p>
 
 <p>The <code>[&#39;SURE_FAIL&#39;]</code> example is to demonstrate how the unit falls back to simply displaying the collapsed state and disabling the expand functionality. If <code>exit</code> has been set, then it clicks through to the set url in place of the expand.</p>
         </li>
-        <li><strong> <code>rollover </code></strong><code>: boolean = </code><em> <code>true</code></em><p>Sets the <em>type</em> of expand trigger. Set to <code>false</code> if you wish for <em>click-to-expand</em> functionality</p>
+        <li><strong> <code class="property">rollover </code></strong><code class="property">: boolean = </code><em> <code class="property">true</code></em><p>Sets the <em>type</em> of expand trigger. Set to <code>false</code> if you wish for <em>click-to-expand</em> functionality</p>
 
 <p>An expansion triggered by a click will bypass the expanding bar animation and immediately call the lightbox.</p>
         </li>
-        <li><strong> <code>mouseout </code></strong><code>: boolean = </code><em> <code>false</code></em><p>If set to <code>true</code>, an expanded unit will automatically collapse when the cursor leaves the unit.</p>
+        <li><strong> <code class="property">mouseout </code></strong><code class="property">: boolean = </code><em> <code class="property">false</code></em><p>If set to <code>true</code>, an expanded unit will automatically collapse when the cursor leaves the unit.</p>
         </li>
-        <li><strong> <code>delay </code></strong><code>: number = </code><em> <code>.5</code></em><p>Speed/duration of the expand animation.</p>
+        <li><strong> <code class="property">delay </code></strong><code class="property">: number = </code><em> <code class="property">.5</code></em><p>Speed/duration of the expand animation.</p>
         </li>
-        <li><strong> <code>trigger </code></strong><code>: DOM element = </code><em> <code>$('#exp_btn')</code></em><p>Sets the expand trigger. By default, the entire collapsed unit is the trigger. But if you set it to a DOM element, only interaction with that element will trigger the expland.</p>
+        <li><strong> <code class="property">trigger </code></strong><code class="property">: DOM element = </code><em> <code class="property">$('#exp_btn')</code></em><p>Sets the expand trigger. By default, the entire collapsed unit is the trigger. But if you set it to a DOM element, only interaction with that element will trigger the expland.</p>
 
 <p>If <code>exit</code> is set, the trigger will do the expand action while the background will clicktrhough. If it&#39;s not, then <strong>clicking</strong> on the background will trigger a manual expand.</p>
         </li>
-        <li><strong> <code>exit </code></strong><code>: string = </code><em><code>null</code></em><p>Intended for a URL string. If set, then the collapsed background (assuming <code>trigger</code> is set) and expanded background will be set to click-though to the exit URL.</p>
+        <li><strong> <code class="property">exit </code></strong><code class="property">: string = </code><em><code>null</code></em><p>Intended for a URL string. If set, then the collapsed background (assuming <code>trigger</code> is set) and expanded background will be set to click-though to the exit URL.</p>
         </li>
-        <li><strong> <code>intro </code></strong><code>: function = </code><em><code>null</code></em><p>Allows you to set a custom intro function. By default, when the unit is ready to be shown, it simply fades-in the collapsed state. When <code>intro</code> is set, it instead immediately sets the opacity of the collapsed container to visible - and relies on your custom animation code for &quot;flair.&quot;</p>
+        <li><strong> <code class="property">intro </code></strong><code class="property">: function = </code><em><code>null</code></em><p>Allows you to set a custom intro function. By default, when the unit is ready to be shown, it simply fades-in the collapsed state. When <code>intro</code> is set, it instead immediately sets the opacity of the collapsed container to visible - and relies on your custom animation code for &quot;flair.&quot;</p>
 
 <p>Triggers (click and/or rollover) for expansion will only work when the <code>isReady</code> variable is set to true. Normally, this is set automatically (e.g. after preloading or a straight-up <code>init()</code> without special parameters.</p>
 
@@ -92,9 +92,9 @@
 
 <p>If the <code>exit</code> variable is set, clicking on the ad during the intro will result in a clickthrough action. This will then revert to the normal expansion action once the <code>isReady</code> is finally set to <em><code>true.</code></em></p>
         </li>
-        <li><strong> <code>expand </code></strong><code>: function = </code><em><code>null</code></em><p>Similar to <code>intro</code>, this allows you to run custom actions on expand should you need to.</p>
+        <li><strong> <code class="property">expand </code></strong><code class="property">: function = </code><em><code>null</code></em><p>Similar to <code>intro</code>, this allows you to run custom actions on expand should you need to.</p>
         </li>
-        <li><strong> <code>collapse </code></strong><code>: function = </code><em><code>null</code></em><p>Similar to <code>intro</code>, this allows you to run custom actions on collapse should you need to.</p>
+        <li><strong> <code class="property">collapse </code></strong><code class="property">: function = </code><em><code>null</code></em><p>Similar to <code>intro</code>, this allows you to run custom actions on collapse should you need to.</p>
         </li>
       </ul>
     </section>

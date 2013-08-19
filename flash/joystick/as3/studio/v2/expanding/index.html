@@ -11,7 +11,7 @@
     <header id="info"><img id="logo" src="../../../../../../img/joystick/logo.png" alt="Joystick Interactive">
       <h1>Joystick Studio v2 Expandable</h1><p>The purpose of this set of AS3 Class files is to standardize the implementation of core functionality of Studio expandables used by the organization and accomodate typical behavior required for most implementations.</p>
 
-<p>As an example, take a look at the various implementations of ads in <a href="http://www.google.com/doubleclick/studio/ua/externalpreview#gr8bWOl_S3KVZB9PcCSb7w">this demo campaign</a>. Have the same document classes under the hood.</p>
+<p>As an example, take a look at the various implementations of ads in <a href="http://www.google.com/doubleclick/studio/ua/externalpreview#gr8bWOl_S3KVZB9PcCSb7w">this [test] demo campaign</a>. All the files have the same document classes under the hood, and have minimal code and elements to accomplish the animations, maskings, borders, etc.</p>
 
 <p>Another goal of such an approach is that since majority the core expandable functionality has been abstracted outside of the Flash files, it is possible to create similar document classes for non-Studio expandables in such a way that porting regular demos to Studio implementations can be achieved mostly by just switching the document classes. </p>
 
@@ -22,9 +22,9 @@
         <li><a href="#api">Full Documentation  </a></li>
         <li><a target="_blank" href="http://nargalzius.github.io/flash/joystick/as3/studio/v2/expanding/sample.zip">Download</a> (.zip)</li>
         <li><a href="#changelog">Changelog</a></li>
-      </ul><h3>Dependencies</h3>
+      </ul><h3>Requirements/Dependencies</h3>
 
-<ul><li><a href="https://support.google.com/richmedia/answer/2389098?hl=en">DoubleClick Studio Component v2 (AS3)</a></li><li><a href="http://www.greensock.com">GreenSock Animation Platform (AS3)</a></li></ul>
+<ul><li>Flash Player 9 or higher</li><li>ActionScript 3</li><li><a href="https://support.google.com/richmedia/answer/2389098?hl=en">DoubleClick Studio Component v2 (AS3)</a></li><li><a href="http://www.greensock.com">GreenSock Animation Platform (AS3)</a></li></ul>
     </header>
     <section id="usage">
       <h1>Quick Start</h1><p>So let&#39;s say we want to make a <code>300x250</code> unit that expands to <code>500x250</code> to the <em>left.</em> We&#39;ll use the [typical] 3-file approach: One file as <code>parent.swf</code> with a canvas size of 500x250, the other as <code>collapsed.swf</code> with a canvas size of 300x250, and lastly, one called <code>expanded.swf</code> with 500x250 as its canvas size.</p>
@@ -129,7 +129,7 @@ init();
       <h1>API</h1>
       <h2>Parent SWF</h2><p>Document class file:<br/><code>com.joystick.studio.v2.Expand</code> (extends Enabler)</p>
       <ul>
-        <li><strong><code>debug  </code></strong><code>: Boolean = </code><em> <code>false</code></em><p>Toggle trace of various actions for debugging</p>
+        <li><strong><code class="property">debug  </code></strong><code class="property">: Boolean = </code><em> <code class="property">false</code></em><p>Toggle trace of various actions for debugging</p>
 
 <p>Also, if you want to disable the &quot;clutter&quot; that the <a href="http://www.google.com/doubleclick/studio/docs/sdk/flash/as3/en/com_google_ads_studio_utils_Logger.html">Studio Logger</a> generates, you can use this:</p>
           <div class="quickCode">
@@ -138,27 +138,27 @@ Logger.setLogLevel(Logger.NONE);
 </pre>
           </div>
         </li>
-        <li><strong><code>_COLLAPSED </code></strong><code>: String</code><p>Filname of collapsed file.</p>
+        <li><strong><code class="property">_COLLAPSED </code></strong><code class="property">: String</code><p>Filname of collapsed file.</p>
 
 <p>The parent swf automatically generates a container, which the collapsed file is loaded into. Furthermore, it creates a mask (for the sake of neatness) for the child based on the dimensions of the <code>expanding</code> component (which you manually set) - it then positions the child (and it&#39;s mask) on the same location of the expanding component.</p>
 
 <p>This is the reason why it&#39;s not necessary to &quot;set&quot; the expanding component to load any file via its component inspector.</p>
         </li>
-        <li><strong><code>_EXPANDED </code></strong><code>: String</code><p>Filname of expanded file.</p>
+        <li><strong><code class="property">_EXPANDED </code></strong><code class="property">: String</code><p>Filname of expanded file.</p>
 
 <p>Like with the collapsed swf, the parent generates the appropriate container in which to load the file onto. It also generates the appropriate mask.</p>
 
 <p>When an expand is triggered, the expand animation only starts when the expanded has been fully loaded. Likewise, it is fully unloaded when a collapse completes.</p>
         </li>
-        <li><strong><code>_DURATION </code></strong><code>: Number = </code><em><code>1</code></em><p>The default expansion animation time. You may set it faster for normal expands, but it&#39;s advisable to keep it at <code>1</code> second or longer for _PUSHDOWNs.</p>
+        <li><strong><code class="property">_DURATION </code></strong><code class="property">: Number = </code><em><code class="property">1</code></em><p>The default expansion animation time. You may set it faster for normal expands, but it&#39;s advisable to keep it at <code>1</code> second or longer for _PUSHDOWNs.</p>
 
 <p>set it to <code>0</code> if you want an immediate expand (popup). <a href="http://www.google.com/doubleclick/studio/ua/externalpreview#gr8bWOl_S3KVZB9PcCSb7w/creativeId=24665846">Example</a></p>
         </li>
-        <li><strong><code>_AUTOEXPAND </code></strong><code>: Boolean = </code><em><code>false</code></em><p>Self-explanatory. When enabled, the collapsed state will be invisible on initial load. This is to make sure that the first thing the user sees is the expanded animation/state. <a href="http://www.google.com/doubleclick/studio/ua/externalpreview#gr8bWOl_S3KVZB9PcCSb7w/creativeId=24666758">Example</a></p>
+        <li><strong><code class="property">_AUTOEXPAND </code></strong><code class="property">: Boolean = </code><em><code class="property">false</code></em><p>Self-explanatory. When enabled, the collapsed state will be invisible on initial load. This is to make sure that the first thing the user sees is the expanded animation/state. <a href="http://www.google.com/doubleclick/studio/ua/externalpreview#gr8bWOl_S3KVZB9PcCSb7w/creativeId=24666758">Example</a></p>
         </li>
-        <li><strong><code>_AUTOCOLLAPSE </code></strong><code>: Number = </code><em><code>0</code></em><p>The number of seconds before an auto-collapse is executed. When set to 0, it&#39;s disabled. <a href="http://www.google.com/doubleclick/studio/ua/externalpreview#gr8bWOl_S3KVZB9PcCSb7w/creativeId=24666758">Example</a></p>
+        <li><strong><code class="property">_AUTOCOLLAPSE </code></strong><code class="property">: Number = </code><em><code class="property">0</code></em><p>The number of seconds before an auto-collapse is executed. When set to 0, it&#39;s disabled. <a href="http://www.google.com/doubleclick/studio/ua/externalpreview#gr8bWOl_S3KVZB9PcCSb7w/creativeId=24666758">Example</a></p>
         </li>
-        <li><strong><code>_ACCOI </code></strong><code>: Boolean = </code><em><code>true</code></em><p>Short for <strong>A</strong>uto <strong>C</strong>ollapse <strong>C</strong>ancel <strong>O</strong>n <strong>I</strong>nteraction. This listens for the <code>StudioEvent.INTERACTION</code> event, which is Studio&#39;s own way of telling if a user has interacted with a unit. <a href="http://www.google.com/doubleclick/studio/ua/externalpreview#gr8bWOl_S3KVZB9PcCSb7w/creativeId=24666763">Example</a></p>
+        <li><strong><code class="property">_ACCOI </code></strong><code class="property">: Boolean = </code><em><code class="property">true</code></em><p>Short for <strong>A</strong>uto <strong>C</strong>ollapse <strong>C</strong>ancel <strong>O</strong>n <strong>I</strong>nteraction. This listens for the <code>StudioEvent.INTERACTION</code> event, which is Studio&#39;s own way of telling if a user has interacted with a unit. <a href="http://www.google.com/doubleclick/studio/ua/externalpreview#gr8bWOl_S3KVZB9PcCSb7w/creativeId=24666763">Example</a></p>
 
 <p>Because it&#39;s not really clear how Studio &quot;determines&quot; what constitutes an &quot;interaction&quot;, you may opt to bypass it entirely (i.e. if you want it cancelled by different rules) by setting it to <code>false</code></p>
 
@@ -167,44 +167,28 @@ Logger.setLogLevel(Logger.NONE);
             <pre class="syntax actionscript">parent.dispatchEvent(new Event(&quot;KILL_AUTOCOLLAPSE&quot;));</pre>
           </div>
         </li>
-        <li><strong><code>_MOUSECOLLAPSE </code></strong><code>: Boolean = </code><em><code>false</code></em><p>Collapse on mouseout. If the user navigates away from the unit, it will collapse. <a href="http://www.google.com/doubleclick/studio/ua/externalpreview#gr8bWOl_S3KVZB9PcCSb7w/creativeId=24666755">Example</a></p>
+        <li><strong><code class="property">_MOUSECOLLAPSE </code></strong><code class="property">: Boolean = </code><em><code class="property">false</code></em><p>Collapse on mouseout. If the user navigates away from the unit, it will collapse. <a href="http://www.google.com/doubleclick/studio/ua/externalpreview#gr8bWOl_S3KVZB9PcCSb7w/creativeId=24666755">Example</a></p>
         </li>
-        <li><strong><code>_PUSHDOWN </code></strong><code>: Boolean = </code><em><code>false</code></em><p>Set triggers for Pushdown functionality. Both regular expandables and pushdowns call <code>expanding.expand()</code> at the same time. But they call <code>expanding.collapse()</code> at different times.</p>
+        <li><strong><code class="property">_PUSHDOWN </code></strong><code class="property">: Boolean = </code><em><code class="property">false</code></em><p>Set triggers for Pushdown functionality. Both regular expandables and pushdowns call <code>expanding.expand()</code> at the same time. But they call <code>expanding.collapse()</code> at different times.</p>
 
 <p>Regular animated expands have to make the call when the collapse animation is done, whereas the _PUSHDOWNs call it at the same time the collapse animation starts.</p>
 
 <p>Pushdowns also have no easing in their expansion animations - to match the lack of easing on the HTML animations. <a href="http://www.google.com/doubleclick/studio/ua/externalpreview#gr8bWOl_S3KVZB9PcCSb7w/creativeId=24666758">Example</a></p>
         </li>
-        <li><strong><code>_DIRECTION  </code></strong><code>: string = </code><em> <code>'D'</code></em><p>Direction of the expand. Mask transitions/animations are done automatically. Accepts the following values (case sensitive):</p>
+        <li><strong><code class="property">_DIRECTION  </code></strong><code class="property">: string = </code><em> <code class="property">'D'</code></em><p>Direction of the expand. Mask transitions/animations are done automatically. Accepts the following values (case sensitive):</p>
           <ul>
-            <li> <code>D </code>(Down, default) expands downward from top</li>
-          </ul>
-          <ul>
-            <li> <code>U </code>(Up) expands upward from bottom</li>
-          </ul>
-          <ul>
-            <li> <code>L </code>(Left) expands left from right</li>
-          </ul>
-          <ul>
-            <li> <code>R </code>(Right) expands right from left</li>
-          </ul>
-          <ul>
-            <li> <code>LU </code>(Left/Up) expands diagonally to top-left from bottom-right <a href="http://www.google.com/doubleclick/studio/ua/externalpreview#gr8bWOl_S3KVZB9PcCSb7w/creativeId=24665841">Example</a></li>
-          </ul>
-          <ul>
-            <li> <code>LD </code>(Left/Down) expands diagonally to bottom-left from top-right</li>
-          </ul>
-          <ul>
-            <li> <code>RU </code>(Right/Up) expands diagonally to top-right from bottom-left</li>
-          </ul>
-          <ul>
-            <li> <code>RD </code>(Right/Down) expands diagonally to bottom-right from top-left</li>
-          </ul>
-          <ul>
-            <li> <code>O </code>(Omni) expands outward to all directions from center of collapsed child <a href="http://www.google.com/doubleclick/studio/ua/externalpreview#gr8bWOl_S3KVZB9PcCSb7w/creativeId=24666763">Example</a></li>
+            <li> <code class="property">D </code>(Down, default) expands downward from top</li>
+            <li> <code class="property">U </code>(Up) expands upward from bottom</li>
+            <li> <code class="property">L </code>(Left) expands left from right</li>
+            <li> <code class="property">R </code>(Right) expands right from left</li>
+            <li> <code class="property">LU </code>(Left/Up) expands diagonally to top-left from bottom-right <a href="http://www.google.com/doubleclick/studio/ua/externalpreview#gr8bWOl_S3KVZB9PcCSb7w/creativeId=24665841">Example</a></li>
+            <li> <code class="property">LD </code>(Left/Down) expands diagonally to bottom-left from top-right</li>
+            <li> <code class="property">RU </code>(Right/Up) expands diagonally to top-right from bottom-left</li>
+            <li> <code class="property">RD </code>(Right/Down) expands diagonally to bottom-right from top-left</li>
+            <li> <code class="property">O </code>(Omni) expands outward to all directions from center of collapsed child <a href="http://www.google.com/doubleclick/studio/ua/externalpreview#gr8bWOl_S3KVZB9PcCSb7w/creativeId=24666763">Example</a></li>
           </ul>
         </li>
-        <li><strong><code>_BORDER </code></strong><code>: Number = </code><em><code>0x000000</code></em><p>Automatically generates a stroke/border around the expanded/collapsed MCs as they are loaded to the stage.</p>
+        <li><strong><code class="property">_BORDER </code></strong><code class="property">: Number = </code><em><code class="property">0x000000</code></em><p>Automatically generates a stroke/border around the expanded/collapsed MCs as they are loaded to the stage.</p>
 
 <p>Accepts numbers in &quot;hex color value format&quot; that Flash understands natively (i.e. pre-pended by <code>0x</code>). It defaults to black (<code>0x000000</code>).</p>
 
@@ -213,15 +197,15 @@ Logger.setLogLevel(Logger.NONE);
       </ul>
       <h2>Children SWFs</h2><p>Document class file(s):<br/><code>com.joystick.studio.v2.CollapsedChild</code> (extends ExpandProxy)<br/><code>com.joystick.studio.v2.ExpandedChild</code> (extends ExpandProxy)</p>
       <ul>
-        <li><strong><code>debug  </code></strong><code>: Boolean = </code><em> <code>false</code></em><p>Toggle trace of various actions for debugging</p>
+        <li><strong><code class="property">debug  </code></strong><code class="property">: Boolean = </code><em> <code class="property">false</code></em><p>Toggle trace of various actions for debugging</p>
         </li>
-        <li><strong><code>_TRIGGER </code></strong><code>: Button / MovieClip</code><p>Trigger button. Whether it triggers an expand or collapse depends on what document class your file is using.</p>
+        <li><strong><code class="property">_TRIGGER </code></strong><code class="property">: Button / MovieClip</code><p>Trigger button. Whether it triggers an expand or collapse depends on what document class your file is using.</p>
         </li>
-        <li><strong><code>_EXIT </code></strong><code>: MovieClip</code><p>Studio fails to register the exit event if this is set to a button. But it&#39;s basically your background exit button.</p>
+        <li><strong><code class="property">_EXIT </code></strong><code class="property">: MovieClip</code><p>Studio fails to register the exit event if this is set to a button. But it&#39;s basically your background exit button.</p>
         </li>
-        <li><strong><code>_DELAY </code></strong><code>: Boolean = </code><em><code>false</code></em><p>A delay before the expand or collapse is called. This is useful if you want your child swf to animate to something before triggering an expand/collapse. <a href="http://www.google.com/doubleclick/studio/ua/externalpreview#gr8bWOl_S3KVZB9PcCSb7w/creativeId=24677336">Example</a></p>
+        <li><strong><code class="property">_DELAY </code></strong><code class="property">: Boolean = </code><em><code class="property">false</code></em><p>A delay before the expand or collapse is called. Useful to for having pre-expand/collapse animations. <a href="http://www.google.com/doubleclick/studio/ua/externalpreview#gr8bWOl_S3KVZB9PcCSb7w/creativeId=24677336">Example</a></p>
         </li>
-        <li><strong><code>_ROLLOVER </code></strong><code>: Boolean = </code><em><code>false</code></em><p>Assigns your trigger to be fired on rollover. <a href="http://www.google.com/doubleclick/studio/ua/externalpreview#gr8bWOl_S3KVZB9PcCSb7w/creativeId=24666755">Example</a></p>
+        <li><strong><code class="property">_ROLLOVER </code></strong><code class="property">: Boolean = </code><em><code class="property">false</code></em><p>Assigns your trigger to be fired on rollover. <a href="http://www.google.com/doubleclick/studio/ua/externalpreview#gr8bWOl_S3KVZB9PcCSb7w/creativeId=24666755">Example</a></p>
 
 <p>If you feel that you want to override (or augment) the functionality of the unit, you can always manually trigger expands/collapses in the timeline by using <code>expand()</code> or <code>collapse()</code>.</p>
         </li>
@@ -229,17 +213,19 @@ Logger.setLogLevel(Logger.NONE);
 
 <p>From the code snippet above, these are the events that the metaHandler intercepts.</p>
       <ul>
-        <li><strong><code>META_TRIGGERED </code></strong><code>: Event</code><p>Fired when a collapse/expand is triggered.</p>
+        <li><strong><code class="property">META_TRIGGERED </code></strong><code class="property">: Event</code><p>Fired when a collapse/expand is triggered.</p>
 
-<p>In the case of a delayed call (<code>_DELAY</code>), it&#39;s triggered <strong>before</strong> the actual expand/collapse animation.</p>
+<p>It&#39;s worth remembering that this isn&#39;t necessarily an &quot;immediate trigger&quot; - triggers from either state (collapsed/expanded) will both respect whatever <code>_DELAY</code> setting you have.</p>
+
+<p>However, in the case of the collapsed state trying to expand, it will only &quot;trigger&quot; once it has confirmed with the parent that the expanded swf is ready to be displayed.</p>
         </li>
-        <li><strong><code>META_EXPANDING </code></strong><code>: Event</code><p>Fired when the expanding animation starts.</p>
+        <li><strong><code class="property">META_EXPANDING </code></strong><code class="property">: Event</code><p>Fired when the expanding animation starts.</p>
         </li>
-        <li><strong><code>META_EXPANDED</code></strong><code>: Event</code><p>Triggered when expand has completed.</p>
+        <li><strong><code class="property">META_EXPANDED</code></strong><code class="property">: Event</code><p>Triggered when expand has completed.</p>
         </li>
-        <li><strong><code>META_COLLAPSING</code></strong><code>: Event</code><p>Triggered when collapse starts.</p>
+        <li><strong><code class="property">META_COLLAPSING</code></strong><code class="property">: Event</code><p>Triggered when collapse starts.</p>
         </li>
-        <li><strong><code>META_COLLAPSED</code></strong><code>: Event</code><p>Triggered when collapse has completed.</p>
+        <li><strong><code class="property">META_COLLAPSED</code></strong><code class="property">: Event</code><p>Triggered when collapse has completed.</p>
         </li>
       </ul><h4>Practical Example of metaHandler event use</h4>
 

@@ -87,9 +87,17 @@ h4
 	color: #FFF
 	font-size: 1.1em
 
+p
+	code
+		font-size: $size*.7
+li
+	code
+		font-size: $size*.7
+
+
 #info
 	+san
-	padding: 0 $padding $padding $padding
+	padding: 0 $padding*2 $padding $padding*2
 	
 	h3
 		+prefix(text-shadow, #000 1px 1px)
@@ -111,8 +119,10 @@ h4
 	em
 		text-transform: italic
 
-#usage
+	p
+		margin: 0
 
+#usage
 	pre
 		margin-bottom: 40px
 
@@ -130,13 +140,22 @@ h4
 		+prefix(text-shadow, #000 2px 2px)
 
 	ul, ol, h4
+		margin-left: $padding*2
+		margin-right: $padding*2
+
+	p, h2, h3
 		margin-left: $padding
 		margin-right: $padding
+
+
 
 #api
 	line-height: 1.7em
 	color: $base
-	padding: 40px $padding $padding $padding
+	padding: 40px $padding*2 $padding $padding*2
+
+	.property
+		font-size: 20px
 
 	code
 		+prefix(text-shadow, #000 1px 1px)
@@ -168,6 +187,7 @@ h4
 
 	ul
 		margin-left: $padding*-1 + 10
+		margin-bottom: 20px
 
 		li 
 			list-style: none
@@ -177,8 +197,9 @@ h4
 
 .quickCode
 	pre
-		font-size: $size*.6
+		font-size: 15px
 		margin-left: $padding
+		padding-bottom: 20px
 
 .fullCode
 	pre 
@@ -186,7 +207,7 @@ h4
 		padding-left: $padding
 
 #changelog
-	padding: 0 $padding $padding $padding
+	padding: 0 $padding*2 $padding $padding*2
 
 	h2
 		font-size: $size*1.5

@@ -1,0 +1,110 @@
+version = '1.0'
+path = 'flash/joystick/as3/expanding'
+file = 'sample.zip'
+title = 'Joystick Vanilla Expandable'
+
+!!!5
+html
+	head
+		meta(http-equiv="Content-Type", content="text/html; charset=utf-8")
+		title #{title} 
+		link(rel="stylesheet", type="text/css", href="../../../../f/c/readme.css")
+
+		script(src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js")
+		script(src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/7.3/highlight.min.js")
+
+	body
+		
+		header#info
+
+			img#logo(src="../../../../img/joystick/logo.png", alt="Joystick Interactive")
+
+			h1 #{title}
+
+			:markdown
+
+				This is basically a generic (vanilla) implementation of an Flash expandable ad. The process of creations was specifically developed to be a near carbon copy of the [Studio v2 Expandable.](http://nargalzius.github.io/flash/joystick/as3/studio/v2/expanding)
+
+				The purpose of which is to easily switch from a generic demo, into a fully working Studio ad with minimal changes.
+
+				The goal is to expand this "process" to be compatible with other platforms.
+
+			h3 Resources
+
+			ul
+				li
+					a(href="#usage") Getting Started
+				li
+					a(href="#api") Full Documentation  
+				li
+					a(target="_blank", href="http://nargalzius.github.io/#{path}/#{file}") Download
+					|  (.zip)
+				li
+					a(href="#changelog") Changelog
+
+			:markdown
+
+				### Requirements/Dependencies
+
+				- Flash Player 9 or higher
+				- ActionScript 3
+				- [GreenSock Animation Platform (AS3)](http://www.greensock.com)
+
+		section#usage
+
+			h1 Quick Start
+
+			:markdown
+
+				Creation of an expandable ad is very similar to a Studio v2 Expandable - so you may use the [same instructions listed there](http://nargalzius.github.io/flash/joystick/as3/studio/v2/expanding) 
+
+				For the parent swf The only difference is you **do not** need the `Studio Enabler` and `Expanding` components in your file at all.
+
+				However, you **do** have to put a `MovieClip` in place of the `Expanding` component and give it an instance name of `expanding`. This is because the a bunch of dimension/position calculations are based on the "expanding" element.
+
+				Also, don't forget to set the parent's document class to `com.joystick.vanilla.expand.Expand`.
+
+				Likewise, for both children swfs, you do not need the `Enabler` in the library as well. And their document classes are `com.joystick.vanilla.expand.CollapsedChild` and `com.joystick.vanilla.expand.ExpandedChild` respectively.
+
+				Other than those mentioned, as far as any developer is concerned, both Vanilla and Studio versions of an expandable ad use the same exact methods, settings, and listeners.
+
+		section#api
+			
+			:markdown
+				# API
+
+				Again, the Vanilla implementation uses the same API as the [Studio v2 Expandable](http://nargalzius.github.io/flash/joystick/as3/studio/v2/expanding) with very few differences one is [obviously] the document classes used.
+
+				## Parent SWF
+
+				Document class file:  
+				`com.joystick.vanilla.expand.Expand`
+
+				## Children SWFs
+
+				Document class file(s):  
+				`com.joystick.vanilla.expand.CollapsedChild` (extends ChildCore)  
+				`com.joystick.vanilla.expand.ExpandedChild` (extends ChildCore)
+
+				There are three other differences under the hood as far as events go.
+
+				1. To cancel an auto-collapse, the `StudioEvent.INTERACTION` has been replaced with `Event.MOUSE_MOVE`.  
+				2. Instead of the parent swf, listening for `StudioEvent.EXIT`, the "collapse on exit" on an expanded state is done via a simple `collapse()` call.
+				3. For collapse on mouseout behavior, `StudioEvent.STAGE_MOUSE_OUT` has been replaced with `MouseEvent.MOUSE_LEAVE`
+
+
+
+		section#changelog
+
+			:markdown
+				Changelog
+				=========
+
+				## 1.0
+
+					- Initial release
+
+		script.
+			$(document).ready(function() {
+				$('pre.syntax').each(function(i, e) {hljs.highlightBlock(e)});
+			});

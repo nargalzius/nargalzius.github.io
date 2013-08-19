@@ -96,46 +96,46 @@ html
 			ul
 				li 
 					strong
-						code center 
-					code : string = 
+						code.property center 
+					code.property : string = 
 					em 
-						code '40.72423,-73.999186'
+						code.property '40.72423,-73.999186'
 
 					p A comma-delimited <code>lat</code>/<code>lng</code> string for the map origin point. This allows for faster <code>lat</code>/<code>lng</code> input instead of creating an object with two separate values.
 
 				li 
 					strong
-						code container 
-					code : string = 
+						code.property container 
+					code.property : string = 
 					em 
-						code '#map'
+						code.property '#map'
 
 					p DOM element <code>id</code> where the map will be plugged into.
 
 				li 
 					strong
-						code zoom 
-					code : number = 
+						code.property zoom 
+					code.property : number = 
 					em 
-						code 13
+						code.property 13
 
 					p Default zoom setting of the map.
 
 				li 
 					strong
-						code icon 
-					code : string = 
+						code.property icon 
+					code.property : string = 
 					em 
-						code null
+						code.property null
 
 					p Custom <strong>global</strong> marker icon.
 
 				li 
 					strong
-						code iwID 
-					code : string = 
+						code.property iwID 
+					code.property : string = 
 					em 
-						code 'infoWindow'
+						code.property 'infoWindow'
 
 					p Designated infoWindow class. This is injected into the infoWindow's <code>content</code> to allow easy styling of the elements within. 
 
@@ -143,28 +143,28 @@ html
 
 				li 
 					strong
-						code w 
-					code : number = 
+						code.property w 
+					code.property : number = 
 					em 
-						code null
+						code.property null
 						| ,
 					br 
 
 					strong
-						code h 
-					code : number = 
+						code.property h 
+					code.property : number = 
 					em 
-						code null
+						code.property null
 					br 
 
 					p Map canvas dimensions. It's recommended to set this via CSS, but if you're too lazy and just want to see something appear immediately, you can set it here. It's also worth remembering that setting this will <strong>bypass</strong> any value set via CSS
 
 				li 
 					strong
-						code markers 
-					code : array = 
+						code.property markers 
+					code.property : array = 
 					em 
-						code null
+						code.property null
 
 					p An array of marker objects. The base implementation can recognize the following object keys:
 
@@ -173,15 +173,15 @@ html
 					ul
 						li 
 							strong
-								code loc 
-							code : string
+								code.property loc 
+							code.property : string
 
 							p Comma-delimited <code>lat</code>/<code>lng</code> coordinates (e.g. <code>40.72423,-73.999186</code>) just like with the <code>center</code> variable
 
 						li 
 							strong
-								code icon 
-							code : string
+								code.property icon 
+							code.property : string
 
 							p Marker icon for the specific marker. In the event you have the <em>global</em> <code>icon</code> set, any marker with individual <code>icon</code> variables set will override the global icon. Any marker that doesn't, will use the global icon.  
 
@@ -189,8 +189,8 @@ html
 
 						li 
 							strong
-								code info 
-							code : string
+								code.property info 
+							code.property : string
 							| or 
 							code object
 
@@ -202,10 +202,10 @@ html
 
 				li 
 					strong
-						code template 
-					code : function = 
+						code.property template 
+					code.property : function = 
 					em 
-						code null
+						code.property null
 
 					p This is the most powerful feature for customizing markers. You can have something like:
 

@@ -115,72 +115,109 @@ html
 
 			ul
 
-				li <strong><code>img</code></strong><code>:array</code>
+				li
+					strong
+						code.property img
+					code.property : array
 					
-					p The image array that contains each image as objects. The keys available are <code>src</code>, <code>title</code>, <code>desc</code>, and <code>group</code>, all of which are strings.
+					:markdown
+						The image array that contains each image as objects. The keys available are `src`, `title`, `desc`, and `group`, all of which are strings.
 
 					ul
 						li 
-							p <code>src</code> is the only required parameter, as it is the url of your image
+							:markdown
+								`src` is the only required parameter, as it is the url of your image
 
 						li 
-							p <code>title</code> Optional. This is similar to the main document <code>title</code>, it puts header text on top of each image.
+							:markdown
+								`title` Optional. This is similar to the main document `title`, it puts header text on top of each image.
 
 						li 
-							p <code>desc</code> Optional. This is similar to the main document <code>desc</code>, but it puts the subtext <strong>below</strong> the image
+							:markdown
+								`desc` Optional. This is similar to the main document `desc`, but it puts the subtext **below** the image
 
 						li 
-							p <code>group</code> Optional. An <code>id</code> assigned to the wrapper div of a series of images you choose to group.
+							:markdown
+								`group` Optional. An `id` assigned to the wrapper div of a series of images you choose to group.
 
-							p The normal way of displaying images is centered and stacked on top of each other. This can be annoying if you have a series of thin vertical images, wherein you would prefer to simply have them display side-by-side. 
+								The normal way of displaying images is centered and stacked on top of each other. This can be annoying if you have a series of thin vertical images, wherein you would prefer to simply have them display side-by-side. 
 
-							p Assigning them to the same <code>group</code> id will put them in a container, and set each to the css <code>display: inline-table</code> flow. Meaning that if they could be, they will be displayed side-by-side, but if the viewport is too small, they will re-flow accordingly.
+								Assigning them to the same `group` id will put them in a container, and set each to the css `display: inline-table` flow. Meaning that if they could be, they will be displayed side-by-side, but if the viewport is too small, they will re-flow accordingly.
 
-				li <strong><code>swf</code></strong><code>:object</code>
+				li
+					strong
+						code.property swf
+					code.property : object
 
-					p The flash object that contains data needed to initialize the flash embed. The parameters are: <code>src</code>, <code>w</code>, <code>h</code>, <code>x</code>, <code>y</code>, <code>page</code>, <code>push</code>, & <code>minH</code>
+					:markdown
+						The flash object that contains data needed to initialize the flash embed. The parameters are: `src`, `w`, `h`, `x`, `y`, `page`, `push`, & `minH`
 
 					ul
 						li
-							p <code>src</code>:  the source flash file.
+							:markdown
+								`src`:  the source flash file.
 						li
-							p <code>w</code>: flash file width
+							:markdown
+								`w`: flash file width
 						li
-							p <code>h</code>: flash file height
+							:markdown
+								`h`: flash file height
 						li
-							p <code>page</code>: Optional. Normally, the flash unit is automatically centered. But if you want to create a "mockup" page, you can create a background image of the site you want to plug the unit into and put it here.
+							:markdown
+								`page`: Optional. Normally, the flash unit is automatically centered. But if you want to create a "mockup" page, you can create a background image of the site you want to plug the unit into and put it here.
 
-							p if this is set, it'll automatically clear the entire container (logo, text, etc.) and instead "convert" it to a container with a background image. Your unit will now be set to absolute 0 0 in relation to the container, which you can now adjust the unit's offset through the next parameters.
+							:markdown
+								if this is set, it'll automatically clear the entire container (logo, text, etc.) and instead "convert" it to a container with a background image. Your unit will now be set to absolute 0 0 in relation to the container, which you can now adjust the unit's offset through the next parameters.
 						li
-							p <code>x</code>: & <code>y</code>: Optional. Top and left offset of the unit. Usually used in conjucntion with page so you can place the unit in a spsc
+							:markdown
+								`x`: & `y`: Optional. Top and left offset of the unit. Usually used in conjucntion with page so you can place the unit in a spsc
 						li
-							p <code>push</code>: Optional. This is just a bonus, if you want "pushdown" functionality. You just put here an image of the section of the mock site you want to push down. Take note that if you use this option, you'll have to add an <code>ExternalInterface</code> in your flash the functions to call are <code>expand()</code> and <code>collapse()</code> (duh!)
+							:markdown
+								`push`: Optional. This is just a bonus, if you want "pushdown" functionality. You just put here an image of the section of the mock site you want to push down. Take note that if you use this option, you'll have to add an `ExternalInterface` in your flash the functions to call are `expand()` and `collapse()` (duh!)
 						li
-							p <code>minH</code> Optional. "collapsed" height. This variable is only used when you have <code>push</code> set/enabled. 
+							:markdown
+								`minH` Optional. "collapsed" height. This variable is only used when you have `push` set/enabled. 
 
-							p You <strong>have</strong> to set this or the elements to be expanded are most likely to be loaded below the full expanded height of your unit. 
+								You **have** to set this or the elements to be expanded are most likely to be loaded below the full expanded height of your unit. 
 
-							p Since a pushdown is really just a vertical oriented expand, all the calculations are done in the background. What it does is it takes the dimension/position of your unit, and calculates that against the minimized height to decide the Y values it needs for the expand/collapse animations
+								Since a pushdown is really just a vertical oriented expand, all the calculations are done in the background. What it does is it takes the dimension/position of your unit, and calculates that against the minimized height to decide the Y values it needs for the expand/collapse animations
 
-				li <strong><code>title</code></strong><code>:string</code>
+				li
+					strong
+						code.property title
+					code.property : string
 
-					p Optional. This enters a centered title-header below the logo. If this is set, it will <strong>also</strong> change the browser title bar.
+					:markdown
+						Optional. This enters a centered title-header below the logo. If this is set, it will **also** change the browser title bar.
 
-				li <strong><code>desc</code></strong><code>:string</code>
+				li
+					strong
+						code.property desc
+					code.property : string
 
-					p Optional. A sub header below the title. Note that the <code>title</code> and the <code>desc</code> are independent of each other - so you may use either one, both, or none.
+					:markdown
+						Optional. A sub header below the title. Note that the `title` and the `desc` are independent of each other - so you may use either one, both, or none.
 
-				li <strong><code>backgroundColor</code></strong><code>:string</code>
+				li
+					strong
+						code.property backgroundColor
+					code.property : string
 
-					p Optional. Changes the entire document's background color - for previews that require a dark background.
+					:markdown
+						Optional. Changes the entire document's background color - for previews that require a dark background.
 
-				li <strong><code>color</code></strong><code>:string</code>
+				li
+					strong
+						code.property color
+					code.property : string
 
-					p Optional. Changes the document's default text color - for previews that require a dark background.
+					:markdown
+						Optional. Changes the document's default text color - for previews that require a dark background.
 
-			p As of the moment, for some reason it breaks when you try to load a file in a folder. It works fine when loading from the same folder or from a url.
+			:markdown
+				As of the moment, for some reason it breaks when you try to load a file in a folder. It works fine when loading from the same folder or from a url.
 
-			p Also, the pushdown is far from bullet-proof, it works for the most part, but it also largely depends on how the browser handles <code>ExternalInterface</code> calls.
+				Also, the pushdown is far from bullet-proof, it works for the most part, but it also largely depends on how the browser handles `ExternalInterface` calls.
 
 		section#changelog
 

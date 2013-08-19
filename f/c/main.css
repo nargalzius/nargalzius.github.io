@@ -333,4 +333,5 @@ table {
   border-spacing: 0; }
 
 body {
-  font-family: "Asap", "Helvetica", "Arial", sans-serif; }
+  font-family: "Asap", "Helvetica", "Arial", sans-serif;
+  margin: 100px; }

@@ -9,11 +9,13 @@
   </head>
   <body>
     <header id="info"><img id="logo" src="../../../../../../img/joystick/logo.png" alt="Joystick Interactive">
-      <h1>Joystick Studio v2 Expandable</h1><p>The purpose of this set of AS3 Class files is to standardize the core functionality of Studio expandables used by the organization with the most behavior typical behavior of units usually created. Furthermore, it allows for various implemenatations (expand directions, pushdowns, auto-expand/collapse, etc.) while using the <strong>very same</strong> document classes for each (parent, collapsed, and expanded) as far as core functionality goes.</p>
+      <h1>Joystick Studio v2 Expandable</h1><p>The purpose of this set of AS3 Class files is to standardize the implementation of core functionality of Studio expandables used by the organization and accomodate typical behavior required for most implementations.</p>
 
-<p>As an example, take a look at the various implementations of ads in <a href="http://www.google.com/doubleclick/studio/ua/externalpreview#gr8bWOl_S3KVZB9PcCSb7w">this demo campaign</a>. <strong>Every one</strong> of those implementations use the <strong>same exact</strong> parent with only a few variables changed, and the expanding component resized and moved in the canvas. That&#39;s it, the expand animation/direction, etc. are simply set through variables.</p>
+<p>As an example, take a look at the various implementations of ads in <a href="http://www.google.com/doubleclick/studio/ua/externalpreview#gr8bWOl_S3KVZB9PcCSb7w">this demo campaign</a>. Have the same document classes under the hood.</p>
 
-<p>As you will find out while reading through the documentation, these document classes accomodate for special scenarios without having to change any of the core code of the document classes. The result is you get very reliable core functionalty nearly out of the box, and all you have to focus on is the actual content of your creative.</p>
+<p>Another goal of such an approach is that since majority the core expandable functionality has been abstracted outside of the Flash files, it is possible to create similar document classes for non-Studio expandables in such a way that porting regular demos to Studio implementations can be achieved mostly by just switching the document classes. </p>
+
+<p>This unfortuantely doesn&#39;t cover the video components - so you&#39;ll still have to convert those manually. But who knows...</p>
       <h3>Resources</h3>
       <ul>
         <li><a href="#usage">Getting Started</a></li>

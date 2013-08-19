@@ -49,6 +49,7 @@ _EXPANDED = &quot;FILENAME.swf&quot;;
 //_MOUSECOLLAPSE = true;
 //_PUSHDOWN = true;
 //_DIRECTION = &quot;L&quot;;
+//_BORDER = NaN;
 //debug = true;
 
 /* INITIALIZE STUDIO */
@@ -202,6 +203,12 @@ Logger.setLogLevel(Logger.NONE);
           <ul>
             <li> <code>O </code>(Omni) expands outward to all directions from center of collapsed child <a href="http://www.google.com/doubleclick/studio/ua/externalpreview#gr8bWOl_S3KVZB9PcCSb7w/creativeId=24666763">Example</a></li>
           </ul>
+        </li>
+        <li><strong><code>_BORDER </code></strong><code>: Number = </code><em><code>0x000000</code></em><p>Automatically generates a stroke/border around the expanded/collapsed MCs as they are loaded to the stage.</p>
+
+<p>Accepts numbers in &quot;hex color value format&quot; that Flash understands natively (i.e. pre-pended by <code>0x</code>). It defaults to black (<code>0x000000</code>).</p>
+
+<p>Most of the time, borders are required, so I thought it would be good to just include this as default behavior. If you wish to disable the borders for some cases, you can set <code>_BORDER</code> to a non-finite number such as <code>-1</code> or <code>NaN</code>.</p>
         </li>
       </ul>
       <h2>Children SWFs</h2><p>Document class file(s):<br/><code>com.joystick.studio.v2.CollapsedChild</code> (extends ExpandProxy)<br/><code>com.joystick.studio.v2.ExpandedChild</code> (extends ExpandProxy)</p>

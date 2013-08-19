@@ -81,6 +81,7 @@ html
 					//_MOUSECOLLAPSE = true;
 					//_PUSHDOWN = true;
 					//_DIRECTION = "L";
+					//_BORDER = NaN;
 					//debug = true;
 
 					/* INITIALIZE STUDIO */
@@ -354,6 +355,19 @@ html
 							| (Omni) expands outward to all directions from center of collapsed child 
 
 							a(href="http://www.google.com/doubleclick/studio/ua/externalpreview#gr8bWOl_S3KVZB9PcCSb7w/creativeId=24666763") Example
+				li
+					strong
+						code _BORDER 
+					code : Number = 
+					em
+						code 0x000000
+
+					:markdown
+						Automatically generates a stroke/border around the expanded/collapsed MCs as they are loaded to the stage.
+
+						Accepts numbers in "hex color value format" that Flash understands natively (i.e. pre-pended by `0x`). It defaults to black (`0x000000`).
+
+						Most of the time, borders are required, so I thought it would be good to just include this as default behavior. If you wish to disable the borders for some cases, you can set `_BORDER` to a non-finite number such as `-1` or `NaN`.
 
 			h2 Children SWFs
 

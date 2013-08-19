@@ -55,13 +55,15 @@ var preview = {
 				document.title = titlestring+"Preview";
 	
 			if(this.title) 
-				$('#header').html(this.title);
+				$('#header').html(this.title).css({'margin': '40px auto 0 auto'});
 			else
 				$('#header').html('');
 	
 			if(this.desc) {
 				$('#byline').html(this.desc);
-				$('#header').css('margin-bottom','0');
+				$('#header').css({
+					'margin': '40px auto 0 auto'
+				});
 
 				if(!this.title)
 					$('#byline').css('margin-top','50px');
@@ -82,7 +84,7 @@ var preview = {
 		preview.killLoader();
 		var pics = preview.img;
 
-		preview.content.html('').css('margin-top','50px');
+		preview.content.html('');
 		
 		for(var i=0; i < pics.length; i++)
 		{
@@ -137,12 +139,20 @@ var preview = {
 		if(preview.swf.page)
 		{
 			if(obj.y)
-				this.swfunit.css({'top': obj.y+'px'});
+				preview.swfunit.css({'top': obj.y+'px'});
 			if(obj.x)
-				this.swfunit.css({'left': obj.x+'px'});
+				preview.swfunit.css({'left': obj.x+'px'});
+
+			preview.content.css({'margin-top':0});
 		}
 		else
-			this.content.css({'width':obj.w+'px', 'height': obj.h+'px'});
+		{
+			preview.content.css({
+				'width':obj.w+'px', 
+				'height': obj.h+'px'
+			});
+		}
+		
 
 		if(preview.swf.push && preview.swf.page)
 			preview.initPushdown(preview.swf.push, obj);
@@ -183,7 +193,7 @@ var preview = {
 		trace('pushdown')
 		preview.pd = $("#pushdown");	
 		
-			preview.pdBGload(src);
+		preview.pdBGload(src);
 	
 		// CALCULATE PUSHDOWN OFFSET
 		
@@ -192,7 +202,7 @@ var preview = {
 		preview.diff = obj.h - obj.minH;
 		
 		preview.pd.css({"top": preview.col+"px"});
-		this.swfunit.css('background','#FFF');
+		preview.swfunit.css('background','#FFF');
 	
 		//trace('content: '+preview.content.height());
 		//trace('flash offset: '+preview.swf.y);

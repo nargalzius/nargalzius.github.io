@@ -59,6 +59,10 @@ html, body {
   margin: 0 auto 100px auto;
   text-align: center;
 }
+#container #errorMSG {
+  color: red !important;
+  max-width: 300px;
+}
 
 header {
   display: block;
@@ -97,6 +101,7 @@ header #byline a:hover {
 
 #container {
   position: relative;
+  margin-top: 50px;
 }
 #container div.image {
   margin: 20px 10px;
@@ -128,12 +133,6 @@ header #byline a:hover {
 #pushdown {
   display: block;
   position: absolute;
-}
-
-#errorMSG {
-  background: red;
-  display: block;
-  max-width: 300px;
 }
 
 code {

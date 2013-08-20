@@ -9,7 +9,7 @@ var debug = false;
 var spinner;
 var errorMSG = 'You seem to have initalized the script,<br />but failed to provide some required variables.';
 var preview = {
-	isError: false,
+	isError: false, theme: 'light',
 	init: function(obj) {
 
 		this.content = $('#container');
@@ -22,11 +22,10 @@ var preview = {
 			for(var property in obj)
 				preview[property] = obj[property];
 
-		if(this.theme == 'dark')
-			$('#logo').addClass('dark');
+		if(this.theme == 'dark' || this.theme == 'light')
+			$('#logo').addClass(this.theme);
 		else
 			$('#logo').addClass('light');
-
 
 		if(this.img || this.swf)
 		{

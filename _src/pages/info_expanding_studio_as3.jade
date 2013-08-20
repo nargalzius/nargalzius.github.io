@@ -1,7 +1,6 @@
 version = '1.0'
-path = 'flash/joystick/as3/studio/v2/expanding'
-file = 'sample.zip'
 title = 'Joystick Studio v2 Expandable'
+path = 'https://github.com/nargalzius/joystick_flash/tree/master'
 
 !!!5
 html
@@ -10,8 +9,8 @@ html
 		title #{title} 
 		link(rel="stylesheet", type="text/css", href="../../../../../../f/c/readme.css")
 
-		script(src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js")
-		script(src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/7.3/highlight.min.js")
+		script(type="text/javascript",src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js")
+		script(type="text/javascript",src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/7.3/highlight.min.js")
 
 	body
 		
@@ -39,10 +38,10 @@ html
 				li
 					a(href="#api") Full Documentation  
 				li
-					a(target="_blank", href="https://github.com/nargalzius/joystick_flash/tree/master/as3") ActionScript Classes 
+					a(target="_blank", href="#{path}/as3") ActionScript Classes 
 					| (AS3)
 				li
-					a(target="_blank", href="https://github.com/nargalzius/joystick_flash/tree/master/fla/as3_studio_expanding") Sample Implementation 
+					a(target="_blank", href="#{path}/fla/as3_studio_expanding") Sample Implementation 
 					| (.fla)
 				li
 					a(href="#changelog") Changelog
@@ -504,16 +503,16 @@ html
 				For example, an expand/collapse is fired only once (for every transition) even if you click rapidly. In the recent sample unit, because of the 1-second `_DELAY`, you can actually click on the exit, close button, and move out the unit (though `_MOUSECOLLAPSE` isn't enabled.) before the collapse starts - imagine what mayhem this could cause to your actions in the `META` handler (as they'd probably be called multiple times) - as well as the messy reporting to the Studio console.
 
 				Likewise, expand/collapse calls cannot be done **during** a [expand/collapse] transition. So if you click on the background exit, or mouseout (assuming you have `_MOUSECOLLAPSE` enabled) **while** the unit is expanding/collapsing, it will proceed with what it's doing. It essentially "disables" the unit during the transitions, to avoid buggy behavior.
-
-		section#changelog
-
-			:markdown
-				Changelog
-				=========
-
-				## 1.0
-
-					- Initial release
+		//
+			section#changelog
+			
+				:markdown
+					Changelog
+					=========
+			
+					## 1.0
+			
+						- Initial release
 
 		script.
 			$(document).ready(function() {

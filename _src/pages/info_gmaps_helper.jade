@@ -1,14 +1,17 @@
 version = '1.0'
+title = 'Helper Class for gmaps.js'
+path = 'http://nargalzius.github.io/ajax/joystick/gmaps_helper'
+
 
 !!!5
 html
 	head
 		meta(http-equiv="Content-Type", content="text/html; charset=utf-8")
-		title gmaps.js Helper Class
+		title #{title}
 		link(rel="stylesheet", type="text/css", href="../../../f/c/readme.css")
 
-		script(src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js")
-		script(src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/7.3/highlight.min.js")
+		script(type="text/javascript",src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js")
+		script(type="text/javascript",src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/7.3/highlight.min.js")
 
 	body
 		
@@ -17,8 +20,8 @@ html
 			img#logo(src="../../../img/joystick/logo.png", alt="Joystick Interactive")
 
 			:markdown
-				Helper Class for gmaps.js
-				=========================
+
+				# #{title}
 
 				A GoogleMaps helper class for [gmaps.js](http://hpneo.github.io/gmaps) that allows quicker implementation of common requested "features" for work demos.
 
@@ -39,7 +42,7 @@ html
 				li
 					a(href="#api") Full Documentation  
 				li
-					a(target="_blank", href="http://nargalzius.github.io/ajax/joystick/gmaps_helper/#{version}/mapHelper.js") Latest Build
+					a(target="_blank", href="#{path}/#{version}/mapHelper.js") Latest Build
 					|  (.js)
 				li
 					a(href="#changelog") Changelog
@@ -63,10 +66,10 @@ html
 
 			.fullCode
 				pre.syntax.html.
-					<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-					<script src="http://maps.google.com/maps/api/js?sensor=true"></script>
-					<script src="http://cdnjs.cloudflare.com/ajax/libs/gmaps.js/0.3/gmaps.min.js"></script>
-					<script src="http://nargalzius.github.io/ajax/joystick/gmaps_helper/#{version}/mapHelper.js"></script>
+					<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+					<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
+					<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/gmaps.js/0.3/gmaps.min.js"></script>
+					<script type="text/javascript" src="#{path}/#{version}/mapHelper.js"></script>
 
 			p Below is the minimum markup you'll need; basically just a container for the map.
 
@@ -256,7 +259,7 @@ html
 				Changelog
 				=========
 
-				## [1.0](http://nargalzius.github.io/ajax/joystick/gmaps_helper/1.0/mapHelper.js)
+				## [1.0](#{path}/1.0/mapHelper.js)
 
 					- Initial release
 

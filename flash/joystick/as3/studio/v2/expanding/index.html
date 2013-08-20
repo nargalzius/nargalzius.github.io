@@ -4,8 +4,8 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>Joystick Studio v2 Expandable </title>
     <link rel="stylesheet" type="text/css" href="../../../../../../f/c/readme.css">
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/7.3/highlight.min.js"></script>
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/7.3/highlight.min.js"></script>
   </head>
   <body>
     <header id="info"><img id="logo" src="../../../../../../img/joystick/logo.png" alt="Joystick Interactive">
@@ -247,13 +247,13 @@ Logger.setLogLevel(Logger.NONE);
 <p>For example, an expand/collapse is fired only once (for every transition) even if you click rapidly. In the recent sample unit, because of the 1-second <code>_DELAY</code>, you can actually click on the exit, close button, and move out the unit (though <code>_MOUSECOLLAPSE</code> isn&#39;t enabled.) before the collapse starts - imagine what mayhem this could cause to your actions in the <code>META</code> handler (as they&#39;d probably be called multiple times) - as well as the messy reporting to the Studio console.</p>
 
 <p>Likewise, expand/collapse calls cannot be done <strong>during</strong> a [expand/collapse] transition. So if you click on the background exit, or mouseout (assuming you have <code>_MOUSECOLLAPSE</code> enabled) <strong>while</strong> the unit is expanding/collapsing, it will proceed with what it&#39;s doing. It essentially &quot;disables&quot; the unit during the transitions, to avoid buggy behavior.</p>
-    </section>
+    </section><!--
     <section id="changelog"><h1>Changelog</h1>
 
 <h2>1.0</h2>
 
 <ul><li>Initial release</li></ul>
-    </section>
+    </section>-->
     <script>
       $(document).ready(function() {
        $('pre.syntax').each(function(i, e) {hljs.highlightBlock(e)});

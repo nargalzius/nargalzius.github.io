@@ -1,11 +1,12 @@
 version = '1.2'
 path = 'http://nargalzius.github.io/ajax/joystick/preview'
+title = 'Joystick Automatic Preview'
 
 !!!5
 html
 	head
 		meta(http-equiv="Content-Type", content="text/html; charset=utf-8")
-		title Joystick Generic DOM Loader
+		title #{title}
 		link(rel="stylesheet", type="text/css", href="../../../f/c/readme.css")
 
 		script(src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js")
@@ -17,9 +18,9 @@ html
 
 			img#logo(src="../../../img/joystick/logo.png", alt="Joystick Interactive")
 
+			h1 #{title}
+
 			:markdown
-				Joystick Automatic Preview
-				==========================
 
 				One of the most common things we do as Joystick employees is to create "preview" pages. This can be painfully repetitive. Of course, this is only limited to the "quick and dirty" previews we all know and... err... love ;) 
 
@@ -257,7 +258,7 @@ html
 
 					- Added more error handling
 
-					- Moved the `page` (background image) and `push` (pusdhown image) settings inside the `swf` object. The reason being it's most more often that a "mockup" scenario is needed only for flash-based demos.
+					- Moved the `page` (background image) and `push` (pusdhown image) settings inside the `swf` object. The reason being it's more often that a "mockup" scenario is needed only for flash-based demos.
 
 				## [1.0](#{path}/1.0/preview.js)
 

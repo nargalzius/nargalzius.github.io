@@ -22,7 +22,7 @@ var preview = {
 			for(var property in obj)
 				preview[property] = obj[property];
 
-		if(this.theme == 'dark' || this.theme == 'light')
+		if( (this.img || this.swf) && (this.theme == 'dark' || this.theme == 'light') )
 			$('#logo').addClass(this.theme);
 		else
 			$('#logo').addClass('light');

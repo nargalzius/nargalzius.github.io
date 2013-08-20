@@ -1,6 +1,6 @@
 /*
 	JOYSTICK QUICK-PREVIEW SCRIPT
-	v1.1
+	v1.2
 	(c) 2013 Carlo Santos
 
 	DOCS: http://nargalzius.github.io/ajax/joystick/preview
@@ -37,7 +37,7 @@ var preview = {
 				'background-color':this.backgroundColor,
 				'color':this.color
 			});
-	
+
 			/* DECIDE WHAT TO DO */
 	
 			if(this.swf)

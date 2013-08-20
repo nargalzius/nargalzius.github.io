@@ -63,39 +63,39 @@ html
 
 			.fullCode
 				pre.syntax.javascript.
-					<!DOCTYPE html><html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><link rel="stylesheet" type="text/css" href="#{path}/#{version}/preview.css"/><script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script><script src="http://cdnjs.cloudflare.com/ajax/libs/swfobject/2.2/swfobject.js"></script><script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"></script><script src="#{path}/#{version}/preview.js"></script><style>
+					<!DOCTYPE html><html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><link rel="stylesheet" type="text/css" href="http://nargalzius.github.io/ajax/joystick/preview/1.2/preview.css"/><style>
 
 					/* CUSTOM STYLES HERE */
 
-					</style></head><body><header><a id="logo" href="http://joystickinteractive.com" title="Joystick Interactive" target="_blank"></a><h1 id="header">Joystick Interactive</h1><div id="byline"> <p>Documentation of this automated preview template can be found <a href="#{path}" target="_blank">here.</a></p></div><div id="preloader"><div id="preloadText"></div><div id="preloadIcon"></div></div></header><div id="container"><div id="flashcontent" class="flashalign"><div id="unit"></div></div><div id="pushdown"></div></div><script>
+					</style></head><body><header><a id="logo" href="http://joystickinteractive.com" title="Joystick Interactive" target="_blank"></a><h1 id="header">Joystick Interactive</h1><div id="byline"> <p>Documentation of this automated preview template can be found <a href="http://nargalzius.github.io/ajax/joystick/preview">here.</a></p></div><div id="preloader"><div id="preloadText"></div><div id="preloadIcon"></div></div></header><div id="container"><div id="flashcontent" class="flashalign"><div id="unit"></div></div><div id="pushdown"></div></div><script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script><script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/swfobject/2.2/swfobject.js"></script><script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"></script><script type="text/javascript" src="http://nargalzius.github.io/ajax/joystick/preview/1.2/preview.js"></script><script type="text/javascript">
 
 					debug = false;
 
 					/* IMAGE SETTINGS */
 					var i = [];
-					//i.push({src: null, title: null, desc: null, group: null});
+						//i.push({src: null, title: null, desc: null, group: null});
 
 					/* FLASH SETTINGS */
 					var f = {
-						src	: 'http://nargalzius.github.io/f/s/970x66_exp.swf',
-						w 	: 970, 
-						h 	: 400,
-						//x 	: 1,
-						//y 	: 133,
-						//minH: 66,
+						src: 'http://nargalzius.github.io/f/s/970x66_exp.swf',
+						w: 970, 
+						h: 400,
+						x: 1,
+						y: 133,
+						minH: 66,
 						//page: 'http://nargalzius.github.io/img/joystick/background.png',
-						//push: 'http://nargalzius.github.io/img/joystick/pd_fg.png'
+						//pushdown: 'http://nargalzius.github.io/img/joystick/pd_fg.png'
 					};
 
-					/* INITLIALIZE PREVIEW */
+					/* INITIALIZE PREVIEW */
 					$(document).ready(function(){
 						preview.init({ 
-							//img  : i,
-							//swf  : f,
+							//img: i,
+							//swf: f,
 							//title: 'Title',
-							//desc : 'Description',
+							//desc: 'Description',
 							//backgroundColor: '#000',
-							//color: '#FFF',
+							//color: '#ccc',
 							//theme: 'dark'
 						});
 					});

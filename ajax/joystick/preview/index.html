@@ -31,39 +31,39 @@
 
 <p>The parts that aren&#39;t meant to be touched have been minified, only exposing the user-configurable stuff. Every file referenced in the page is pulled from a CDN, so even at it&#39;s very basic form, uncommenting everything (except for the image array comment - as it&#39;s just meant to be a reference) will actually work out of the box.</p>
       <div class="fullCode">
-        <pre class="syntax javascript">&lt;!DOCTYPE html&gt;&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot;&gt;&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, maximum-scale=1&quot;&gt;&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;http://nargalzius.github.io/ajax/joystick/preview/1.2/preview.css&quot;/&gt;&lt;script src=&quot;http://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js&quot;&gt;&lt;/script&gt;&lt;script src=&quot;http://cdnjs.cloudflare.com/ajax/libs/swfobject/2.2/swfobject.js&quot;&gt;&lt;/script&gt;&lt;script src=&quot;http://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js&quot;&gt;&lt;/script&gt;&lt;script src=&quot;http://nargalzius.github.io/ajax/joystick/preview/1.2/preview.js&quot;&gt;&lt;/script&gt;&lt;style&gt;
+        <pre class="syntax javascript">&lt;!DOCTYPE html&gt;&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot;&gt;&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, maximum-scale=1&quot;&gt;&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;http://nargalzius.github.io/ajax/joystick/preview/1.2/preview.css&quot;/&gt;&lt;style&gt;
 
 /* CUSTOM STYLES HERE */
 
-&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;header&gt;&lt;a id=&quot;logo&quot; href=&quot;http://joystickinteractive.com&quot; title=&quot;Joystick Interactive&quot; target=&quot;_blank&quot;&gt;&lt;/a&gt;&lt;h1 id=&quot;header&quot;&gt;Joystick Interactive&lt;/h1&gt;&lt;div id=&quot;byline&quot;&gt; &lt;p&gt;Documentation of this automated preview template can be found &lt;a href=&quot;http://nargalzius.github.io/ajax/joystick/preview&quot; target=&quot;_blank&quot;&gt;here.&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;&lt;div id=&quot;preloader&quot;&gt;&lt;div id=&quot;preloadText&quot;&gt;&lt;/div&gt;&lt;div id=&quot;preloadIcon&quot;&gt;&lt;/div&gt;&lt;/div&gt;&lt;/header&gt;&lt;div id=&quot;container&quot;&gt;&lt;div id=&quot;flashcontent&quot; class=&quot;flashalign&quot;&gt;&lt;div id=&quot;unit&quot;&gt;&lt;/div&gt;&lt;/div&gt;&lt;div id=&quot;pushdown&quot;&gt;&lt;/div&gt;&lt;/div&gt;&lt;script&gt;
+&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;header&gt;&lt;a id=&quot;logo&quot; href=&quot;http://joystickinteractive.com&quot; title=&quot;Joystick Interactive&quot; target=&quot;_blank&quot;&gt;&lt;/a&gt;&lt;h1 id=&quot;header&quot;&gt;Joystick Interactive&lt;/h1&gt;&lt;div id=&quot;byline&quot;&gt; &lt;p&gt;Documentation of this automated preview template can be found &lt;a href=&quot;http://nargalzius.github.io/ajax/joystick/preview&quot;&gt;here.&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;&lt;div id=&quot;preloader&quot;&gt;&lt;div id=&quot;preloadText&quot;&gt;&lt;/div&gt;&lt;div id=&quot;preloadIcon&quot;&gt;&lt;/div&gt;&lt;/div&gt;&lt;/header&gt;&lt;div id=&quot;container&quot;&gt;&lt;div id=&quot;flashcontent&quot; class=&quot;flashalign&quot;&gt;&lt;div id=&quot;unit&quot;&gt;&lt;/div&gt;&lt;/div&gt;&lt;div id=&quot;pushdown&quot;&gt;&lt;/div&gt;&lt;/div&gt;&lt;script type=&quot;text/javascript&quot; src=&quot;http://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js&quot;&gt;&lt;/script&gt;&lt;script type=&quot;text/javascript&quot; src=&quot;http://cdnjs.cloudflare.com/ajax/libs/swfobject/2.2/swfobject.js&quot;&gt;&lt;/script&gt;&lt;script type=&quot;text/javascript&quot; src=&quot;http://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js&quot;&gt;&lt;/script&gt;&lt;script type=&quot;text/javascript&quot; src=&quot;http://nargalzius.github.io/ajax/joystick/preview/1.2/preview.js&quot;&gt;&lt;/script&gt;&lt;script type=&quot;text/javascript&quot;&gt;
 
 debug = false;
 
 /* IMAGE SETTINGS */
 var i = [];
-//i.push({src: null, title: null, desc: null, group: null});
-
+ //i.push({src: null, title: null, desc: null, group: null});
+ 
 /* FLASH SETTINGS */
 var f = {
- src	: 'http://nargalzius.github.io/f/s/970x66_exp.swf',
- w 	: 970, 
- h 	: 400,
- //x 	: 1,
- //y 	: 133,
- //minH: 66,
+ src: 'http://nargalzius.github.io/f/s/970x66_exp.swf',
+ w: 970, 
+ h: 400,
+ x: 1,
+ y: 133,
+ minH: 66,
  //page: 'http://nargalzius.github.io/img/joystick/background.png',
- //push: 'http://nargalzius.github.io/img/joystick/pd_fg.png'
+ //pushdown: 'http://nargalzius.github.io/img/joystick/pd_fg.png'
 };
 
-/* INITLIALIZE PREVIEW */
+/* INITIALIZE PREVIEW */
 $(document).ready(function(){
  preview.init({ 
-  //img  : i,
-  //swf  : f,
+  //img: i,
+  //swf: f,
   //title: 'Title',
-  //desc : 'Description',
+  //desc: 'Description',
   //backgroundColor: '#000',
-  //color: '#FFF',
+  //color: '#ccc',
   //theme: 'dark'
  });
 });

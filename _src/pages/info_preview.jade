@@ -1,4 +1,4 @@
-version = '1.1'
+version = '1.2'
 
 !!!5
 html
@@ -61,7 +61,7 @@ html
 
 			.fullCode
 				pre.syntax.javascript.
-					<!DOCTYPE html><html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><link rel="stylesheet" type="text/css" href="http://nargalzius.github.io/ajax/joystick/preview/1.1/preview.css"/><script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script><script src="http://cdnjs.cloudflare.com/ajax/libs/swfobject/2.2/swfobject.js"></script><script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"></script><script src="http://nargalzius.github.io/ajax/joystick/preview/1.1/preview.js"></script><style>
+					<!DOCTYPE html><html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><link rel="stylesheet" type="text/css" href="http://nargalzius.github.io/ajax/joystick/preview/#{version}/preview.css"/><script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script><script src="http://cdnjs.cloudflare.com/ajax/libs/swfobject/2.2/swfobject.js"></script><script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"></script><script src="http://nargalzius.github.io/ajax/joystick/preview/#{version}/preview.js"></script><style>
 
 					/* CUSTOM STYLES HERE */
 
@@ -91,7 +91,10 @@ html
 							//img  : i,
 							//swf  : f,
 							//title: 'Title',
-							//desc : 'Description'
+							//desc : 'Description',
+							//backgroundColor: '#000',
+							//color: '#FFF',
+							//theme: 'dark'
 						});
 					});
 
@@ -201,15 +204,29 @@ html
 				li
 					strong
 						code.property backgroundColor
-					code.property : string
+					code.property : string = 
+					em
+						code.property '#FFF'
 
 					:markdown
 						Optional. Changes the entire document's background color - for previews that require a dark background.
 
 				li
 					strong
+						code.property theme
+					code.property : string = 
+					em
+						code.property 'light'
+
+					:markdown
+						Optional, case-sensitive. Switches the [alphatransparent] PNG logo to suit the background better.
+
+				li
+					strong
 						code.property color
-					code.property : string
+					code.property : string = 
+					em
+						code.property '#222'
 
 					:markdown
 						Optional. Changes the document's default text color - for previews that require a dark background.
@@ -224,6 +241,10 @@ html
 			:markdown
 				Changelog
 				=========
+				## [1.2](http://nargalzius.github.io/ajax/joystick/preview/1.2/preview.js)
+
+					- Added `theme` variable to switch from two png backgrounds depending on the background.
+
 				## [1.1](http://nargalzius.github.io/ajax/joystick/preview/1.1/preview.js)
 
 					- Renamed `minY` to `minH`

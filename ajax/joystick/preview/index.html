@@ -20,7 +20,7 @@
         <li><a href="#usage">Getting Started</a></li>
         <li><a target="_blank" href="http://jsfiddle.net/nargalzius/K3QTx">Sandbox</a> (jsfiddle)</li>
         <li><a href="#api">Full Documentation</a></li>
-        <li><a target="_blank" href="http://nargalzius.github.io/ajax/joystick/preview/1.1/preview.js">Latest Build</a> (.js)</li>
+        <li><a target="_blank" href="http://nargalzius.github.io/ajax/joystick/preview/1.2/preview.js">Latest Build</a> (.js)</li>
         <li><a href="#changelog">Changelog</a></li>
       </ul><h3>Dependencies</h3>
 
@@ -32,7 +32,7 @@
 
 <p>The parts that aren&#39;t meant to be touched have been minified, only exposing the user-configurable stuff. Every file referenced in the page is pulled from a CDN, so even at it&#39;s very basic form, uncommenting everything (except for the image array comment - as it&#39;s just meant to be a reference) will actually work out of the box.</p>
       <div class="fullCode">
-        <pre class="syntax javascript">&lt;!DOCTYPE html&gt;&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot;&gt;&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, maximum-scale=1&quot;&gt;&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;http://nargalzius.github.io/ajax/joystick/preview/1.1/preview.css&quot;/&gt;&lt;script src=&quot;http://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js&quot;&gt;&lt;/script&gt;&lt;script src=&quot;http://cdnjs.cloudflare.com/ajax/libs/swfobject/2.2/swfobject.js&quot;&gt;&lt;/script&gt;&lt;script src=&quot;http://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js&quot;&gt;&lt;/script&gt;&lt;script src=&quot;http://nargalzius.github.io/ajax/joystick/preview/1.1/preview.js&quot;&gt;&lt;/script&gt;&lt;style&gt;
+        <pre class="syntax javascript">&lt;!DOCTYPE html&gt;&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot;&gt;&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, maximum-scale=1&quot;&gt;&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;http://nargalzius.github.io/ajax/joystick/preview/1.2/preview.css&quot;/&gt;&lt;script src=&quot;http://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js&quot;&gt;&lt;/script&gt;&lt;script src=&quot;http://cdnjs.cloudflare.com/ajax/libs/swfobject/2.2/swfobject.js&quot;&gt;&lt;/script&gt;&lt;script src=&quot;http://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js&quot;&gt;&lt;/script&gt;&lt;script src=&quot;http://nargalzius.github.io/ajax/joystick/preview/1.2/preview.js&quot;&gt;&lt;/script&gt;&lt;style&gt;
 
 /* CUSTOM STYLES HERE */
 
@@ -62,7 +62,10 @@ $(document).ready(function(){
   //img  : i,
   //swf  : f,
   //title: 'Title',
-  //desc : 'Description'
+  //desc : 'Description',
+  //backgroundColor: '#000',
+  //color: '#FFF',
+  //theme: 'dark'
  });
 });
 
@@ -123,15 +126,21 @@ $(document).ready(function(){
         </li>
         <li><strong><code class="property">desc</code></strong><code class="property">: string</code><p>Optional. A sub header below the title. Note that the <code>title</code> and the <code>desc</code> are independent of each other - so you may use either one, both, or none.</p>
         </li>
-        <li><strong><code class="property">backgroundColor</code></strong><code class="property">: string</code><p>Optional. Changes the entire document&#39;s background color - for previews that require a dark background.</p>
+        <li><strong><code class="property">backgroundColor</code></strong><code class="property">: string = </code><em><code class="property">'#FFF'</code></em><p>Optional. Changes the entire document&#39;s background color - for previews that require a dark background.</p>
         </li>
-        <li><strong><code class="property">color</code></strong><code class="property">: string</code><p>Optional. Changes the document&#39;s default text color - for previews that require a dark background.</p>
+        <li><strong><code class="property">theme</code></strong><code class="property">: string = </code><em><code class="property">'light'</code></em><p>Optional, case-sensitive. Switches the [alphatransparent] PNG logo to suit the background better.</p>
+        </li>
+        <li><strong><code class="property">color</code></strong><code class="property">: string = </code><em><code class="property">'#222'</code></em><p>Optional. Changes the document&#39;s default text color - for previews that require a dark background.</p>
         </li>
       </ul><p>As of the moment, for some reason it breaks when you try to load a file in a folder. It works fine when loading from the same folder or from a url.</p>
 
 <p>Also, the pushdown is far from bullet-proof, it works for the most part, but it also largely depends on how the browser handles <code>ExternalInterface</code> calls.</p>
     </section>
     <section id="changelog"><h1>Changelog</h1>
+
+<h2><a href="http://nargalzius.github.io/ajax/joystick/preview/1.2/preview.js">1.2</a></h2>
+
+<ul><li>Added <code>theme</code> variable to switch from two png backgrounds depending on the background.</li></ul>
 
 <h2><a href="http://nargalzius.github.io/ajax/joystick/preview/1.1/preview.js">1.1</a></h2>
 
